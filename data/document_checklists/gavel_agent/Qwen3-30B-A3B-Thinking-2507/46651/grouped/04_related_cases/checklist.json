@@ -1,0 +1,34 @@
+{
+  "Consolidated_Cases_Noted": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Tokens 0-10000 (Docket)",
+            "source_document": "Docket",
+            "text": "Docket entries show no references to consolidation with other cases; all filings (e.g., Document 16: 'Related Document Number: 5') refer to internal case documents only, not external case codes or consolidated matters."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Consolidated_Cases_Noted",
+    "last_updated": "2025-11-20T03:09:05.478552-05:00"
+  },
+  "Related_Cases_Listed_by_Their_Case_Code_Number": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Tokens 0-10000 (Docket)",
+            "source_document": "Docket",
+            "text": "No case code numbers (e.g., 'Case No. 12345') or references to related cases appear in Docket entries; all 'related' references pertain to internal document numbers (e.g., 'Related Document Number: 5') within this single case."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Related_Cases_Listed_by_Their_Case_Code_Number",
+    "last_updated": "2025-11-20T03:09:05.478581-05:00"
+  }
+}

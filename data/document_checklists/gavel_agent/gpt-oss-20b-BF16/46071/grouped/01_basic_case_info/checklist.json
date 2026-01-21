@@ -1,0 +1,201 @@
+{
+  "Class_Action_or_Individual_Plaintiffs": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-178",
+            "source_document": "Docket",
+            "text": "1 | 2022-11-21 | COMPLAINT filed by JANE DOE, JOHN DOE against LLOYD J AUSTIN, III, TRICARE HEALTH PLAN, US DEFENSE HEALTH AGENCY, US DEPARTMENT OF DEFENSE"
+          },
+          {
+            "location": "tokens 443-643",
+            "source_document": "Stipulation for Dismissal",
+            "text": "JANE DOE and SUSAN ROE,"
+          }
+        ],
+        "value": "Plaintiffs: Individual, described as Jane Doe, John Doe, Susan Roe"
+      }
+    ],
+    "key": "Class_Action_or_Individual_Plaintiffs",
+    "last_updated": "2025-11-20T22:52:15.561218-05:00"
+  },
+  "Filing_Date": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-178",
+            "source_document": "Docket",
+            "text": "1 | 2022-11-21 | COMPLAINT filed by JANE DOE, JOHN DOE against LLOYD J AUSTIN, III, TRICARE HEALTH PLAN, US DEFENSE HEALTH AGENCY, US DEPARTMENT OF DEFENSE PAYMENT OF FILING FEE DUE WITHIN 48 HOURS. IF FILING FEE IS BEING PAID WITH A CREDIT CARD COUNSEL ARE INSTRUCTED TO LOGIN TO CMECF AND DOCKET Case Opening Filing Fee Paid FOUND IN THE Complaints and Other Initiating Documents CATEGORY. CHECK PAYMENTS DUE WITHIN 48 HOURS.. (Service of Process Deadline 2/21/2023) Fee due by 11/23/2022.(slg) (Entered: 11/21/2022)"
+          }
+        ],
+        "value": "2022-11-21"
+      }
+    ],
+    "key": "Filing_Date",
+    "last_updated": "2025-11-20T22:52:15.561168-05:00"
+  },
+  "Type_of_Counsel": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 581-692",
+            "source_document": "Stipulation for Dismissal",
+            "text": "By:      /s/ Kayla Grant \nORRICK, HERRINGTON, & SUTCLIFFE LLP \nKayla Grant (Maine Bar No. 006711) \nShane McCammon \n2100 Pennsylvania Ave, NW  \nWashington, D.C. 20036  \nT: (202) 339-8400  \nF: (202) 339-8500  \nkgrant@orrick.com \nsmcammon@orrick.com  \nCounsel for Plaintiffs"
+          }
+        ],
+        "value": "Plaintiff: Jane Doe - private counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 443-643",
+            "source_document": "Stipulation for Dismissal",
+            "text": "By:      /s/ Bennett H. Klein \nGLBTQ LEGAL ADVOCATES & DEFENDERS \nBennett H. Klein \nbklen@glad.org \n18 Tremont Street \nSuite 950 \nBoston, MA 02108 \nT: (617) 426-1350 \nF: (617) 426-3594  \nCounsel for Plaintiffs"
+          }
+        ],
+        "value": "Plaintiff: Jane Doe - public interest organization"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 581-692",
+            "source_document": "Stipulation for Dismissal",
+            "text": "By:      /s/ Kayla Grant \nORRICK, HERRINGTON, & SUTCLIFFE LLP \nKayla Grant (Maine Bar No. 006711) \nShane McCammon \n2100 Pennsylvania Ave, NW  \nWashington, D.C. 20036  \nT: (202) 339-8400  \nF: (202) 339-8500  \nkgrant@orrick.com \nsmcammon@orrick.com  \nCounsel for Plaintiffs"
+          }
+        ],
+        "value": "Plaintiff: Susan Roe - private counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 443-643",
+            "source_document": "Stipulation for Dismissal",
+            "text": "By:      /s/ Bennett H. Klein \nGLBTQ LEGAL ADVOCATES & DEFENDERS \nBennett H. Klein \nbklen@glad.org \n18 Tremont Street \nSuite 950 \nBoston, MA 02108 \nT: (617) 426-1350 \nF: (617) 426-3594  \nCounsel for Plaintiffs"
+          }
+        ],
+        "value": "Plaintiff: Susan Roe - public interest organization"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 581-692",
+            "source_document": "Stipulation for Dismissal",
+            "text": "By: /s/ Zachary W. Sherwood \nZACHARY W. SHERWOOD  \nTrial Attorney (Indiana Bar No. 37147-49) \nUnited States Department of Justice \nCivil Division, Federal Programs Branch \n1100 L Street, NW \nWashington, D.C. 20005 \nzachary.w.sherwood@usdoj.gov \n(202) 616-8467 \nCounsel for Defendants"
+          }
+        ],
+        "value": "Defendant: Lloyd J. Austin, III - government counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 581-692",
+            "source_document": "Stipulation for Dismissal",
+            "text": "By: /s/ Zachary W. Sherwood \nZACHARY W. SHERWOOD  \nTrial Attorney (Indiana Bar No. 37147-49) \nUnited States Department of Justice \nCivil Division, Federal Programs Branch \n1100 L Street, NW \nWashington, D.C. 20005 \nzachary.w.sherwood@usdoj.gov \n(202) 616-8467 \nCounsel for Defendants"
+          }
+        ],
+        "value": "Defendant: U.S. Department of Defense - government counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 581-692",
+            "source_document": "Stipulation for Dismissal",
+            "text": "By: /s/ Zachary W. Sherwood \nZACHARY W. SHERWOOD  \nTrial Attorney (Indiana Bar No. 37147-49) \nUnited States Department of Justice \nCivil Division, Federal Programs Branch \n1100 L Street, NW \nWashington, D.C. 20005 \nzachary.w.sherwood@usdoj.gov \n(202) 616-8467 \nCounsel for Defendants"
+          }
+        ],
+        "value": "Defendant: U.S. Defense Health Agency - government counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 581-692",
+            "source_document": "Stipulation for Dismissal",
+            "text": "By: /s/ Zachary W. Sherwood \nZACHARY W. SHERWOOD  \nTrial Attorney (Indiana Bar No. 37147-49) \nUnited States Department of Justice \nCivil Division, Federal Programs Branch \n1100 L Street, NW \nWashington, D.C. 20005 \nzachary.w.sherwood@usdoj.gov \n(202) 616-8467 \nCounsel for Defendants"
+          }
+        ],
+        "value": "Defendant: Tricare Health Plan - government counsel"
+      }
+    ],
+    "key": "Type_of_Counsel",
+    "last_updated": "2025-11-20T22:52:15.561225-05:00"
+  },
+  "Who_are_the_Parties": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-178",
+            "source_document": "Docket",
+            "text": "1 | 2022-11-21 | COMPLAINT filed by JANE DOE, JOHN DOE against LLOYD J AUSTIN, III, TRICARE HEALTH PLAN, US DEFENSE HEALTH AGENCY, US DEPARTMENT OF DEFENSE"
+          }
+        ],
+        "value": "Plaintiff: Jane Doe"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-178",
+            "source_document": "Docket",
+            "text": "1 | 2022-11-21 | COMPLAINT filed by JANE DOE, JOHN DOE against LLOYD J AUSTIN, III, TRICARE HEALTH PLAN, US DEFENSE HEALTH AGENCY, US DEPARTMENT OF DEFENSE"
+          }
+        ],
+        "value": "Plaintiff: John Doe"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 443-643",
+            "source_document": "Stipulation for Dismissal",
+            "text": "JANE DOE and SUSAN ROE,"
+          }
+        ],
+        "value": "Plaintiff: Susan Roe"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-178",
+            "source_document": "Docket",
+            "text": "1 | 2022-11-21 | COMPLAINT filed by JANE DOE, JOHN DOE against LLOYD J AUSTIN, III, TRICARE HEALTH PLAN, US DEFENSE HEALTH AGENCY, US DEPARTMENT OF DEFENSE"
+          }
+        ],
+        "value": "Defendant: Lloyd J. Austin, III"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-178",
+            "source_document": "Docket",
+            "text": "1 | 2022-11-21 | COMPLAINT filed by JANE DOE, JOHN DOE against LLOYD J AUSTIN, III, TRICARE HEALTH PLAN, US DEFENSE HEALTH AGENCY, US DEPARTMENT OF DEFENSE"
+          }
+        ],
+        "value": "Defendant: U.S. Department of Defense"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-178",
+            "source_document": "Docket",
+            "text": "1 | 2022-11-21 | COMPLAINT filed by JANE DOE, JOHN DOE against LLOYD J AUSTIN, III, TRICARE HEALTH PLAN, US DEFENSE HEALTH AGENCY, US DEPARTMENT OF DEFENSE"
+          }
+        ],
+        "value": "Defendant: U.S. Defense Health Agency"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-178",
+            "source_document": "Docket",
+            "text": "1 | 2022-11-21 | COMPLAINT filed by JANE DOE, JOHN DOE against LLOYD J AUSTIN, III, TRICARE HEALTH PLAN, US DEFENSE HEALTH AGENCY, US DEPARTMENT OF DEFENSE"
+          }
+        ],
+        "value": "Defendant: Tricare Health Plan"
+      }
+    ],
+    "key": "Who_are_the_Parties",
+    "last_updated": "2025-11-20T22:52:15.561208-05:00"
+  }
+}

@@ -1,0 +1,102 @@
+# Checklist configuration - defines the items to extract and user instructions
+# This can be customized for different extraction tasks
+
+# User instruction - what the user wants the agent to do
+# This will be included in the prompt sent to the LLM
+user_instruction: |
+  Extract all 26 checklist items from the legal case documents as completely as possible.
+
+# Optional: Task-specific constraints beyond what's in the system prompt
+# Leave empty ([]) if standard extraction rules apply
+# Add constraints here only for special requirements specific to this task
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: filings, dates, rulings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+
+# Examples of additional constraints you might add:
+#   - "Pay special attention to dates in footnotes"
+#   - "Include dissenting opinions in the citation list"
+#   - "For settlement terms, check both main text and exhibits"
+
+# Checklist items to extract
+# Definitions from item_specific_info_improved.json
+checklist_items:
+  Filing_Date:
+    description: "The calendar date on which the lawsuit was first filed/initiated with the court."
+
+  Cause_of_Action:
+    description: "The legal claim(s) asserted—the theory of liability or right to relief (e.g., breach of contract; 42 U.S.C. § 1983; Ex parte Young)."
+
+  Statutory_or_Constitutional_Basis_for_the_Case:
+    description: "The governing statute(s) or constitutional provision(s) underlying the claims, including specific clauses and amendments when constitutional."
+
+  Remedy_Sought:
+    description: "The relief requested from the court (e.g., damages, injunctive relief, declaratory judgment, specific performance)."
+
+  Type_of_Counsel:
+    description: "The category of legal representation for each party (e.g., private counsel, legal services/public defender, public interest organization such as the ACLU, government counsel)."
+
+  First_and_Last_name_of_Judge:
+    description: "The name of the presiding judge (first and last name if available; otherwise whatever portion is provided). The extracted value should be formated as '[full name]'."
+
+  All_Reported_Opinions_Cited_with_Shortened_Bluebook_Citation:
+    description: "All citations to judicial opinions that include a reporter or database citation, represented in shortened Bluebook form (case name included only when it immediately precedes the citation); excludes id./supra/infra, docket-only references, slip opinions without reporter/database cites, and non-case sources."
+
+  Class_Action_or_Individual_Plaintiffs:
+    description: "A designation of whether plaintiffs proceed as a class action or as individual plaintiffs (with a brief description of the individuals when applicable). The extracted value should be formated as 'Plaintiffs: Class Action' or 'Plaintiffs: Individual, described as [description]'."
+
+  Related_Cases_Listed_by_Their_Case_Code_Number:
+    description: "Any related matters identified by their case numbers/codes."
+
+  How_Long_Decrees_will_Last:
+    description: "The duration terms of any decrees (e.g., length of an injunction or consent decree). The extracted value should be formated as '[duration]: [decree].'"
+
+  Date_of_Settlement:
+    description: "The calendar date on which a settlement was reached, executed, or approved. The extracted value should be formated as '[date]: [settlement].'"
+
+  How_Long_Settlement_will_Last:
+    description: "The duration terms of settlement obligations or monitoring periods. The extracted value should be formated as '[duration]: [settlement].'"
+
+  Whether_the_Settlement_is_Court-enforced_or_Not:
+    description: "An indication of whether the settlement is enforceable by the court (e.g., entered as a consent decree or retained jurisdiction). The extracted value should be formated as '[Yes/No].'"
+
+  Name_of_the_Monitor:
+    description: "The name of any court-appointed or agreed-upon monitor, if one exists."
+
+  Appeal:
+    description: "Information about any appeals taken, including the appealing party/parties and the appellate court. The extracted value should be formated as 'Appeal: [parties] appealed to [court].'"
+
+  Who_are_the_Parties:
+    description: "Descriptions of each party, identifying plaintiffs and defendants and their roles, capacities, or offices. The extracted value should be formated as 'Plaintiff: [description]' or 'Defendant: [description]'."
+
+  Consolidated_Cases_Noted:
+    description: "Any indication that the case has been consolidated with other case(s), including identifying information."
+
+  Dates_of_All_Decrees:
+    description: "The dates on which decrees were entered, with identification of the corresponding decree. The extracted value should be formated as '[date]: [decree].'"
+
+  Factual_Basis_of_Case:
+    description: "Refers to the facts or evidence upon which the case is built. These facts are essential in the legal process and are used to support legal claims or decisions. It typically includes: 1. Details of the relevant events—For example, what happened, when it happened, where it happened, and who was involved. 2. Evidence – Physical evidence, documentary records, witness testimonies, etc., that support these facts. 3. Background information—Context or explanatory facts that provide additional understanding."
+
+  Note_Important_Filings:
+    description: "The most important procedural filings or motions (e.g., complaint, amended complaint, motion to dismiss, summary judgment, etc.). For each identified filing, provide a description as completely as possible."
+
+  Significant_Terms_of_Decrees:
+    description: "The substantive obligations imposed by any decree—what defendants are ordered to do or refrain from doing."
+
+  Significant_Terms_of_Settlement:
+    description: "The substantive obligations agreed to in any settlement—what the parties agree to do or refrain from doing."
+
+  Monitor_Reports:
+    description: "A monitor's report explains whether a defendant is complying with a court order, so people want to know which terms of the order are being complied with. The extracted value should be formated as 'Monitor found [compliance/non-compliance] with [specific requirement] as of [date].'"
+
+  Trials:
+    description: "Information about any trials, including scheduling, proceedings, outcomes, and materially related rulings."
+
+  Court_Rulings:
+    description: "The court's decisions or orders on key motions or issues. Focus on how the court ruled (granted/denied/issued) on important filings such as: motions to dismiss, motions for summary judgment, motions for preliminary injunctions or temporary restraining orders (TROs), motions for class certification, motions for attorneys' fees, and other significant procedural or substantive rulings. Extract concise descriptions of each ruling."
+
+  Disputes_Over_Settlement_Enforcement:
+    description: "Information about disagreements, motions, or proceedings concerning enforcement of a settlement."

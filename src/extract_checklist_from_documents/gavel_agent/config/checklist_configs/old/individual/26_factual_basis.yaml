@@ -1,0 +1,15 @@
+# Checklist configuration - Factual Basis of Case only
+# Focuses exclusively on extracting the factual basis
+
+# User instruction
+user_instruction: |
+  Extract the factual basis from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Factual_Basis_of_Case:
+    description: "Refers to the facts or evidence upon which the case is built. These facts are essential in the legal process and are used to support legal claims or decisions. It typically includes: 1. Details of the relevant events—For example, what happened, when it happened, where it happened, and who was involved. 2. Evidence – Physical evidence, documentary records, witness testimonies, etc., that support these facts. 3. Background information—Context or explanatory facts that provide additional understanding."

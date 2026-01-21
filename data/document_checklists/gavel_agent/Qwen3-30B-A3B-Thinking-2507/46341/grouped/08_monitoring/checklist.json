@@ -1,0 +1,34 @@
+{
+  "Monitor_Reports": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Regex search results (Step 4)",
+            "source_document": "All documents",
+            "text": "Regex search for 'monitor' yielded no matches related to court-ordered monitor reports. All references to 'monitor' were in context of research safety protocols (e.g., 'clinical monitoring', 'safety monitoring'), not court-supervised compliance reports."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Monitor_Reports",
+    "last_updated": "2025-11-20T02:39:20.054794-05:00"
+  },
+  "Name_of_the_Monitor": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Regex search results (Step 4)",
+            "source_document": "All documents",
+            "text": "Regex search for 'monitor' across all 15 documents yielded 5 matches, all referring to general research monitoring (e.g., 'safety monitoring during and after doxycycline dosing', 'clinical monitoring') rather than a court-appointed monitor. No document mentions a court-appointed or agreed-upon monitor."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Name_of_the_Monitor",
+    "last_updated": "2025-11-20T02:39:20.054764-05:00"
+  }
+}

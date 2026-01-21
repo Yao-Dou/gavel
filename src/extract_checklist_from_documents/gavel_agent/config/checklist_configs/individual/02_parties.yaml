@@ -1,0 +1,15 @@
+# Checklist configuration - Who are the Parties only
+# Focuses exclusively on extracting the parties involved
+
+# User instruction
+user_instruction: |
+  Extract the parties involved from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Who_are_the_Parties:
+    description: "Descriptions of each party, identifying plaintiffs and defendants and their roles, capacities, or offices. The extracted value should be formated as 'Plaintiff: [description]' or 'Defendant: [description]'."

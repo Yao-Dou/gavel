@@ -1,0 +1,15 @@
+# Checklist configuration - Class Action or Individual Plaintiffs only
+# Focuses exclusively on extracting the class action status
+
+# User instruction
+user_instruction: |
+  Extract the class action status from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Class_Action_or_Individual_Plaintiffs:
+    description: "A designation of whether plaintiffs proceed as a class action or as individual plaintiffs (with a brief description of the individuals when applicable). The extracted value should be formated as 'Plaintiffs: Class Action' or 'Plaintiffs: Individual, described as [description]'."

@@ -1,0 +1,46 @@
+You are assisting a lawyer in identifying key information from a legal case summary. You will be given a set of text spans extracted from the summary that may contain meaningful legal or factual content.
+
+Your task is to extract distinct atomic facts from the given spans. Each atomic fact should be a single discrete, self-contained, and verifiable piece of information that can stand on its own. Ignore any spans that contain filler phrases, incomplete clauses, or do not convey meaningful information. If multiple spans express the same fact, extract it only once.
+
+# Note: Do not make assumptions or add information that is not present in the spans.
+
+# Text Spans
+{text_spans}
+
+# Output Format
+
+Your output should be in the following JSON format—no extra keys, no prose outside of the JSON:
+
+```
+{{
+  "reasoning": "<brief analysis of which spans contain meaningful factual information and what those facts are>",
+  "extracted": [
+    {{
+      "fact": "<atomic fact 1>",
+      "evidence_spans": [<list of 1-based span indices>]
+    }},
+    {{
+      "fact": "<atomic fact 2>",
+      "evidence_spans": [<list of 1-based span indices>]
+    }}
+    // ...
+  ]
+}}
+```
+
+## Definitions of each part
+* `reasoning`: A brief analysis of the spans and how you identified any meaningful atomic facts.
+* `extracted`: A list of objects, each representing one atomic fact. Every object must have:
+  - `fact`: A clear, concise sentence or phrase conveying a distinct, self-contained fact.
+  - `evidence_spans`: A list of 1-based indices of the spans that support or directly contain the fact.
+
+## Rules for the JSON schema
+1. Always return **extracted** as a list, even if there is only one fact.
+2. If none of the spans contain meaningful or complete information, return the **extracted** as an empty list:
+
+```
+{{
+  "reasoning": "<brief analysis>",
+  "extracted": []
+}}
+```

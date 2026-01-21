@@ -1,0 +1,15 @@
+# Checklist configuration - How Long Decrees will Last only
+# Focuses exclusively on extracting the decree duration
+
+# User instruction
+user_instruction: |
+  Extract the decree duration from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  How_Long_Decrees_will_Last:
+    description: "The duration of decree obligations, for any formal court order or judgment such as an injunction, consent decree, or stipulated judgment/injunction, as opposed to a negotiated agreement between parties. Only include obligations that are ordered by the court. Extract each duration as a separate value, formatted as: '[duration]: [decree obligation].'"

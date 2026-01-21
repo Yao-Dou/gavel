@@ -1,0 +1,338 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Gavel</title>
+    <link rel="icon" type="image/png" href="img/gavel.png">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <div class="container">
+        <!-- Brand/Title -->
+        <h1 class="brand">Gavel</h1>
+
+        <!-- Subtitle -->
+        <h2 class="subtitle">Agent Meets Checklist for Evaluating LLMs on Long-Context Legal Summarization</h2>
+
+        <!-- Authors -->
+        <div class="authors">
+            <a href="https://yao-dou.github.io/" target="_blank" rel="noopener" class="author-link">Yao Dou</a>,
+            <a href="https://cocoxu.github.io/" target="_blank" rel="noopener" class="author-link">Wei Xu</a>
+        </div>
+
+        <!-- Institution Logo -->
+        <div class="institution-logos">
+            <img src="img/GTOneLine_TechGold.svg" alt="Georgia Institute of Technology">
+        </div>
+
+        <!-- Buttons -->
+        <div class="button-container">
+            <a href="https://www.arxiv.org/abs/2601.04424" class="navigation-button" target="_blank" rel="noopener">
+                <img src="img/arxiv-logo.svg" width="14" height="14">
+                Paper
+            </a>
+            <a href="https://github.com/Yao-Dou/gavel" class="navigation-button" target="_blank" rel="noopener">
+                <img src="img/github-logo.svg" width="20" height="20">
+                Data and Code
+            </a>
+        </div>
+    </div>
+
+    <!-- Divider -->
+    <hr class="divider">
+
+    <!-- Figure: GAVEL-REF Framework -->
+    <div class="content-section">
+        <figure class="main-figure">
+            <img src="img/gavel-ref.png" alt="GAVEL-REF Framework">
+            <figcaption>
+                Our <strong>GAVEL-REF</strong> framework for evaluating long-context summarization, featuring
+                <strong>checklist evaluation</strong> (supporting both string-wise and list-wise comparisons),
+                <strong>residual fact evaluation</strong>, and <strong>writing-style evaluation</strong>.
+                An interesting finding: <span class="highlight">many modern LLMs tend to omit specific names</span> of people or organizations.
+                <span class="note"><span class="light-green">Light green</span> indicates matched values.</span>
+            </figcaption>
+        </figure>
+    </div>
+
+    <!-- About Section -->
+    <section id="about" class="content-section">
+        <h2 class="section-header">About</h2>
+        <div class="section-content">
+            <p>
+                LLMs can now handle up to <strong>1 million tokens</strong> of context. But are they really that good? We put this to the test with one of the most demanding real-world tasks: <strong>legal case summarization</strong>.
+            </p>
+            <p>
+                A single legal case can span dozens of documents—<span class="text-highlight">100K to 500K tokens</span> in total. Summarizing these cases requires understanding complex relationships, tracking multiple parties, and capturing both common details (like filing dates) and rare but critical information (like settlement terms).
+            </p>
+            <p>
+                We introduce <strong>GAVEL-REF</strong>, an evaluation framework that goes beyond simple aggregate scores. It uses a <strong>26-item checklist</strong> to evaluate summaries on specific factual elements, plus evaluations for residual facts and writing style. We evaluated <strong>12 frontier LLMs</strong> on 100 legal cases from 2025, ranging from 32K to 512K tokens.
+            </p>
+            <p>
+                The results? Even the best model, <strong>Gemini 2.5 Pro</strong>, achieves only around <span class="text-highlight-red">50 on S<sub>Gavel-Ref</sub></span>. Models handle simple items well but struggle with multi-value fields and rare case elements.
+            </p>
+            <p>
+                Looking ahead, as LLMs improve and potentially surpass human-written references, we developed <strong>GAVEL-AGENT</strong>—an autonomous agent that navigates case documents using six specialized tools to extract checklist items directly. With Qwen3, it <span class="text-highlight">reduces token usage by 36%</span> with only a 7% drop in S<sub>checklist</sub> compared to end-to-end processing with GPT-4.1.
+            </p>
+        </div>
+    </section>
+
+    <!-- Visualization of Model Summaries Section -->
+    <section id="viz-summaries" class="content-section">
+        <h2 class="section-header">Visualization of Model Summaries</h2>
+        <p class="section-content">
+            Compare model-generated summaries against human reference summaries, with detailed checklist evaluation showing how well each model captures specific checklist items. <span class="section-note"><em>Note: Some data or evaluation results may be missing due to server issues. We are working on a fix.</em></span>
+        </p>
+
+        <!-- Controls -->
+        <div class="viz-controls">
+            <div class="viz-select-group">
+                <label for="model-select">Model:</label>
+                <select id="model-select"></select>
+            </div>
+            <div class="viz-select-group">
+                <label for="case-select">Case:</label>
+                <select id="case-select"></select>
+            </div>
+        </div>
+
+        <!-- Case Link -->
+        <div class="case-link-container" id="case-link-container">
+            <a id="case-link" href="#" target="_blank" rel="noopener">View case on Clearinghouse</a>
+        </div>
+
+        <!-- Summary Comparison -->
+        <div class="summaries-container">
+            <div class="summary-box model-summary">
+                <h3>Model Summary</h3>
+                <div class="summary-content" id="model-summary-content">Select a model and case to view the summary.</div>
+            </div>
+            <div class="summary-box reference-summary">
+                <h3>Reference Summary</h3>
+                <div class="summary-content" id="reference-summary-content">Select a model and case to view the reference.</div>
+            </div>
+        </div>
+
+        <!-- Checklist Comparison -->
+        <div class="checklist-section">
+            <h3>Checklist Evaluation</h3>
+            <div class="checklist-container" id="checklist-container">
+                <p class="checklist-placeholder">Select a model and case to view checklist evaluation.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evaluation of Model Summaries Section -->
+    <section id="eval-summaries" class="content-section">
+        <h2 class="section-header">Evaluation of Model Summaries</h2>
+        <div class="section-content">
+            <p>
+                We evaluated 12 frontier LLMs using GAVEL-REF across 100 legal cases, primarily from 2025, spanning 32K to 512K tokens.
+            </p>
+
+            <figure class="main-figure">
+                <img src="img/LLM_eval_heatmap.png" alt="GAVEL-REF evaluation heatmap for 12 LLMs">
+                <figcaption>
+                    GAVEL-REF evaluation results across different case length bins. Higher scores indicate better performance.
+                </figcaption>
+            </figure>
+
+            <p>
+                <strong>Gemini 2.5 Pro</strong> achieves the best overall performance with an S<sub>GAVEL-REF</sub> of <span class="text-highlight">51.0</span>, followed by Claude Sonnet 4 and Gemini 2.5 Flash. Proprietary models consistently outperform open-source alternatives by a clear margin—the best open-source model, GPT-oss 20B, reaches only 45.9.
+            </p>
+
+            <p>
+                <strong>All models degrade as case length increases.</strong> Even models supporting 1M-token context windows show noticeable drops on longer cases. Gemini 2.5 Pro scores <span class="text-highlight-red">4.7 points lower</span> on 512K cases compared to 32K cases, while GPT-4.1 drops by 7.6 points.
+            </p>
+
+            <p>
+                Surprisingly, <strong>GPT-5 has the lowest writing-style rating</strong> (S<sub>style</sub> = 59.1), while Claude and Gemini models score highest at 71.0. GPT-5 tends to produce <em>verbose, checklist-style summaries</em> instead of the requested narrative form—sometimes generating nearly 1,000 words when human summaries average 700. On longer cases, all models produce summaries significantly shorter than human references.
+            </p>
+        </div>
+    </section>
+
+    <!-- Extract Checklist Section -->
+    <section id="gavel-agent" class="content-section">
+        <h2 class="section-header">Extract Checklist Directly from Case Documents</h2>
+        <div class="section-content">
+            <p>
+                Reference-based evaluation requires hours of expert time per case and cannot serve as a long-term gold standard once LLMs surpass humans. Directly extracting checklists from case documents enables <strong>scalable evaluation</strong> and <strong>inference-time suggestions</strong>. We experiment with three methods.
+            </p>
+
+            <div class="methods-comparison">
+                <!-- Left column: baseline methods -->
+                <div class="methods-baseline">
+                    <div class="method-card">
+                        <h4>End-to-End</h4>
+                        <p>
+                            Concatenate all case documents chronologically and feed them to long-context LLMs. Each of the 26 checklist items is queried individually for better accuracy.
+                        </p>
+                    </div>
+                    <div class="method-card">
+                        <h4>Chunk-by-Chunk</h4>
+                        <p>
+                            Split documents into 16K-token chunks that fit modern context windows. Process iteratively—at each step, the model receives the chunk and current checklist state, then outputs updates.
+                        </p>
+                    </div>
+                </div>
+
+                <!-- Right column: GAVEL-AGENT (featured) -->
+                <div class="method-card method-featured">
+                    <h4>GAVEL-AGENT</h4>
+                    <p>
+                        Our autonomous agent framework lets LLMs <strong>strategically search and skim</strong> documents rather than reading every word—mimicking how humans extract information.
+                    </p>
+
+                    <h5>Six Specialized Tools</h5>
+                    <ul class="tools-list">
+                        <li><code>list_documents()</code> — Get case overview with document metadata</li>
+                        <li><code>read_document(doc, start, end)</code> — Read up to 10K tokens from a document</li>
+                        <li><code>search_document_regex(pattern)</code> — Search with regex, get matches with context</li>
+                        <li><code>get_checklist(items)</code> — Retrieve currently extracted values</li>
+                        <li><code>append_checklist(patch)</code> — Add new values with supporting evidence</li>
+                        <li><code>update_checklist(patch)</code> — Replace values or mark as N/A</li>
+                    </ul>
+
+                    <h5>Smart Context Management</h5>
+                    <p>
+                        After each action, the context refreshes with a snapshot of explored documents and recent actions. The 5 most recent tool calls include full responses; older ones are compressed to brief outcomes (e.g., "read 3,000 tokens"). This keeps prompts compact even on 256K+ token cases with 50+ tool calls.
+                    </p>
+
+                    <h5>Fully Customizable</h5>
+                    <p>
+                        Users can define any checklist items, making it easy to adapt to other domains beyond legal summarization.
+                    </p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Visualization of Document Extracted Checklist Section -->
+    <section id="viz-agent" class="content-section">
+        <h2 class="section-header">Visualization of Document Extracted Checklist</h2>
+        <p class="section-content">
+            Compare model-extracted checklists from case documents against human-extracted checklists from summaries.
+            This visualization shows how well each extraction method captures the 26 checklist items directly from source documents. <span class="section-note"><em>Note: Some data or evaluation results may be missing due to server issues. We are working on a fix.</em></span>
+        </p>
+
+        <!-- Controls -->
+        <div class="viz-controls">
+            <div class="viz-select-group">
+                <label for="doc-method-select">Method:</label>
+                <select id="doc-method-select"></select>
+            </div>
+            <div class="viz-select-group">
+                <label for="doc-case-select">Case:</label>
+                <select id="doc-case-select"></select>
+            </div>
+        </div>
+
+        <!-- Case Link -->
+        <div class="case-link-container" id="doc-case-link-container">
+            <a id="doc-case-link" href="#" target="_blank" rel="noopener">View case on Clearinghouse</a>
+        </div>
+
+        <!-- Summary Display -->
+        <div class="doc-summary-section">
+            <div class="summary-box reference-summary">
+                <h3>Human Reference Summary</h3>
+                <div class="summary-content" id="doc-summary-content">Select a method and case to view the summary.</div>
+            </div>
+        </div>
+
+        <!-- Checklist Comparison -->
+        <div class="checklist-section">
+            <h3>Checklist Comparison: Model (from Documents) vs Reference (from Summary)</h3>
+            <div class="checklist-container" id="doc-checklist-container">
+                <p class="checklist-placeholder">Select a method and case to view checklist comparison.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Evaluation of Document Extracted Checklist Section -->
+    <section id="eval-agent" class="content-section">
+        <h2 class="section-header">Evaluation of Document Extracted Checklist</h2>
+        <div class="eval-doc-layout">
+            <div class="eval-doc-text section-content">
+                <p>
+                    We evaluated extraction quality on 40 long cases, comparing each method's extracted checklist against the human-created checklist from the summary.
+                </p>
+                <p>
+                    <strong>End-to-end extraction</strong> with GPT-4.1 achieves the highest S<sub>checklist</sub> of <span class="text-highlight">46.9</span>, but consumes <span class="text-highlight-red">4.4M tokens</span>—the most expensive approach.
+                </p>
+                <p>
+                    <strong>GAVEL-AGENT</strong> with 26 individual agents using Qwen3 30B-A3B achieves the second-best score of <span class="text-highlight">43.5</span> while using only 2.8M tokens—<span class="text-highlight">36% fewer tokens</span> than end-to-end. Within GAVEL-AGENT configurations, <em>multi-agent decomposition</em> proves better suited for long-horizon extraction than a single agent handling many items at once.
+                </p>
+                <p>
+                    <strong>Chunk-by-chunk</strong> performs worst at 38.8, largely due to <em>error accumulation</em> in iterative updates where incorrect values persist and lead to over-extraction.
+                </p>
+                <p>
+                    Notably, all document extraction methods fall well below the <span class="text-highlight-red">68.2</span> achieved by GPT-5 extracting from human summaries, showing significant headroom for improving both long-context models and long-horizon agents.
+                </p>
+            </div>
+            <div class="eval-doc-figure">
+                <figure class="main-figure">
+                    <img src="img/meta_eval_from_docs.png" alt="Evaluation of document extraction methods">
+                    <figcaption>
+                        S<sub>checklist</sub> vs. total token usage for each extraction method across 40 cases.
+                    </figcaption>
+                </figure>
+            </div>
+        </div>
+    </section>
+
+    <!-- Citation Section -->
+    <section id="citation" class="content-section">
+        <h2 class="section-header">Citation</h2>
+        <div class="section-content">
+            <pre class="citation-block">@article{dou2026gavel,
+  title={Gavel: Agent Meets Checklist for Evaluating LLMs on Long-Context Legal Summarization},
+  author={Dou, Yao and Xu, Wei},
+  journal={arXiv preprint arXiv:2601.04424},
+  year={2026}
+}</pre>
+        </div>
+    </section>
+
+    <!-- Right Side Navigation -->
+    <nav id="side-nav">
+        <div class="side-nav-track">
+            <div class="side-nav-indicator"></div>
+        </div>
+        <div class="side-nav-menu">
+            <a href="#about" class="side-nav-link" data-section="about">
+                <span class="side-nav-dot"></span>
+                <span class="side-nav-label">About</span>
+            </a>
+            <a href="#viz-summaries" class="side-nav-link" data-section="viz-summaries">
+                <span class="side-nav-dot"></span>
+                <span class="side-nav-label">Visualization of Model Summaries</span>
+            </a>
+            <a href="#eval-summaries" class="side-nav-link" data-section="eval-summaries">
+                <span class="side-nav-dot"></span>
+                <span class="side-nav-label">Evaluation of Model Summaries</span>
+            </a>
+            <a href="#gavel-agent" class="side-nav-link" data-section="gavel-agent">
+                <span class="side-nav-dot"></span>
+                <span class="side-nav-label">Extract Checklist Directly from Case Documents</span>
+            </a>
+            <a href="#viz-agent" class="side-nav-link" data-section="viz-agent">
+                <span class="side-nav-dot"></span>
+                <span class="side-nav-label">Visualization of Document Extracted Checklist</span>
+            </a>
+            <a href="#eval-agent" class="side-nav-link" data-section="eval-agent">
+                <span class="side-nav-dot"></span>
+                <span class="side-nav-label">Evaluation of Document Extracted Checklist</span>
+            </a>
+            <a href="#citation" class="side-nav-link" data-section="citation">
+                <span class="side-nav-dot"></span>
+                <span class="side-nav-label">Citation</span>
+            </a>
+        </div>
+    </nav>
+
+    <script src="js/main.js"></script>
+</body>
+</html>

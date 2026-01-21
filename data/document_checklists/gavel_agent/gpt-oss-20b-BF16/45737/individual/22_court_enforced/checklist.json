@@ -1,0 +1,38 @@
+{
+  "Whether_the_Settlement_is_Court-enforced_or_Not": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Page 1 of 2",
+            "source_document": "Mediation Report",
+            "text": "The mediation of this case that took place on Monday, October 28, 2024, resulted in a full and final settlement of all claims as to all parties subject to the final consideration and approval by the City of Fort Lauderdale City Commission."
+          },
+          {
+            "location": "ENTRY 194 - PAPERLESS ORDER Requiring Status Update",
+            "source_document": "Docket",
+            "text": "The parties have notified the Court that the proposed settlement in this matter was presented to the City Commission in a closed-door session on November 19, 2024, was approved by City officials, and will now be brought before the City Commission on a public agenda tentatively set for December 3, 2024 for final approval."
+          }
+        ],
+        "value": "No"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 20598-20747",
+            "source_document": "Docket",
+            "text": "198 | 2024-12-20 | Approve Consent Judgment"
+          },
+          {
+            "location": "tokens 20598-20747",
+            "source_document": "Docket",
+            "text": "200 | 2024-12-23 | Order on Motion to Approve Consent Judgment"
+          }
+        ],
+        "value": "Yes"
+      }
+    ],
+    "key": "Whether_the_Settlement_is_Court-enforced_or_Not",
+    "last_updated": "2025-11-20T14:40:40.289129-05:00"
+  }
+}

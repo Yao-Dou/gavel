@@ -1,0 +1,82 @@
+{
+  "Date_of_Settlement": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Document header (tokens 0-289)",
+            "source_document": "Final Approval Order and Judgment [Order/Opinion]",
+            "text": "Case 4:16-cv-03577 Document 198 Filed on 03/18/21 in TXSD"
+          }
+        ],
+        "value": "2021-03-18: Final Approval Order"
+      }
+    ],
+    "key": "Date_of_Settlement",
+    "last_updated": "2025-11-19T17:33:39.852169-05:00"
+  },
+  "Disputes_Over_Settlement_Enforcement": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 2060-2260",
+            "source_document": "Order and Findings on Sanctions and Motions",
+            "text": "As support for the City\u2019s Response to the plaintiffs\u2019 motion to enforce the April 10, 2018 Order, the City provided an affidavit from Joe Martinez..."
+          }
+        ],
+        "value": "Plaintiffs' motion to enforce the April 10, 2018 Order"
+      }
+    ],
+    "key": "Disputes_Over_Settlement_Enforcement",
+    "last_updated": "2025-11-19T17:36:00.727017-05:00"
+  },
+  "How_Long_Settlement_will_Last": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Tokens 0-151",
+            "source_document": "Order Granting Plaintiffs' Unopposed Motion for Attorneys' Fees and Costs",
+            "text": "The settlement requires the City of Houston to implement a monitoring plan for five years to ensure compliance with the court's orders."
+          }
+        ],
+        "value": "five years: settlement"
+      }
+    ],
+    "key": "How_Long_Settlement_will_Last",
+    "last_updated": "2025-11-19T17:40:12.698430-05:00"
+  },
+  "Significant_Terms_of_Settlement": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 151-338",
+            "source_document": "Order Granting Plaintiffs' Unopposed Motion for Attorneys' Fees and Costs",
+            "text": "distribute the residual funds in the amount of $93,241.28 from the settlement to Class Counsel as an award for their attorneys\u2019 fees and costs"
+          }
+        ],
+        "value": "Distribution of $93,241.28 to Class Counsel as attorneys' fees and costs"
+      }
+    ],
+    "key": "Significant_Terms_of_Settlement",
+    "last_updated": "2025-11-19T17:33:39.852208-05:00"
+  },
+  "Whether_the_Settlement_is_Court-enforced_or_Not": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Document header",
+            "source_document": "Order Granting Plaintiffs' Unopposed Motion for Attorneys' Fees and Costs",
+            "text": "ORDER GRANTING PLAINTIFFS\u2019 UNOPPOSED MOTION FOR ATTORNEYS\u2019 FEES AND COSTS"
+          }
+        ],
+        "value": "Yes"
+      }
+    ],
+    "key": "Whether_the_Settlement_is_Court-enforced_or_Not",
+    "last_updated": "2025-11-19T17:33:39.852217-05:00"
+  }
+}

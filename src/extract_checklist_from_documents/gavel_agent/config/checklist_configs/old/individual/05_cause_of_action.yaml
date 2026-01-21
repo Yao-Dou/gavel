@@ -1,0 +1,15 @@
+# Checklist configuration - Cause of Action only
+# Focuses exclusively on extracting the cause of action
+
+# User instruction
+user_instruction: |
+  Extract the cause of action from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Cause_of_Action:
+    description: "The legal claim(s) asserted—the theory of liability or right to relief (e.g., breach of contract; 42 U.S.C. § 1983; Ex parte Young)."

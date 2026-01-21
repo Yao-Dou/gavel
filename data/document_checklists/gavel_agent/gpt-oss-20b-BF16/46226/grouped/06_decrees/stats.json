@@ -1,0 +1,633 @@
+{
+  "model": "unsloth/gpt-oss-20b-BF16",
+  "steps": 79,
+  "total_system_prompt_tokens": 159432,
+  "total_user_prompt_tokens": 574102,
+  "total_completion_tokens": 65979,
+  "per_step_details": [
+    {
+      "step": 1,
+      "system_tokens": 2044,
+      "user_tokens": 655,
+      "completion_tokens": 27,
+      "total_prompt_tokens": 2699,
+      "is_system_cached": false
+    },
+    {
+      "step": 2,
+      "system_tokens": 2044,
+      "user_tokens": 809,
+      "completion_tokens": 391,
+      "total_prompt_tokens": 2853,
+      "is_system_cached": true
+    },
+    {
+      "step": 3,
+      "system_tokens": 2044,
+      "user_tokens": 5083,
+      "completion_tokens": 577,
+      "total_prompt_tokens": 7127,
+      "is_system_cached": true
+    },
+    {
+      "step": 4,
+      "system_tokens": 2044,
+      "user_tokens": 6295,
+      "completion_tokens": 623,
+      "total_prompt_tokens": 8339,
+      "is_system_cached": true
+    },
+    {
+      "step": 5,
+      "system_tokens": 2044,
+      "user_tokens": 6398,
+      "completion_tokens": 380,
+      "total_prompt_tokens": 8442,
+      "is_system_cached": true
+    },
+    {
+      "step": 6,
+      "system_tokens": 2044,
+      "user_tokens": 7502,
+      "completion_tokens": 232,
+      "total_prompt_tokens": 9546,
+      "is_system_cached": true
+    },
+    {
+      "step": 7,
+      "system_tokens": 2044,
+      "user_tokens": 7724,
+      "completion_tokens": 284,
+      "total_prompt_tokens": 9768,
+      "is_system_cached": true
+    },
+    {
+      "step": 8,
+      "system_tokens": 2044,
+      "user_tokens": 4101,
+      "completion_tokens": 876,
+      "total_prompt_tokens": 6145,
+      "is_system_cached": true
+    },
+    {
+      "step": 9,
+      "system_tokens": 2044,
+      "user_tokens": 3676,
+      "completion_tokens": 1930,
+      "total_prompt_tokens": 5720,
+      "is_system_cached": true
+    },
+    {
+      "step": 10,
+      "system_tokens": 2044,
+      "user_tokens": 4730,
+      "completion_tokens": 1143,
+      "total_prompt_tokens": 6774,
+      "is_system_cached": true
+    },
+    {
+      "step": 11,
+      "system_tokens": 2044,
+      "user_tokens": 6051,
+      "completion_tokens": 561,
+      "total_prompt_tokens": 8095,
+      "is_system_cached": true
+    },
+    {
+      "step": 12,
+      "system_tokens": 2044,
+      "user_tokens": 7027,
+      "completion_tokens": 339,
+      "total_prompt_tokens": 9071,
+      "is_system_cached": true
+    },
+    {
+      "step": 13,
+      "system_tokens": 2044,
+      "user_tokens": 6973,
+      "completion_tokens": 853,
+      "total_prompt_tokens": 9017,
+      "is_system_cached": true
+    },
+    {
+      "step": 14,
+      "system_tokens": 2044,
+      "user_tokens": 6770,
+      "completion_tokens": 1456,
+      "total_prompt_tokens": 8814,
+      "is_system_cached": true
+    },
+    {
+      "step": 15,
+      "system_tokens": 2044,
+      "user_tokens": 6909,
+      "completion_tokens": 652,
+      "total_prompt_tokens": 8953,
+      "is_system_cached": true
+    },
+    {
+      "step": 16,
+      "system_tokens": 2044,
+      "user_tokens": 4891,
+      "completion_tokens": 563,
+      "total_prompt_tokens": 6935,
+      "is_system_cached": true
+    },
+    {
+      "step": 17,
+      "system_tokens": 2044,
+      "user_tokens": 4341,
+      "completion_tokens": 603,
+      "total_prompt_tokens": 6385,
+      "is_system_cached": true
+    },
+    {
+      "step": 18,
+      "system_tokens": 2044,
+      "user_tokens": 5579,
+      "completion_tokens": 688,
+      "total_prompt_tokens": 7623,
+      "is_system_cached": true
+    },
+    {
+      "step": 19,
+      "system_tokens": 2044,
+      "user_tokens": 5860,
+      "completion_tokens": 442,
+      "total_prompt_tokens": 7904,
+      "is_system_cached": true
+    },
+    {
+      "step": 20,
+      "system_tokens": 2044,
+      "user_tokens": 5892,
+      "completion_tokens": 574,
+      "total_prompt_tokens": 7936,
+      "is_system_cached": true
+    },
+    {
+      "step": 21,
+      "system_tokens": 2044,
+      "user_tokens": 6007,
+      "completion_tokens": 410,
+      "total_prompt_tokens": 8051,
+      "is_system_cached": true
+    },
+    {
+      "step": 22,
+      "system_tokens": 2044,
+      "user_tokens": 6202,
+      "completion_tokens": 525,
+      "total_prompt_tokens": 8246,
+      "is_system_cached": true
+    },
+    {
+      "step": 23,
+      "system_tokens": 2044,
+      "user_tokens": 5124,
+      "completion_tokens": 1103,
+      "total_prompt_tokens": 7168,
+      "is_system_cached": true
+    },
+    {
+      "step": 24,
+      "system_tokens": 2044,
+      "user_tokens": 8947,
+      "completion_tokens": 758,
+      "total_prompt_tokens": 10991,
+      "is_system_cached": true
+    },
+    {
+      "step": 25,
+      "system_tokens": 2044,
+      "user_tokens": 7802,
+      "completion_tokens": 556,
+      "total_prompt_tokens": 9846,
+      "is_system_cached": true
+    },
+    {
+      "step": 26,
+      "system_tokens": 2044,
+      "user_tokens": 7667,
+      "completion_tokens": 388,
+      "total_prompt_tokens": 9711,
+      "is_system_cached": true
+    },
+    {
+      "step": 27,
+      "system_tokens": 2044,
+      "user_tokens": 8163,
+      "completion_tokens": 628,
+      "total_prompt_tokens": 10207,
+      "is_system_cached": true
+    },
+    {
+      "step": 28,
+      "system_tokens": 2044,
+      "user_tokens": 8898,
+      "completion_tokens": 334,
+      "total_prompt_tokens": 10942,
+      "is_system_cached": true
+    },
+    {
+      "step": 29,
+      "system_tokens": 2044,
+      "user_tokens": 4845,
+      "completion_tokens": 551,
+      "total_prompt_tokens": 6889,
+      "is_system_cached": true
+    },
+    {
+      "step": 30,
+      "system_tokens": 2044,
+      "user_tokens": 5350,
+      "completion_tokens": 1053,
+      "total_prompt_tokens": 7394,
+      "is_system_cached": true
+    },
+    {
+      "step": 31,
+      "system_tokens": 2044,
+      "user_tokens": 5693,
+      "completion_tokens": 530,
+      "total_prompt_tokens": 7737,
+      "is_system_cached": true
+    },
+    {
+      "step": 32,
+      "system_tokens": 2044,
+      "user_tokens": 5484,
+      "completion_tokens": 702,
+      "total_prompt_tokens": 7528,
+      "is_system_cached": true
+    },
+    {
+      "step": 33,
+      "system_tokens": 2044,
+      "user_tokens": 5518,
+      "completion_tokens": 628,
+      "total_prompt_tokens": 7562,
+      "is_system_cached": true
+    },
+    {
+      "step": 34,
+      "system_tokens": 2044,
+      "user_tokens": 5153,
+      "completion_tokens": 961,
+      "total_prompt_tokens": 7197,
+      "is_system_cached": true
+    },
+    {
+      "step": 35,
+      "system_tokens": 2044,
+      "user_tokens": 4712,
+      "completion_tokens": 1047,
+      "total_prompt_tokens": 6756,
+      "is_system_cached": true
+    },
+    {
+      "step": 36,
+      "system_tokens": 2044,
+      "user_tokens": 5268,
+      "completion_tokens": 936,
+      "total_prompt_tokens": 7312,
+      "is_system_cached": true
+    },
+    {
+      "step": 37,
+      "system_tokens": 2044,
+      "user_tokens": 4845,
+      "completion_tokens": 319,
+      "total_prompt_tokens": 6889,
+      "is_system_cached": true
+    },
+    {
+      "step": 38,
+      "system_tokens": 2044,
+      "user_tokens": 4178,
+      "completion_tokens": 798,
+      "total_prompt_tokens": 6222,
+      "is_system_cached": true
+    },
+    {
+      "step": 39,
+      "system_tokens": 2044,
+      "user_tokens": 4450,
+      "completion_tokens": 1645,
+      "total_prompt_tokens": 6494,
+      "is_system_cached": true
+    },
+    {
+      "step": 40,
+      "system_tokens": 2044,
+      "user_tokens": 5618,
+      "completion_tokens": 982,
+      "total_prompt_tokens": 7662,
+      "is_system_cached": true
+    },
+    {
+      "step": 41,
+      "system_tokens": 2044,
+      "user_tokens": 4794,
+      "completion_tokens": 428,
+      "total_prompt_tokens": 6838,
+      "is_system_cached": true
+    },
+    {
+      "step": 42,
+      "system_tokens": 2044,
+      "user_tokens": 5528,
+      "completion_tokens": 338,
+      "total_prompt_tokens": 7572,
+      "is_system_cached": true
+    },
+    {
+      "step": 43,
+      "system_tokens": 2044,
+      "user_tokens": 5474,
+      "completion_tokens": 506,
+      "total_prompt_tokens": 7518,
+      "is_system_cached": true
+    },
+    {
+      "step": 44,
+      "system_tokens": 2044,
+      "user_tokens": 6549,
+      "completion_tokens": 547,
+      "total_prompt_tokens": 8593,
+      "is_system_cached": true
+    },
+    {
+      "step": 45,
+      "system_tokens": 2044,
+      "user_tokens": 7384,
+      "completion_tokens": 546,
+      "total_prompt_tokens": 9428,
+      "is_system_cached": true
+    },
+    {
+      "step": 46,
+      "system_tokens": 2044,
+      "user_tokens": 8369,
+      "completion_tokens": 1166,
+      "total_prompt_tokens": 10413,
+      "is_system_cached": true
+    },
+    {
+      "step": 47,
+      "system_tokens": 2044,
+      "user_tokens": 8401,
+      "completion_tokens": 439,
+      "total_prompt_tokens": 10445,
+      "is_system_cached": true
+    },
+    {
+      "step": 48,
+      "system_tokens": 2044,
+      "user_tokens": 8687,
+      "completion_tokens": 687,
+      "total_prompt_tokens": 10731,
+      "is_system_cached": true
+    },
+    {
+      "step": 49,
+      "system_tokens": 2044,
+      "user_tokens": 8138,
+      "completion_tokens": 1169,
+      "total_prompt_tokens": 10182,
+      "is_system_cached": true
+    },
+    {
+      "step": 50,
+      "system_tokens": 2044,
+      "user_tokens": 6719,
+      "completion_tokens": 468,
+      "total_prompt_tokens": 8763,
+      "is_system_cached": true
+    },
+    {
+      "step": 51,
+      "system_tokens": 2044,
+      "user_tokens": 6284,
+      "completion_tokens": 525,
+      "total_prompt_tokens": 8328,
+      "is_system_cached": true
+    },
+    {
+      "step": 52,
+      "system_tokens": 2044,
+      "user_tokens": 6332,
+      "completion_tokens": 503,
+      "total_prompt_tokens": 8376,
+      "is_system_cached": true
+    },
+    {
+      "step": 53,
+      "system_tokens": 2044,
+      "user_tokens": 7127,
+      "completion_tokens": 756,
+      "total_prompt_tokens": 9171,
+      "is_system_cached": true
+    },
+    {
+      "step": 54,
+      "system_tokens": 2044,
+      "user_tokens": 6833,
+      "completion_tokens": 871,
+      "total_prompt_tokens": 8877,
+      "is_system_cached": true
+    },
+    {
+      "step": 55,
+      "system_tokens": 2044,
+      "user_tokens": 7328,
+      "completion_tokens": 1147,
+      "total_prompt_tokens": 9372,
+      "is_system_cached": true
+    },
+    {
+      "step": 56,
+      "system_tokens": 2044,
+      "user_tokens": 8995,
+      "completion_tokens": 457,
+      "total_prompt_tokens": 11039,
+      "is_system_cached": true
+    },
+    {
+      "step": 57,
+      "system_tokens": 2044,
+      "user_tokens": 7843,
+      "completion_tokens": 832,
+      "total_prompt_tokens": 9887,
+      "is_system_cached": true
+    },
+    {
+      "step": 58,
+      "system_tokens": 2044,
+      "user_tokens": 7639,
+      "completion_tokens": 994,
+      "total_prompt_tokens": 9683,
+      "is_system_cached": true
+    },
+    {
+      "step": 59,
+      "system_tokens": 2044,
+      "user_tokens": 7754,
+      "completion_tokens": 804,
+      "total_prompt_tokens": 9798,
+      "is_system_cached": true
+    },
+    {
+      "step": 60,
+      "system_tokens": 2044,
+      "user_tokens": 7237,
+      "completion_tokens": 1094,
+      "total_prompt_tokens": 9281,
+      "is_system_cached": true
+    },
+    {
+      "step": 61,
+      "system_tokens": 2044,
+      "user_tokens": 5142,
+      "completion_tokens": 2456,
+      "total_prompt_tokens": 7186,
+      "is_system_cached": true
+    },
+    {
+      "step": 62,
+      "system_tokens": 2044,
+      "user_tokens": 5884,
+      "completion_tokens": 1192,
+      "total_prompt_tokens": 7928,
+      "is_system_cached": true
+    },
+    {
+      "step": 63,
+      "system_tokens": 2044,
+      "user_tokens": 9421,
+      "completion_tokens": 527,
+      "total_prompt_tokens": 11465,
+      "is_system_cached": true
+    },
+    {
+      "step": 64,
+      "system_tokens": 2044,
+      "user_tokens": 10661,
+      "completion_tokens": 474,
+      "total_prompt_tokens": 12705,
+      "is_system_cached": true
+    },
+    {
+      "step": 65,
+      "system_tokens": 2044,
+      "user_tokens": 12650,
+      "completion_tokens": 783,
+      "total_prompt_tokens": 14694,
+      "is_system_cached": true
+    },
+    {
+      "step": 66,
+      "system_tokens": 2044,
+      "user_tokens": 13581,
+      "completion_tokens": 3507,
+      "total_prompt_tokens": 15625,
+      "is_system_cached": true
+    },
+    {
+      "step": 67,
+      "system_tokens": 2044,
+      "user_tokens": 13550,
+      "completion_tokens": 1556,
+      "total_prompt_tokens": 15594,
+      "is_system_cached": true
+    },
+    {
+      "step": 68,
+      "system_tokens": 2044,
+      "user_tokens": 13580,
+      "completion_tokens": 2170,
+      "total_prompt_tokens": 15624,
+      "is_system_cached": true
+    },
+    {
+      "step": 69,
+      "system_tokens": 2044,
+      "user_tokens": 13002,
+      "completion_tokens": 1809,
+      "total_prompt_tokens": 15046,
+      "is_system_cached": true
+    },
+    {
+      "step": 70,
+      "system_tokens": 2044,
+      "user_tokens": 10819,
+      "completion_tokens": 509,
+      "total_prompt_tokens": 12863,
+      "is_system_cached": true
+    },
+    {
+      "step": 71,
+      "system_tokens": 2044,
+      "user_tokens": 10115,
+      "completion_tokens": 346,
+      "total_prompt_tokens": 12159,
+      "is_system_cached": true
+    },
+    {
+      "step": 72,
+      "system_tokens": 2044,
+      "user_tokens": 11907,
+      "completion_tokens": 740,
+      "total_prompt_tokens": 13951,
+      "is_system_cached": true
+    },
+    {
+      "step": 73,
+      "system_tokens": 2044,
+      "user_tokens": 11940,
+      "completion_tokens": 1046,
+      "total_prompt_tokens": 13984,
+      "is_system_cached": true
+    },
+    {
+      "step": 74,
+      "system_tokens": 2044,
+      "user_tokens": 15585,
+      "completion_tokens": 1748,
+      "total_prompt_tokens": 17629,
+      "is_system_cached": true
+    },
+    {
+      "step": 75,
+      "system_tokens": 2044,
+      "user_tokens": 15984,
+      "completion_tokens": 2004,
+      "total_prompt_tokens": 18028,
+      "is_system_cached": true
+    },
+    {
+      "step": 76,
+      "system_tokens": 2044,
+      "user_tokens": 15639,
+      "completion_tokens": 1184,
+      "total_prompt_tokens": 17683,
+      "is_system_cached": true
+    },
+    {
+      "step": 78,
+      "system_tokens": 2044,
+      "user_tokens": 8810,
+      "completion_tokens": 629,
+      "total_prompt_tokens": 10854,
+      "is_system_cached": true
+    },
+    {
+      "step": 79,
+      "system_tokens": 2044,
+      "user_tokens": 5227,
+      "completion_tokens": 974,
+      "total_prompt_tokens": 7271,
+      "is_system_cached": true
+    }
+  ]
+}

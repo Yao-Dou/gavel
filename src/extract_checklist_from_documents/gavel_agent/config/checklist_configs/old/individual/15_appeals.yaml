@@ -1,0 +1,15 @@
+# Checklist configuration - Appeal only
+# Focuses exclusively on extracting the appeals
+
+# User instruction
+user_instruction: |
+  Extract the appeals from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Appeal:
+    description: "Information about any appeals taken, including the appealing party/parties and the appellate court. The extracted value should be formated as 'Appeal: [parties] appealed to [court].'"

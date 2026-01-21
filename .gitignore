@@ -1,0 +1,87 @@
+# Python
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+build/
+develop-eggs/
+dist/
+downloads/
+eggs/
+.eggs/
+lib/
+lib64/
+parts/
+sdist/
+var/
+wheels/
+*.egg-info/
+.installed.cfg
+*.egg
+
+# Virtual environments
+venv/
+ENV/
+env/
+.venv/
+
+# Jupyter Notebooks
+.ipynb_checkpoints/
+
+# IDE / Editor
+.vscode/
+.idea/
+*.swp
+*.swo
+*~
+.project
+.pydevproject
+.settings/
+
+# OS files
+.DS_Store
+.DS_Store?
+Thumbs.db
+ehthumbs.db
+
+# Logs
+*.log
+logs/
+
+# Environment variables
+.env
+.env.local
+*.local
+
+# Data files (uncomment if you don't want to track large data)
+# *.csv
+# *.json
+# *.pkl
+# *.pickle
+
+# Model files
+*.pt
+*.pth
+*.ckpt
+*.bin
+*.h5
+
+# Misc
+*.bak
+*.tmp
+*.temp
+.cache/
+
+# Claude Code
+.claude/
+
+# Python scripts in data folder
+data/**/*.py
+
+# Evaluation order files (intermediate processing)
+data/evaluation_orders/
+data/evaluation_orders_documents_checklist/
+
+# Jupyter notebooks in prompts folder
+prompts/**/*.ipynb

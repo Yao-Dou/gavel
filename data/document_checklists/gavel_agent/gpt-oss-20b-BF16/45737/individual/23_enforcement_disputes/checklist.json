@@ -1,0 +1,23 @@
+{
+  "Disputes_Over_Settlement_Enforcement": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "docket entry tokens 20152-20352; docket entry description shows settlement status but no enforcement dispute",
+            "source_document": "Docket",
+            "text": "PAPERLESS ORDER Requiring Status Update. The Parties have notified the Court that the proposed settlement in this matter was presented to the City Commission in a closed\u2011door session on November 19, 2024, was approved by City officials, and will now be brought before the City Commission on a public agenda tentatively set for December 3, 2024 for final approval. See [ECF No. 193]. Accordingly, the Parties are directed to jointly file a status update regarding the progress of settlement approval on or before December 4, 2024."
+          },
+          {
+            "location": "search results",
+            "source_document": "search_document_regex",
+            "text": "search_document_regex on all documents (pattern: \"(?i)motion to enforce settlement|motion for contempt of settlement|enforcement of settlement|request to enforce settlement\") found 0 total matches."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Disputes_Over_Settlement_Enforcement",
+    "last_updated": "2025-11-20T14:42:10.104732-05:00"
+  }
+}

@@ -1,0 +1,28 @@
+{
+  "How_Long_Settlement_will_Last": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 1176-1376",
+            "source_document": "Opinion",
+            "text": "\"settlement\" appears in the Opinion but no duration or monitoring period is indicated. The excerpt reads: \"\u2026the amicable settlement of disputes between workers and their employers involving conditions of employment.\""
+          },
+          {
+            "location": "tokens 11612-11812",
+            "source_document": "Emergency Motion for an Immediate Administrative Stay and Stay Pending Appeal",
+            "text": "\"settlement\" appears in the Emergency Motion for an Immediate Administrative Stay and Stay Pending Appeal but without any associated duration. The excerpt reads: \"\u2026the settlement of disputes\u2026\" without a time period."
+          },
+          {
+            "location": "search results 137-139",
+            "source_document": "search_document_regex",
+            "text": "Searches for settlement durations (e.g., \"will last\", \"duration\", \"for a period of\", \"for \\d+ years\") returned no matches across all documents."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "How_Long_Settlement_will_Last",
+    "last_updated": "2025-11-20T06:36:19.804201-05:00"
+  }
+}

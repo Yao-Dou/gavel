@@ -1,0 +1,15 @@
+# Checklist configuration - How Long Settlement will Last only
+# Focuses exclusively on extracting the settlement duration
+
+# User instruction
+user_instruction: |
+  Extract the settlement duration from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  How_Long_Settlement_will_Last:
+    description: "The duration terms of settlement obligations or monitoring periods. The extracted value should be formated as '[duration]: [settlement].'"

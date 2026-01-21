@@ -1,0 +1,23 @@
+{
+  "Date_of_Settlement": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Step 2 search result",
+            "source_document": "All documents",
+            "text": "Search in 13 documents found 0 total matches: (settlement|execution|agreement)\\s*date\\s*[:\\s]*\\d{1,2}/\\d{1,2}/\\d{4}"
+          },
+          {
+            "location": "Page 7: 'the district court subsequently granted Plaintiffs' request for a preliminary injunction'",
+            "source_document": "Order (Page 7)",
+            "text": "This case involves a lawsuit challenging Executive Order 14210 and related agency actions, not a settlement agreement. The documents describe a preliminary injunction (May 22, 2025) and related motions, but no settlement or agreement date is mentioned."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Date_of_Settlement",
+    "last_updated": "2025-11-19T01:34:53.137898-05:00"
+  }
+}

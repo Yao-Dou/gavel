@@ -1,0 +1,73 @@
+{
+  "model": "Qwen/Qwen3-30B-A3B-Thinking-2507",
+  "steps": 9,
+  "total_system_prompt_tokens": 8784,
+  "total_user_prompt_tokens": 75820,
+  "total_completion_tokens": 10156,
+  "per_step_details": [
+    {
+      "step": 1,
+      "system_tokens": 1098,
+      "user_tokens": 2156,
+      "completion_tokens": 216,
+      "total_prompt_tokens": 3254,
+      "is_system_cached": false
+    },
+    {
+      "step": 2,
+      "system_tokens": 1098,
+      "user_tokens": 2370,
+      "completion_tokens": 567,
+      "total_prompt_tokens": 3468,
+      "is_system_cached": true
+    },
+    {
+      "step": 3,
+      "system_tokens": 1098,
+      "user_tokens": 4641,
+      "completion_tokens": 2696,
+      "total_prompt_tokens": 5739,
+      "is_system_cached": true
+    },
+    {
+      "step": 4,
+      "system_tokens": 1098,
+      "user_tokens": 5382,
+      "completion_tokens": 575,
+      "total_prompt_tokens": 6480,
+      "is_system_cached": true
+    },
+    {
+      "step": 5,
+      "system_tokens": 1098,
+      "user_tokens": 15794,
+      "completion_tokens": 1085,
+      "total_prompt_tokens": 16892,
+      "is_system_cached": true
+    },
+    {
+      "step": 6,
+      "system_tokens": 1098,
+      "user_tokens": 15917,
+      "completion_tokens": 1791,
+      "total_prompt_tokens": 17015,
+      "is_system_cached": true
+    },
+    {
+      "step": 7,
+      "system_tokens": 1098,
+      "user_tokens": 16083,
+      "completion_tokens": 1560,
+      "total_prompt_tokens": 17181,
+      "is_system_cached": true
+    },
+    {
+      "step": 9,
+      "system_tokens": 1098,
+      "user_tokens": 13477,
+      "completion_tokens": 1666,
+      "total_prompt_tokens": 14575,
+      "is_system_cached": true
+    }
+  ]
+}

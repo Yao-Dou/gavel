@@ -1,0 +1,86 @@
+{
+  "Class_Action_or_Individual_Plaintiffs": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Complaint preamble, Page 1",
+            "source_document": "Complaint",
+            "text": "Plaintiff, the United States of America (\u201cUnited States\u201d), by authority of the Attorney \n   General of the United States and through the undersigned attorneys, acting at the request of the \n   Administrator of the United States Environmental Protection Agency (\u201cEPA\u201d), files this \n   Complaint"
+          }
+        ],
+        "value": "Plaintiffs: Individual, described as the United States of America acting through the Administrator of the EPA"
+      }
+    ],
+    "key": "Class_Action_or_Individual_Plaintiffs",
+    "last_updated": "2025-11-19T15:53:05.954489-05:00"
+  },
+  "Filing_Date": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Document header, Page 1",
+            "source_document": "Complaint",
+            "text": "Case 2:23-cv-00735-CJB-MBN     Document 1     Filed 02/28/23     Page 1 of 22"
+          }
+        ],
+        "value": "02/28/23"
+      }
+    ],
+    "key": "Filing_Date",
+    "last_updated": "2025-11-19T15:53:05.954439-05:00"
+  },
+  "Type_of_Counsel": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Signature block, Page 22",
+            "source_document": "Complaint",
+            "text": "JUSTIN LANNEN \n   Assistant Regional Counsel \n   U.S. Environmental Protection Agency, Region 6"
+          }
+        ],
+        "value": "Government counsel"
+      }
+    ],
+    "key": "Type_of_Counsel",
+    "last_updated": "2025-11-19T15:53:05.954496-05:00"
+  },
+  "Who_are_the_Parties": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Case caption, Page 1",
+            "source_document": "Complaint",
+            "text": "UNITED STATES OF AMERICA,  ) \n   ) \n   ) \n   Plaintiff,  )  Civil Action No.  2:23-cv-735"
+          }
+        ],
+        "value": "Plaintiff: United States of America acting through the Administrator of the EPA"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Case caption, Page 1",
+            "source_document": "Complaint",
+            "text": "DENKA PERFORMANCE ELASTOMER, ) \n   LLC and DUPONT SPECIALTY  ) \n   PRODUCTS USA, LLC,  )"
+          }
+        ],
+        "value": "Defendant: Denka Performance Elastomer, LLC"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Case caption, Page 1",
+            "source_document": "Complaint",
+            "text": "DENKA PERFORMANCE ELASTOMER, ) \n   LLC and DUPONT SPECIALTY  ) \n   PRODUCTS USA, LLC,  )"
+          }
+        ],
+        "value": "Defendant: Dupont Specialty Products USA, LLC"
+      }
+    ],
+    "key": "Who_are_the_Parties",
+    "last_updated": "2025-11-19T15:53:05.954472-05:00"
+  }
+}

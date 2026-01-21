@@ -1,0 +1,55 @@
+{
+  "Cause_of_Action": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-10000, Paragraph 5",
+            "source_document": "Complaint for Injunctive and Declaratory Relief and Request for Class Action",
+            "text": "This civil rights class action is brought pursuant to 42 U.S.C. \u00a7 1983 on behalf of all foster children who are or will be in the legal custody of DHS."
+          }
+        ],
+        "value": "42 U.S.C. \u00a7 1983"
+      }
+    ],
+    "key": "Cause_of_Action",
+    "last_updated": "2025-11-19T17:19:24.205311-05:00"
+  },
+  "Remedy_Sought": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-10000, Paragraph 6",
+            "source_document": "Complaint for Injunctive and Declaratory Relief and Request for Class Action",
+            "text": "This action seeks solely declaratory and injunctive relief in order to stop continuing violations of the legal rights of Oklahoma's foster children and to prevent DHS, by its policies and practices, from continuing to harm the very children who rely on the State for their care and protection."
+          }
+        ],
+        "value": "declaratory and injunctive relief"
+      }
+    ],
+    "key": "Remedy_Sought",
+    "last_updated": "2025-11-19T17:19:24.205367-05:00"
+  },
+  "Statutory_or_Constitutional_Basis_for_the_Case": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-10000, Paragraph 47a",
+            "source_document": "Complaint for Injunctive and Declaratory Relief and Request for Class Action",
+            "text": "Whether DHS's policies and practices violate Plaintiff Children's substantive due process rights to be reasonably free from harm and imminent risk of harm while in state custody, guaranteed by the Fourteenth Amendment to the United States Constitution"
+          },
+          {
+            "location": "tokens 0-10000, Paragraph 5",
+            "source_document": "Complaint for Injunctive and Declaratory Relief and Request for Class Action",
+            "text": "This civil rights class action is brought pursuant to 42 U.S.C. \u00a7 1983"
+          }
+        ],
+        "value": "42 U.S.C. \u00a7 1983, Fourteenth Amendment"
+      }
+    ],
+    "key": "Statutory_or_Constitutional_Basis_for_the_Case",
+    "last_updated": "2025-11-19T17:19:24.205355-05:00"
+  }
+}

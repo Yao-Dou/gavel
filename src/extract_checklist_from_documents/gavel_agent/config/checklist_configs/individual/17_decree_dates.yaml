@@ -1,0 +1,15 @@
+# Checklist configuration - Dates of All Decrees only
+# Focuses exclusively on extracting the decree dates
+
+# User instruction
+user_instruction: |
+  Extract the decree dates from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Dates_of_All_Decrees:
+    description: "The decree-related dates, including entry dates, modification/amendment dates (of the order), suspension/stay dates, partial termination dates, and full termination/vacatur dates, for injunctions, consent decrees, and stipulated judgments/injunctions. If a settlement later becomes a court order (e.g., 'consent decree entered'), include the entry date of that order here (pre-entry settlement dates do not belong here). Do not include dates for non-decree items (e.g., private settlements not entered as orders). Extract each date as a separate value, formatted as: '[date]: [decree event].'"

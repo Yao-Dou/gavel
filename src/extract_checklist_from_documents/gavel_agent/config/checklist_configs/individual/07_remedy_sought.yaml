@@ -1,0 +1,15 @@
+# Checklist configuration - Remedy Sought only
+# Focuses exclusively on extracting the remedies sought
+
+# User instruction
+user_instruction: |
+  Extract the remedies sought from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Remedy_Sought:
+    description: "The remedies each party asks the court to grant, not what the court ultimately ordered or what the parties settled. Include requests from both plaintiffs and defendants. Extract each requested remedy as a separate value, formatted as: 'Plaintiff: [remedy]' or 'Defendant: [remedy].'"

@@ -1,0 +1,28 @@
+{
+  "Type_of_Counsel": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 50-250",
+            "source_document": "Complaint",
+            "text": "Counsel for Plaintiff United States of America"
+          }
+        ],
+        "value": "Plaintiff: Government Counsel (United States of America)"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 1099-1299",
+            "source_document": "Stipulation of Dismissal",
+            "text": "Counsel for Defendant\n\n/ s/ Daniel W. Bower\nDaniel W. Bower, ISB #7204\nMORRIS BOWER & HAWS PLLC"
+          }
+        ],
+        "value": "Defendant: Private Counsel (Morris Bower & Haws PLLC)"
+      }
+    ],
+    "key": "Type_of_Counsel",
+    "last_updated": "2025-11-20T11:18:12.427428-05:00"
+  }
+}

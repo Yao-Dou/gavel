@@ -1,0 +1,825 @@
+/* Smooth scrolling for anchor links */
+html {
+    scroll-behavior: smooth;
+}
+
+/* Reset and base styles */
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    padding: 0;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont,
+        'helvetica neue', helvetica,
+        ubuntu, roboto, noto,
+        'segoe ui', arial,
+        sans-serif;
+    color: #1a202c;
+    line-height: 1.6;
+}
+
+/* Main container - centered header section */
+.container {
+    margin-top: 100px;
+    text-align: center;
+    font-family: 'Montserrat', -apple-system, BlinkMacSystemFont, sans-serif;
+    padding: 0 20px;
+}
+
+/* Brand title - large, prominent */
+.brand {
+    font-size: 72px;
+    font-weight: 500;
+    margin: 0;
+    letter-spacing: 1px;
+    line-height: 1.1;
+}
+
+/* Subtitle - paper title */
+.subtitle {
+    font-size: 22px;
+    font-weight: 400;
+    margin: 10px auto;
+    line-height: 1.4;
+}
+
+/* Authors section */
+.authors {
+    font-size: 16px;
+    margin-bottom: 10px;
+    margin-top: 15px;
+}
+
+/* Author links - black text, dim on hover */
+.author-link {
+    color: inherit;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+
+.author-link:hover,
+.author-link:focus {
+    opacity: 0.4;
+}
+
+/* Institution logos container */
+.institution-logos {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40px;
+    margin-bottom: 0;
+    margin-top: 15px;
+}
+
+.institution-logos img {
+    height: 55px;
+    width: auto;
+}
+
+/* Button container */
+.button-container {
+    display: flex;
+    justify-content: center;
+    gap: 50px;
+    margin-top: 20px;
+}
+
+/* Navigation buttons */
+.navigation-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 12px 24px;
+    margin: 0;
+    background-color: #ffffff;
+    color: #000;
+    text-decoration: none;
+    font-weight: 400;
+    font-size: 20px;
+    border-radius: 6px;
+    border: 2px solid #000;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    height: 40px;
+}
+
+.navigation-button img {
+    margin-right: 8px;
+}
+
+.navigation-button:hover {
+    background-color: #f0f0f0;
+}
+
+/* Divider */
+.divider {
+    border: 0;
+    height: 1px;
+    background-color: #e0e0e0;
+    box-shadow: 0 1px 2px rgba(0, 0, 0, 0.05);
+    width: 100%;
+    margin: 20px 0;
+}
+
+/* Content sections (for future use) */
+.col {
+    width: 65%;
+    margin-left: auto;
+    margin-right: auto;
+    padding: 20px;
+}
+
+/* Section headers (for future use) */
+.section-header {
+    font-family: 'Montserrat', sans-serif;
+    font-size: 24px;
+    font-weight: 600;
+    color: #1a202c;
+    margin-bottom: 12px;
+    letter-spacing: -0.5px;
+}
+
+/* Section content (for future use) */
+.section-content {
+    font-size: 17px;
+    line-height: 1.8;
+    color: #2d3748;
+}
+
+/* Content sections */
+.content-section {
+    width: 65%;
+    max-width: 1000px;
+    margin: 20px auto;
+    padding: 0 20px;
+}
+
+/* Main figure styling */
+.main-figure {
+    margin: 0;
+    text-align: center;
+}
+
+.main-figure img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 4px;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+    padding: 8px;
+    background: white;
+}
+
+.main-figure figcaption {
+    margin-top: 8px;
+    font-size: 15px;
+    line-height: 1.7;
+    color: #4a5568;
+    text-align: left;
+}
+
+.main-figure figcaption strong {
+    color: #1a202c;
+}
+
+.main-figure figcaption .highlight {
+    color: #c53030;
+    font-weight: 500;
+}
+
+.main-figure figcaption .note {
+    color: #718096;
+    font-style: italic;
+}
+
+.main-figure figcaption .light-green {
+    background-color: #D2F3CD;
+    padding: 1px 4px;
+    border-radius: 3px;
+}
+
+/* Text highlighting for content */
+.text-highlight {
+    color: #2e7d32;
+    font-weight: 500;
+}
+
+.text-highlight-red {
+    color: #c53030;
+    font-weight: 500;
+}
+
+/* Section note */
+.section-note {
+    color: #718096;
+}
+
+/* Section content paragraphs */
+.section-content p {
+    margin-bottom: 16px;
+}
+
+.section-content p:last-child {
+    margin-bottom: 0;
+}
+
+/* Right Side Navigation - Minimalist Style */
+#side-nav {
+    position: fixed;
+    right: 24px;
+    top: 50%;
+    transform: translateY(-50%);
+    z-index: 1000;
+    display: flex;
+    align-items: center;
+    gap: 0;
+}
+
+/* The thin track bar (visible by default) */
+.side-nav-track {
+    width: 3px;
+    height: 120px;
+    background-color: #e2e8f0;
+    border-radius: 3px;
+    position: relative;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
+}
+
+.side-nav-indicator {
+    position: absolute;
+    width: 3px;
+    height: 20px;
+    background-color: #1a202c;
+    border-radius: 3px;
+    top: 0;
+    transition: top 0.3s ease;
+}
+
+/* The menu (hidden by default, shows on hover) */
+.side-nav-menu {
+    position: absolute;
+    right: 0;
+    top: 50%;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.25s ease;
+    padding-right: 16px;
+}
+
+/* Show menu on hover */
+#side-nav:hover .side-nav-menu {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+#side-nav:hover .side-nav-track {
+    opacity: 0;
+}
+
+/* Individual nav links */
+.side-nav-link {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    text-decoration: none;
+    padding: 8px 12px;
+    border-radius: 6px;
+    transition: background-color 0.2s ease;
+    flex-direction: row-reverse;
+}
+
+.side-nav-link:hover {
+    background-color: #f7fafc;
+}
+
+/* The dot indicator */
+.side-nav-dot {
+    width: 6px;
+    height: 6px;
+    background-color: #cbd5e0;
+    border-radius: 50%;
+    flex-shrink: 0;
+    transition: all 0.2s ease;
+}
+
+.side-nav-link:hover .side-nav-dot {
+    background-color: #718096;
+}
+
+.side-nav-link.active .side-nav-dot {
+    background-color: #1a202c;
+    width: 8px;
+    height: 8px;
+}
+
+/* The label */
+.side-nav-label {
+    font-size: 13px;
+    font-weight: 400;
+    color: #718096;
+    white-space: nowrap;
+    text-align: right;
+    transition: color 0.2s ease;
+}
+
+.side-nav-link:hover .side-nav-label {
+    color: #4a5568;
+}
+
+.side-nav-link.active .side-nav-label {
+    color: #1a202c;
+    font-weight: 500;
+}
+
+/* Section styling */
+section.content-section {
+    min-height: 300px;
+    padding-top: 10px;
+    padding-bottom: 40px;
+    margin-bottom: 20px;
+    border-bottom: 1px solid #e0e0e0;
+}
+
+section.content-section:first-of-type {
+    padding-top: 5px;
+}
+
+section.content-section:last-of-type {
+    border-bottom: none;
+}
+
+/* Responsive adjustments */
+@media (max-width: 768px) {
+    .brand {
+        font-size: 48px;
+    }
+
+    .subtitle {
+        font-size: 18px;
+    }
+
+    .button-container {
+        flex-direction: column;
+        gap: 15px;
+        align-items: center;
+    }
+
+    .col {
+        width: 90%;
+    }
+
+    .institution-logos {
+        flex-direction: column;
+        gap: 20px;
+    }
+
+    .content-section {
+        width: 90%;
+    }
+}
+
+/* Hide side nav on smaller screens */
+@media (max-width: 1100px) {
+    #side-nav {
+        display: none;
+    }
+}
+
+/* =============================================
+   Visualization Section Styles
+   ============================================= */
+
+/* Visualization Controls */
+.viz-controls {
+    display: flex;
+    gap: 20px;
+    margin-bottom: 20px;
+    flex-wrap: wrap;
+}
+
+.viz-select-group {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.viz-select-group label {
+    font-weight: 500;
+    color: #4a5568;
+}
+
+.viz-select-group select {
+    padding: 8px 12px;
+    border: 1px solid #e2e8f0;
+    border-radius: 6px;
+    font-size: 14px;
+    min-width: 200px;
+    background: white;
+    cursor: pointer;
+}
+
+.viz-select-group select:hover {
+    border-color: #cbd5e0;
+}
+
+.viz-select-group select:focus {
+    outline: none;
+    border-color: #4299e1;
+    box-shadow: 0 0 0 3px rgba(66, 153, 225, 0.15);
+}
+
+/* Case Link */
+.case-link-container {
+    margin-bottom: 16px;
+}
+
+.case-link-container a {
+    color: #4299e1;
+    text-decoration: none;
+    font-size: 14px;
+    font-weight: 500;
+    transition: color 0.2s ease;
+}
+
+.case-link-container a:hover {
+    color: #2b6cb0;
+    text-decoration: underline;
+}
+
+/* Summary Display */
+.summaries-container {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+    margin: 20px 0;
+}
+
+.summary-box {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 16px;
+    background: #fafafa;
+    max-height: 500px;
+    overflow-y: auto;
+}
+
+.summary-box h3 {
+    margin: 0 0 12px 0;
+    padding-bottom: 8px;
+    border-bottom: 2px solid;
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.model-summary h3 {
+    border-color: #4299e1;
+}
+
+.reference-summary h3 {
+    border-color: #48bb78;
+}
+
+.summary-content {
+    white-space: pre-wrap;
+    line-height: 1.6;
+    font-size: 14px;
+    color: #2d3748;
+}
+
+/* Checklist Comparison */
+.checklist-section h3 {
+    margin: 24px 0 16px 0;
+    font-size: 18px;
+    font-weight: 600;
+}
+
+.checklist-container {
+    max-height: 800px;
+    overflow-y: auto;
+}
+
+.checklist-placeholder {
+    color: #718096;
+    font-style: italic;
+}
+
+.checklist-item {
+    display: grid;
+    grid-template-columns: 1fr 100px 1fr;
+    gap: 12px;
+    padding: 12px;
+    background: #f8f9fa;
+    border-radius: 6px;
+    margin-bottom: 10px;
+    align-items: start;
+}
+
+.checklist-item:nth-child(even) {
+    background: #f0f4f8;
+}
+
+.checklist-item-name {
+    grid-column: 1 / -1;
+    font-weight: 600;
+    font-size: 14px;
+    color: #2d3748;
+    margin-bottom: 8px;
+    padding-bottom: 6px;
+    border-bottom: 1px solid #e2e8f0;
+}
+
+.checklist-side {
+    padding: 10px;
+    background: white;
+    border-radius: 4px;
+    border: 1px solid #e2e8f0;
+    min-height: 40px;
+}
+
+.checklist-side-label {
+    font-weight: 500;
+    font-size: 11px;
+    color: #718096;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    margin-bottom: 6px;
+}
+
+.checklist-values {
+    font-size: 13px;
+    line-height: 1.5;
+}
+
+.checklist-relation {
+    text-align: center;
+    padding: 8px;
+    border-radius: 4px;
+    font-weight: 500;
+    font-size: 12px;
+    align-self: center;
+    margin-top: 20px;
+}
+
+/* Relation Colors */
+.relation-equal {
+    background: #d4edda;
+    color: #155724;
+}
+
+.relation-contains {
+    background: #fff3cd;
+    color: #856404;
+}
+
+.relation-different {
+    background: #f8d7da;
+    color: #721c24;
+}
+
+.relation-missing {
+    background: #e2d5f1;
+    color: #5a3d7a;
+}
+
+.relation-na {
+    background: #e9ecef;
+    color: #6c757d;
+}
+
+/* Value Items */
+.value-item {
+    padding: 4px 8px;
+    margin: 2px 0;
+    border-radius: 3px;
+    font-size: 13px;
+}
+
+.value-matched {
+    background: #d4edda;
+    border-left: 3px solid #28a745;
+}
+
+.value-unmatched {
+    background: #f8d7da;
+    border-left: 3px solid #dc3545;
+}
+
+.value-single {
+    background: #e9ecef;
+    border-left: 3px solid #6c757d;
+}
+
+.value-empty {
+    color: #adb5bd;
+    font-style: italic;
+}
+
+/* Responsive adjustments for visualization */
+@media (max-width: 900px) {
+    .summaries-container {
+        grid-template-columns: 1fr;
+    }
+
+    .checklist-item {
+        grid-template-columns: 1fr;
+    }
+
+    .checklist-relation {
+        margin-top: 0;
+        order: -1;
+    }
+}
+
+/* =============================================
+   Methods Comparison Section (Extract Checklist)
+   ============================================= */
+
+/* Methods Comparison Layout */
+.methods-comparison {
+    display: grid;
+    grid-template-columns: 35% 1fr;
+    gap: 20px;
+    margin-top: 24px;
+}
+
+.methods-baseline {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+/* Method Cards */
+.method-card {
+    background: #f8f9fa;
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    padding: 20px;
+}
+
+.method-card h4 {
+    margin: 0 0 12px 0;
+    font-size: 16px;
+    font-weight: 600;
+    color: #1a202c;
+}
+
+.method-card h5 {
+    margin: 16px 0 8px 0;
+    font-size: 14px;
+    font-weight: 600;
+    color: #4a5568;
+}
+
+.method-card p {
+    margin: 0 0 12px 0;
+    font-size: 14px;
+    line-height: 1.6;
+    color: #4a5568;
+}
+
+.method-card p:last-child {
+    margin-bottom: 0;
+}
+
+/* Featured card (GAVEL-AGENT) */
+.method-featured {
+    background: #fafbfc;
+    border: 2px solid #4299e1;
+    border-left: 4px solid #4299e1;
+}
+
+.method-featured h4 {
+    color: #2b6cb0;
+}
+
+/* Tools list */
+.tools-list {
+    list-style: none;
+    padding: 0;
+    margin: 0 0 16px 0;
+}
+
+.tools-list li {
+    padding: 6px 0;
+    font-size: 13px;
+    color: #4a5568;
+    border-bottom: 1px solid #edf2f7;
+}
+
+.tools-list li:last-child {
+    border-bottom: none;
+}
+
+.tools-list code {
+    background: #edf2f7;
+    padding: 2px 6px;
+    border-radius: 3px;
+    font-size: 12px;
+    font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+    color: #2d3748;
+}
+
+/* Responsive for methods comparison */
+@media (max-width: 900px) {
+    .methods-comparison {
+        grid-template-columns: 1fr;
+    }
+
+    .method-featured {
+        order: -1;
+    }
+}
+
+/* =============================================
+   Document Checklist Visualization Styles
+   ============================================= */
+
+/* Document Summary Section (single box) */
+.doc-summary-section {
+    margin: 20px 0;
+}
+
+.doc-summary-section .summary-box {
+    max-height: 400px;
+}
+
+/* =============================================
+   Evaluation of Document Extracted Checklist
+   ============================================= */
+
+.eval-doc-layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 30px;
+    align-items: start;
+}
+
+.eval-doc-text p:first-child {
+    margin-top: 0;
+}
+
+.eval-doc-text p {
+    margin-bottom: 14px;
+}
+
+.eval-doc-text p:last-child {
+    margin-bottom: 0;
+}
+
+.eval-doc-figure {
+    position: sticky;
+    top: 20px;
+}
+
+.eval-doc-figure .main-figure {
+    margin: 0;
+    padding: 0;
+}
+
+.eval-doc-figure .main-figure img {
+    width: 100%;
+    height: auto;
+}
+
+.eval-doc-figure figcaption {
+    text-align: left;
+    margin-top: 12px;
+}
+
+/* Responsive for eval-doc layout */
+@media (max-width: 900px) {
+    .eval-doc-layout {
+        grid-template-columns: 1fr;
+    }
+
+    .eval-doc-figure {
+        position: static;
+        order: -1;
+    }
+}
+
+/* =============================================
+   Citation Section
+   ============================================= */
+
+.citation-block {
+    background: #f8f9fa;
+    border: 1px solid #e2e8f0;
+    border-left: 3px solid #4299e1;
+    border-radius: 4px;
+    padding: 16px 20px;
+    font-family: 'SF Mono', Monaco, 'Courier New', monospace;
+    font-size: 13px;
+    line-height: 1.6;
+    overflow-x: auto;
+    white-space: pre;
+    margin: 0;
+}

@@ -1,0 +1,106 @@
+{
+  "Class_Action_or_Individual_Plaintiffs": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Page 1 (tokens 0-173)",
+            "source_document": "Complaint",
+            "text": "Plaintiff is the United States of America."
+          }
+        ],
+        "value": "Plaintiffs: Individual, described as United States of America"
+      }
+    ],
+    "key": "Class_Action_or_Individual_Plaintiffs",
+    "last_updated": "2025-11-20T21:25:28.274447-05:00"
+  },
+  "Filing_Date": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Page 1 (tokens 0-173)",
+            "source_document": "Complaint",
+            "text": "Case 2:20-cv-00410-RBS-LRL   Document 1   Filed 08/05/20   Page 1 of 7 PageID# 1"
+          }
+        ],
+        "value": "08/05/20"
+      }
+    ],
+    "key": "Filing_Date",
+    "last_updated": "2025-11-20T21:25:28.274405-05:00"
+  },
+  "Type_of_Counsel": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Page 1 (tokens 0-173)",
+            "source_document": "Complaint",
+            "text": "by its undersigned attorneys"
+          }
+        ],
+        "value": "Plaintiff: Government counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 944-1144",
+            "source_document": "Docket",
+            "text": "Motion to appear Pro Hac Vice by Kyle Smiddie and Certification of Local Counsel Clare P. Wuerker"
+          }
+        ],
+        "value": "Defendant: Local counsel (Clare P. Wuerker)"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 944-1144",
+            "source_document": "Docket",
+            "text": "Motion to appear Pro Hac Vice by Kyle Smiddie and Certification of Local Counsel Clare P. Wuerker"
+          }
+        ],
+        "value": "Defendant: Pro hac vice (Kyle Smiddie)"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 223-423",
+            "source_document": "Docket",
+            "text": "on behalf of Hampton Roads Regional Jail Authority (Rosen, Jeff) (Entered: 08/11/2020)"
+          }
+        ],
+        "value": "Defendant: Local counsel (Rosen, Jeff)"
+      }
+    ],
+    "key": "Type_of_Counsel",
+    "last_updated": "2025-11-20T21:26:04.007111-05:00"
+  },
+  "Who_are_the_Parties": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Page 1 (tokens 0-173)",
+            "source_document": "Complaint",
+            "text": "United States of America, Plaintiff"
+          }
+        ],
+        "value": "Plaintiff: United States of America"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Page 1 (tokens 0-173)",
+            "source_document": "Complaint",
+            "text": "Hampton Roads Regional Jail Authority, Defendant"
+          }
+        ],
+        "value": "Defendant: Hampton Roads Regional Jail Authority"
+      }
+    ],
+    "key": "Who_are_the_Parties",
+    "last_updated": "2025-11-20T21:25:28.274437-05:00"
+  }
+}

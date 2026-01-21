@@ -1,0 +1,23 @@
+# Checklist configuration - Legal Foundation group
+# Focuses on the legal basis and relief sought in the case
+
+# User instruction - what the user wants the agent to do
+user_instruction: |
+  Extract all 3 checklist items from the legal case documents as completely as possible.
+
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: filings, dates, rulings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+# Checklist items to extract - Legal Foundation group
+checklist_items:
+  Cause_of_Action:
+    description: "The legal claim(s) asserted—the theory of liability or right to relief (e.g., breach of contract; 42 U.S.C. § 1983; Ex parte Young)."
+
+  Statutory_or_Constitutional_Basis_for_the_Case:
+    description: "The governing statute(s) or constitutional provision(s) underlying the claims, including specific clauses and amendments when constitutional."
+
+  Remedy_Sought:
+    description: "The relief requested from the court (e.g., damages, injunctive relief, declaratory judgment, specific performance)."

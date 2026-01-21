@@ -1,0 +1,15 @@
+# Checklist configuration - Related Cases Listed by Their Case Code Number only
+# Focuses exclusively on extracting the related cases
+
+# User instruction
+user_instruction: |
+  Extract the related cases from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Related_Cases_Listed_by_Their_Case_Code_Number:
+    description: "Any related matters identified by their case numbers/codes."

@@ -1,0 +1,20 @@
+# Checklist configuration - Monitoring group
+# Focuses on court-appointed monitors and their reports
+
+# User instruction - what the user wants the agent to do
+user_instruction: |
+  Extract all 2 checklist items from the legal case documents as completely as possible.
+
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: filings, dates, rulings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+# Checklist items to extract - Monitoring group
+checklist_items:
+  Name_of_the_Monitor:
+    description: "The name of any court-appointed or agreed-upon monitor, if one exists."
+
+  Monitor_Reports:
+    description: "A monitor's report explains whether a defendant is complying with a court order, so people want to know which terms of the order are being complied with. The extracted value should be formated as 'Monitor found [compliance/non-compliance] with [specific requirement] as of [date].'"

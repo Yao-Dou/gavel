@@ -1,0 +1,65 @@
+You are given multiple documents related to a legal case. Your task is to generate a clear, legally precise, and self-contained summary that would let the reader grasp the case without consulting the source files without being excessively long or overly detailed.
+
+Write the summary as a factual narrative. The checklist below shows what to include. Items marked "(if applicable)" should only be included when relevant. If information isn't in the documents, omit it—do not speculate.
+
+# Legal Case Summary Checklist
+### Basic Case Information
+1. **Filing Date**: The date the case was initially filed with the court
+2. **Parties (describe, no names)**: Use specific terms like "The city" or "The parents" rather than general terms like "The defendant" or "The plaintiffs"
+3. **Class Action or Individual Plaintiffs? (if applicable)**: If there are class action plaintiffs the summary should say it's a class action; if there are individual plaintiffs it can just describe the plaintiffs
+4. **Type of Counsel**: Private, legal services, ACLU, etc.
+
+### Legal Foundation
+5. **Cause of Action**: e.g., a statute (e.g., 42 USC 1983) or a case (e.g., Ex Parte Young)
+6. **Statutory/Constitutional Basis**: A case can either be based on a statute or a provision of the Constitution. For constitutional cases, refer to the specific clause and amendment (e.g., "the plaintiffs alleged violations of the Fourteenth Amendment's Equal Protection Clause")
+7. **Remedy Sought**: e.g., declaratory judgment, injunctive relief, monetary damages
+
+### Judge Information
+8. **First and Last Name of Judge**: e.g., Judge John Smith
+
+### Related Cases
+9. **Consolidated Cases (if applicable)**: Cases that were combined with this case for joint proceedings
+10. **Related Cases (if applicable)**: Other cases referenced or connected to this case
+
+### Filings and Proceedings
+11. **Important Filings (if applicable)**: Note motions for temporary restraining orders or preliminary injunctions, motions to dismiss, motions for summary judgment, etc.
+12. **Court Rulings on Important Filings (if applicable)**: Rulings on motions to dismiss, summary judgment, preliminary injunctions, class certification, and other significant filings
+13. **All Reported Opinions (if applicable)**: Use shortened Bluebook citation format (e.g., "2020 WL 4218003"). No need to include case name, court, or date unless helpful
+14. **Trials (if applicable)**: Note if the case went to trial, including trial dates and outcomes
+15. **Appeals (if applicable)**: Whether the case was appealed, to which court, and the result
+
+### Decrees
+16. **Significant Terms of Decrees (if applicable)**: The substance of what the judge orders the defendants to do
+17. **Dates of All Decrees (if applicable)**: When court orders or decrees were issued
+18. **Duration of Decrees (if applicable)**: Duration or expiration date of court orders
+
+### Settlements
+19. **Significant Terms of Settlement (if applicable)**: The substance of what the defendants agree to do
+20. **Date of Settlement (if applicable)**: When the settlement agreement was reached
+21. **Duration of Settlement (if applicable)**: Duration or expiration date of settlement terms
+22. **Whether the settlement is Court-enforced (if applicable)**: If the court retains jurisdiction to enforce the settlement
+23. **Disputes Over Settlement Enforcement (if applicable)**: Any subsequent disputes about compliance with settlement terms
+
+### Monitoring
+24. **Monitor Name (if applicable)**: Court-appointed monitor or special master overseeing compliance
+25. **Monitor's Reports (if applicable)**: Summary of monitor's findings on compliance with court orders, including which terms are being complied with
+
+### Context
+26. **Factual Basis of Case**: The underlying facts and evidence supporting the legal claims
+
+# Case Documents
+{case_documents}
+
+# Output Format
+Please structure your response as follows:
+**Reasoning:** Briefly explain what key elements you focused on in the documents to build your summary.
+
+**Case Summary:** A clear, legally precise narrative of the case, written in paragraph form, without being too long.
+
+# Guidelines
+* Write as a narrative in paragraph form using clear language. Use a logical order—chronological if helpful, but flexible if another sequence improves clarity.
+* Include enough detail for understanding while remaining concise.
+* Use accurate legal terminology but avoid jargon—write for a general audience.
+* Stay strictly factual; do not add analysis beyond what appears in the record.
+
+Now read the case documents and generate the summary following the checklist, output format, and guidelines above.

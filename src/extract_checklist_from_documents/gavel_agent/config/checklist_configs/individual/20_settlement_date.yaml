@@ -1,0 +1,15 @@
+# Checklist configuration - Date of Settlement only
+# Focuses exclusively on extracting the settlement date
+
+# User instruction
+user_instruction: |
+  Extract the settlement date from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Date_of_Settlement:
+    description: "The settlement-related dates, including execution/signing date(s), court approval dates (if approved but not entered as an order), amendment dates, enforcement/retention dates without incorporation (e.g., when a court retains jurisdiction over the settlement but does not enter it as an order), and termination/expiration dates of the settlement agreement (if contractual). Do not include any date once the settlement (in whole or in part) is incorporated into a judgment or order. Extract each date as a separate value, formatted as: '[date]: [settlement event].'"

@@ -1,0 +1,34 @@
+{
+  "Consolidated_Cases_Noted": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "All entries (e.g., Case No. 1:25-cv-00342 in Docket entries 1-49)",
+            "source_document": "Docket",
+            "text": "All documents consistently reference Case No. 1:25-cv-00342 or 25-cv-342 without any mention of other case numbers or consolidation with other cases."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Consolidated_Cases_Noted",
+    "last_updated": "2025-11-20T04:44:42.331929-05:00"
+  },
+  "Related_Cases_Listed_by_Their_Case_Code_Number": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Case No. 1:25-cv-00342 in document headers",
+            "source_document": "Revised Temporary Restraining Order, Second Revised Temporary Restraining Order, Temporary Restraining Order, Plaintiffs' Motion for Relief Under 5 U.S.C. 705, Plaintiffs' Motion for Temporary Restraining Order",
+            "text": "Regex search for case numbers returned only the same case number (1:25-cv-00342) across all documents, with no other case codes identified as related matters."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Related_Cases_Listed_by_Their_Case_Code_Number",
+    "last_updated": "2025-11-20T04:44:42.331951-05:00"
+  }
+}

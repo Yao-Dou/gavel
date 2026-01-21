@@ -1,0 +1,23 @@
+{
+  "Date_of_Settlement": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Regex search results",
+            "source_document": "All documents",
+            "text": "Search in 8 documents found 0 total matches (Step 2: search_document_regex on all documents with pattern 'settlement date')"
+          },
+          {
+            "location": "Document content analysis",
+            "source_document": "Docket, Order Granting Motions",
+            "text": "No settlement-related dates mentioned in Docket (Step 3) or Order Granting Motions (Steps 4-5). Document content describes preliminary injunctions, not settlements."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Date_of_Settlement",
+    "last_updated": "2025-11-19T15:02:08.500447-05:00"
+  }
+}

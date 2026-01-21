@@ -1,0 +1,80 @@
+{
+  "Cause_of_Action": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 1104-1304",
+            "source_document": "Order (002)",
+            "text": "stops in [the Central District of California] without reasonable suspicion that the person to be stopped is within the United States in violation of U.S. immigration law, in contravention of the Fourth Amendment.\u201d Plaintiffs allege that government agents are engaging in these \u201cunlawful stop and arrest practices\u201d when conducting roving patrols and other immigration enforcement operations throughout the Central District."
+          }
+        ],
+        "value": "unlawful stop and arrest practices"
+      }
+    ],
+    "key": "Cause_of_Action",
+    "last_updated": "2025-11-20T18:55:53.866065-05:00"
+  },
+  "Remedy_Sought": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 9606-9806",
+            "source_document": "Order (002)",
+            "text": "Here, the district court found that plaintiff Gavidia had standing to seek prospective injunctive relief because \u201cthere is a real and immediate threat that the conduct complained of will continue,\u201d and \u201c[\u2026]."
+          }
+        ],
+        "value": "injunctive relief"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 8804-9004",
+            "source_document": "Order (002)",
+            "text": "to consider a motion for a stay of a TRO pending appeal."
+          }
+        ],
+        "value": "stay of TRO pending appeal"
+      }
+    ],
+    "key": "Remedy_Sought",
+    "last_updated": "2025-11-20T18:55:53.866127-05:00"
+  },
+  "Statutory_or_Constitutional_Basis_for_the_Case": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 1104-1304",
+            "source_document": "Order (002)",
+            "text": "in contravention of the Fourth Amendment.\u201d Plaintiffs allege that government agents are engaging in these \u201cunlawful stop and arrest practices\u201d when conducting roving patrols and other immigration enforcement operations throughout the Central District."
+          }
+        ],
+        "value": "Fourth Amendment"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 8804-9004",
+            "source_document": "Order (002)",
+            "text": "under the All Writs Act, 28 U.S.C. \u00a7 1651, to consider a motion for a stay of a TRO pending appeal."
+          }
+        ],
+        "value": "28 U.S.C. \u00a7 1651"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 13631-13831",
+            "source_document": "Order (002)",
+            "text": "third-party \u00a7 1983 claim). Moreover, the practical considerations that counsel against extending the exclusionary rule to third parties are not at issue here."
+          }
+        ],
+        "value": "42 U.S.C. \u00a7 1983"
+      }
+    ],
+    "key": "Statutory_or_Constitutional_Basis_for_the_Case",
+    "last_updated": "2025-11-20T18:55:53.866118-05:00"
+  }
+}

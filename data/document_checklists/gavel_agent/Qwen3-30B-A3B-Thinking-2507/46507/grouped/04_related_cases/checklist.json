@@ -1,0 +1,44 @@
+{
+  "Consolidated_Cases_Noted": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Entry 10 (tokens 0-10000)",
+            "source_document": "Docket",
+            "text": "Case assigned to Judge Susan Illston. Counsel for plaintiff or the removing party is responsible for serving the Complaint or Notice of Removal, Summons and the assigned judge's standing orders and all other new case documents upon the opposing parties."
+          },
+          {
+            "location": "All entries (tokens 0-10000)",
+            "source_document": "Docket",
+            "text": "All filings referenced in the Docket and Complaint are part of Case No. 3:25-cv-03698"
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Consolidated_Cases_Noted",
+    "last_updated": "2025-11-19T20:20:42.966652-05:00"
+  },
+  "Related_Cases_Listed_by_Their_Case_Code_Number": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Regex search results (all 9 matches)",
+            "source_document": "Search Results",
+            "text": "Search for 'Case No. \\d+[-:]\\d+' returned only matches for 'Case No. 3:25-cv-03698' across all documents"
+          },
+          {
+            "location": "All pages (tokens 0-10000)",
+            "source_document": "Complaint",
+            "text": "No other case numbers referenced in Complaint, Docket, or other documents"
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Related_Cases_Listed_by_Their_Case_Code_Number",
+    "last_updated": "2025-11-19T20:20:42.966677-05:00"
+  }
+}

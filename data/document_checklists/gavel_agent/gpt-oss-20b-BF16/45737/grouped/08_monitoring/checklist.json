@@ -1,0 +1,34 @@
+{
+  "Monitor_Reports": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Step 59",
+            "source_document": "Search results",
+            "text": "\"search_document_regex on all documents (pattern: 'monitor') found 3 total matches\" but no monitor references indicating reports, and no subsequent reports were found in the documents."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Monitor_Reports",
+    "last_updated": "2025-11-20T22:36:18.430728-05:00"
+  },
+  "Name_of_the_Monitor": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Step 13",
+            "source_document": "Search results",
+            "text": "\"search_document_regex on all documents (pattern: 'no monitor') \u2192 No matches found\""
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Name_of_the_Monitor",
+    "last_updated": "2025-11-20T22:36:18.430706-05:00"
+  }
+}

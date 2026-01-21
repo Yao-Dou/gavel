@@ -1,0 +1,5696 @@
+{
+  "meta_data": {
+    "file_name": "agent/gpt-oss-20b-BF16_all",
+    "inference_model": "google/gemma-3-27b-it",
+    "enable_thinking": false
+  },
+  "token_stats": {
+    "total_input_tokens": 200316,
+    "total_output_tokens": 118536,
+    "num_prompts": 354,
+    "avg_input_tokens": 565.8644067796611,
+    "avg_output_tokens": 334.8474576271187
+  },
+  "results": {
+    "46210": {
+      "Filing Date": "model equals reference",
+      "Cause of Action": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "only_in_model": []
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 1,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3
+        ],
+        "only_in_model": []
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "only_in_model": []
+      },
+      "Type of Counsel": {
+        "common": [],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ]
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          },
+          {
+            "model_index": 3,
+            "reference_index": 3
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": []
+      },
+      "Related Cases Listed by Their Case Code Number": "model and reference are different",
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 2
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 3
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": []
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 3
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          },
+          {
+            "reference_index": 7,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 2
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "only_in_model": [
+          3
+        ]
+      },
+      "Court Rulings": {
+        "common": [],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "only_in_model": [
+          1
+        ]
+      }
+    },
+    "46602": {
+      "Filing Date": "model equals reference",
+      "Cause of Action": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3
+        ],
+        "only_in_model": [
+          2
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 14
+          },
+          {
+            "reference_index": 2,
+            "model_index": 15
+          }
+        ],
+        "only_in_reference": [
+          3,
+          4,
+          5
+        ],
+        "only_in_model": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 1,
+            "reference_index": 2
+          },
+          {
+            "model_index": 1,
+            "reference_index": 3
+          }
+        ],
+        "only_in_model": [
+          3,
+          4
+        ],
+        "only_in_reference": []
+      },
+      "Type of Counsel": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": []
+      },
+      "First and Last name of Judge": "reference contains model",
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          },
+          {
+            "model_index": 3,
+            "reference_index": 4
+          },
+          {
+            "model_index": 4,
+            "reference_index": 5
+          },
+          {
+            "model_index": 5,
+            "reference_index": 3
+          },
+          {
+            "model_index": 6,
+            "reference_index": 7
+          },
+          {
+            "model_index": 7,
+            "reference_index": 6
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": []
+      }
+    },
+    "46342": {
+      "Filing Date": "model equals reference",
+      "Cause of Action": {
+        "common": [
+          {
+            "reference_index": 3,
+            "model_index": 3
+          },
+          {
+            "reference_index": 4,
+            "model_index": 4
+          },
+          {
+            "reference_index": 5,
+            "model_index": 5
+          }
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ],
+        "only_in_model": [
+          1,
+          2
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 20,
+            "reference_index": 1
+          },
+          {
+            "model_index": 1,
+            "reference_index": 2
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          },
+          {
+            "model_index": 3,
+            "reference_index": 2
+          },
+          {
+            "model_index": 4,
+            "reference_index": 2
+          },
+          {
+            "model_index": 5,
+            "reference_index": 2
+          },
+          {
+            "model_index": 6,
+            "reference_index": 2
+          },
+          {
+            "model_index": 7,
+            "reference_index": 2
+          },
+          {
+            "model_index": 11,
+            "reference_index": 2
+          },
+          {
+            "model_index": 12,
+            "reference_index": 2
+          },
+          {
+            "model_index": 13,
+            "reference_index": 2
+          },
+          {
+            "model_index": 14,
+            "reference_index": 2
+          },
+          {
+            "model_index": 15,
+            "reference_index": 2
+          },
+          {
+            "model_index": 16,
+            "reference_index": 2
+          },
+          {
+            "model_index": 17,
+            "reference_index": 2
+          },
+          {
+            "model_index": 18,
+            "reference_index": 2
+          },
+          {
+            "model_index": 8,
+            "reference_index": 3
+          },
+          {
+            "model_index": 19,
+            "reference_index": 4
+          }
+        ],
+        "only_in_model": [
+          9,
+          10
+        ],
+        "only_in_reference": [
+          5
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 2
+          },
+          {
+            "model_index": 3,
+            "reference_index": 6
+          },
+          {
+            "model_index": 4,
+            "reference_index": 7
+          },
+          {
+            "model_index": 5,
+            "reference_index": 8
+          },
+          {
+            "model_index": 6,
+            "reference_index": 5
+          },
+          {
+            "model_index": 7,
+            "reference_index": 3
+          },
+          {
+            "model_index": 7,
+            "reference_index": 4
+          },
+          {
+            "model_index": 8,
+            "reference_index": 9
+          }
+        ],
+        "only_in_model": [
+          9
+        ],
+        "only_in_reference": [
+          1
+        ]
+      },
+      "First and Last name of Judge": "reference contains model",
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": []
+      }
+    },
+    "12429": {
+      "Filing Date": "model contains reference",
+      "Cause of Action": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 2
+          },
+          {
+            "reference_index": 1,
+            "model_index": 3
+          },
+          {
+            "reference_index": 1,
+            "model_index": 4
+          },
+          {
+            "reference_index": 1,
+            "model_index": 5
+          },
+          {
+            "reference_index": 2,
+            "model_index": 5
+          }
+        ],
+        "only_in_reference": [
+          3,
+          4
+        ],
+        "only_in_model": []
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 4
+          },
+          {
+            "reference_index": 2,
+            "model_index": 6
+          }
+        ],
+        "only_in_reference": [
+          1
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          5,
+          7
+        ]
+      },
+      "Type of Counsel": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "only_in_reference": [
+          1
+        ]
+      },
+      "First and Last name of Judge": "reference contains model",
+      "Whether the Settlement is Court-enforced or Not": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          2,
+          3,
+          4
+        ]
+      },
+      "Name of the Monitor": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2,
+          3
+        ],
+        "only_in_reference": [
+          1
+        ]
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 2
+          },
+          {
+            "model_index": 4,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2,
+          3
+        ],
+        "only_in_reference": [
+          1
+        ]
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 2
+          },
+          {
+            "model_index": 1,
+            "reference_index": 8
+          },
+          {
+            "model_index": 1,
+            "reference_index": 10
+          },
+          {
+            "model_index": 1,
+            "reference_index": 11
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ],
+        "only_in_model": [
+          1
+        ]
+      }
+    },
+    "46499": {
+      "Filing Date": "model equals reference",
+      "Cause of Action": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 3,
+            "reference_index": 2
+          },
+          {
+            "model_index": 4,
+            "reference_index": 4
+          }
+        ],
+        "only_in_model": [
+          2,
+          5,
+          6
+        ],
+        "only_in_reference": [
+          3
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 1
+          },
+          {
+            "model_index": 3,
+            "reference_index": 4
+          }
+        ],
+        "only_in_model": [
+          4,
+          5
+        ],
+        "only_in_reference": [
+          2,
+          3
+        ]
+      },
+      "Type of Counsel": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": []
+      },
+      "First and Last name of Judge": "model and reference are different",
+      "Appeal": "reference and model are different",
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 2,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          1,
+          4,
+          5
+        ],
+        "only_in_model": [
+          1,
+          2
+        ]
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "reference_index": 2,
+            "model_index": 1
+          },
+          {
+            "reference_index": 4,
+            "model_index": 2
+          },
+          {
+            "reference_index": 3,
+            "model_index": 3
+          }
+        ],
+        "only_in_reference": [
+          1,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    "46755": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": {
+        "common": [],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 3
+          },
+          {
+            "reference_index": 1,
+            "model_index": 4
+          },
+          {
+            "reference_index": 1,
+            "model_index": 5
+          },
+          {
+            "reference_index": 1,
+            "model_index": 6
+          },
+          {
+            "reference_index": 1,
+            "model_index": 7
+          },
+          {
+            "reference_index": 1,
+            "model_index": 8
+          },
+          {
+            "reference_index": 1,
+            "model_index": 9
+          },
+          {
+            "reference_index": 1,
+            "model_index": 10
+          },
+          {
+            "reference_index": 1,
+            "model_index": 11
+          },
+          {
+            "reference_index": 1,
+            "model_index": 12
+          },
+          {
+            "reference_index": 1,
+            "model_index": 13
+          },
+          {
+            "reference_index": 1,
+            "model_index": 14
+          },
+          {
+            "reference_index": 1,
+            "model_index": 15
+          },
+          {
+            "reference_index": 1,
+            "model_index": 16
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": [
+          1,
+          2
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 1,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": []
+      },
+      "Type of Counsel": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "only_in_reference": [
+          1
+        ]
+      },
+      "First and Last name of Judge": "reference contains model",
+      "All Reported Opinions Cited with Shortened Bluebook Citation": {
+        "common": [],
+        "only_in_reference": [
+          1
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          },
+          {
+            "reference_index": 3,
+            "model_index": 3
+          },
+          {
+            "reference_index": 4,
+            "model_index": 4
+          },
+          {
+            "reference_index": 5,
+            "model_index": 5
+          },
+          {
+            "reference_index": 6,
+            "model_index": 7
+          },
+          {
+            "reference_index": 8,
+            "model_index": 9
+          }
+        ],
+        "only_in_reference": [
+          7,
+          9
+        ],
+        "only_in_model": [
+          6,
+          8
+        ]
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          2,
+          3
+        ]
+      },
+      "Court Rulings": {
+        "common": [
+          {
+            "model_index": 3,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          1,
+          2
+        ],
+        "only_in_reference": [
+          2
+        ]
+      }
+    },
+    "46310": {
+      "Filing Date": "model equals reference",
+      "Cause of Action": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": []
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 1,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "only_in_reference": []
+      },
+      "Type of Counsel": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": [
+          2,
+          3,
+          4
+        ]
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": [
+          2
+        ]
+      }
+    },
+    "46226": {
+      "Filing Date": "model equals reference",
+      "Cause of Action": "reference contains model",
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          1
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 1
+          },
+          {
+            "model_index": 3,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Type of Counsel": {
+        "common": [],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ]
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "model_index": 2,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": []
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ],
+        "only_in_model": []
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 1
+          },
+          {
+            "reference_index": 4,
+            "model_index": 1
+          },
+          {
+            "reference_index": 5,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "only_in_model": [
+          1
+        ]
+      }
+    },
+    "46329": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 1,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "only_in_model": []
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 1,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3
+        ],
+        "only_in_model": [
+          3,
+          4
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2,
+          4
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "Type of Counsel": {
+        "common": [
+          {
+            "model_index": 2,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "First and Last name of Judge": {
+        "common": [],
+        "only_in_reference": [
+          1,
+          2
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Related Cases Listed by Their Case Code Number": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": []
+      },
+      "Appeal": "reference contains model",
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          },
+          {
+            "model_index": 3,
+            "reference_index": 3
+          },
+          {
+            "model_index": 4,
+            "reference_index": 4
+          },
+          {
+            "model_index": 5,
+            "reference_index": 5
+          },
+          {
+            "model_index": 6,
+            "reference_index": 6
+          }
+        ],
+        "only_in_model": [
+          7,
+          8
+        ],
+        "only_in_reference": []
+      }
+    },
+    "46666": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          },
+          {
+            "reference_index": 3,
+            "model_index": 3
+          }
+        ],
+        "only_in_reference": [
+          4,
+          5
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          },
+          {
+            "reference_index": 3,
+            "model_index": 3
+          },
+          {
+            "reference_index": 4,
+            "model_index": 4
+          },
+          {
+            "reference_index": 5,
+            "model_index": 5
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": []
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "Type of Counsel": {
+        "common": [
+          {
+            "reference_index": 2,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          1
+        ],
+        "only_in_model": [
+          2
+        ]
+      },
+      "First and Last name of Judge": "model equals reference",
+      "Appeal": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2,
+          3,
+          4
+        ],
+        "only_in_reference": []
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "only_in_model": [
+          1
+        ]
+      }
+    },
+    "43966": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": "model contains reference",
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 4
+          },
+          {
+            "model_index": 3,
+            "reference_index": 3
+          },
+          {
+            "model_index": 4,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": []
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 5
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": [
+          3,
+          4
+        ]
+      },
+      "Type of Counsel": {
+        "common": [],
+        "only_in_reference": [
+          1,
+          2
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Class Action or Individual Plaintiffs": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": [
+          2
+        ]
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": []
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 10
+          },
+          {
+            "model_index": 2,
+            "reference_index": 1
+          },
+          {
+            "model_index": 3,
+            "reference_index": 8
+          },
+          {
+            "model_index": 4,
+            "reference_index": 12
+          }
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ]
+      }
+    },
+    "46746": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          3,
+          4
+        ],
+        "only_in_model": [
+          3
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          3
+        ],
+        "only_in_model": [
+          3
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          },
+          {
+            "model_index": 3,
+            "reference_index": 4
+          },
+          {
+            "model_index": 4,
+            "reference_index": 4
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          3
+        ]
+      },
+      "Type of Counsel": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2,
+          3
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ]
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "All Reported Opinions Cited with Shortened Bluebook Citation": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ]
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 3,
+            "model_index": 1
+          },
+          {
+            "reference_index": 4,
+            "model_index": 2
+          },
+          {
+            "reference_index": 2,
+            "model_index": 6
+          },
+          {
+            "reference_index": 8,
+            "model_index": 3
+          }
+        ],
+        "only_in_reference": [
+          1,
+          5,
+          6,
+          7,
+          9,
+          10
+        ],
+        "only_in_model": [
+          4,
+          5
+        ]
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 6
+          },
+          {
+            "model_index": 1,
+            "reference_index": 10
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          7,
+          8,
+          9
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    },
+    "45737": {
+      "Filing Date": "model equals reference",
+      "Cause of Action": {
+        "common": [
+          {
+            "reference_index": 4,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          7
+        ],
+        "only_in_model": [
+          2,
+          3,
+          4
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 2,
+            "reference_index": 1
+          },
+          {
+            "model_index": 3,
+            "reference_index": 2
+          },
+          {
+            "model_index": 4,
+            "reference_index": 3
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          4,
+          5,
+          6
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 1,
+            "model_index": 2
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          },
+          {
+            "reference_index": 2,
+            "model_index": 3
+          }
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ],
+        "only_in_model": [
+          4,
+          5
+        ]
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          1
+        ],
+        "only_in_model": [
+          2
+        ]
+      },
+      "All Reported Opinions Cited with Shortened Bluebook Citation": {
+        "common": [],
+        "only_in_reference": [
+          1,
+          2
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Date of Settlement": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "only_in_reference": [
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    "46507": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          3
+        ],
+        "only_in_reference": [
+          1
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": [
+          3
+        ]
+      },
+      "Remedy Sought": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2,
+          3
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "Type of Counsel": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2,
+          3
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ]
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4
+        ],
+        "only_in_model": []
+      },
+      "All Reported Opinions Cited with Shortened Bluebook Citation": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ]
+      },
+      "Appeal": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 1
+          },
+          {
+            "model_index": 3,
+            "reference_index": 1
+          },
+          {
+            "model_index": 4,
+            "reference_index": 1
+          },
+          {
+            "model_index": 6,
+            "reference_index": 1
+          },
+          {
+            "model_index": 7,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          5
+        ],
+        "only_in_reference": []
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 4
+          }
+        ],
+        "only_in_reference": [
+          2,
+          4,
+          5
+        ],
+        "only_in_model": [
+          2,
+          3,
+          5,
+          6
+        ]
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 1,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ]
+      }
+    },
+    "43840": {
+      "Filing Date": "model equals reference",
+      "Cause of Action": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          2,
+          4
+        ],
+        "only_in_model": []
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 1,
+            "model_index": 2
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": []
+      },
+      "Type of Counsel": {
+        "common": [],
+        "only_in_reference": [
+          1,
+          2
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "First and Last name of Judge": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2,
+          3
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Date of Settlement": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          1
+        ]
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 5
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          6
+        ]
+      }
+    },
+    "46620": {
+      "Cause of Action": "reference contains model",
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": []
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [
+          3
+        ],
+        "only_in_reference": [
+          3,
+          4,
+          5
+        ]
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 4,
+            "reference_index": 3
+          },
+          {
+            "model_index": 5,
+            "reference_index": 4
+          },
+          {
+            "model_index": 6,
+            "reference_index": 5
+          },
+          {
+            "model_index": 7,
+            "reference_index": 6
+          }
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ]
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "only_in_model": [
+          2
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "only_in_model": []
+      }
+    },
+    "46071": {
+      "Filing Date": "reference and model are different",
+      "Cause of Action": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          },
+          {
+            "model_index": 3,
+            "reference_index": 3
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": []
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 3
+          },
+          {
+            "model_index": 3,
+            "reference_index": 4
+          },
+          {
+            "model_index": 4,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": []
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 2
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          3,
+          4
+        ],
+        "only_in_model": []
+      },
+      "Type of Counsel": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": [
+          2,
+          3
+        ]
+      },
+      "First and Last name of Judge": "model and reference are different",
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          },
+          {
+            "reference_index": 3,
+            "model_index": 3
+          },
+          {
+            "reference_index": 6,
+            "model_index": 4
+          }
+        ],
+        "only_in_reference": [
+          4,
+          5,
+          7
+        ],
+        "only_in_model": []
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 6
+          },
+          {
+            "model_index": 3,
+            "reference_index": 2
+          },
+          {
+            "model_index": 4,
+            "reference_index": 3
+          },
+          {
+            "model_index": 5,
+            "reference_index": 5
+          },
+          {
+            "model_index": 6,
+            "reference_index": 6
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          1,
+          4,
+          7,
+          8,
+          9,
+          10
+        ]
+      }
+    },
+    "17762": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 2
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          3
+        ],
+        "only_in_model": []
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 3,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [
+          1,
+          2
+        ],
+        "only_in_reference": [
+          1
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          1
+        ]
+      },
+      "Type of Counsel": "model contains reference",
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": [
+          2
+        ]
+      },
+      "How Long Decrees will Last": {
+        "common": [],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ]
+      },
+      "Date of Settlement": "reference contains model",
+      "Name of the Monitor": "reference contains model",
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": []
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 3
+          },
+          {
+            "reference_index": 1,
+            "model_index": 4
+          },
+          {
+            "reference_index": 2,
+            "model_index": 9
+          },
+          {
+            "reference_index": 3,
+            "model_index": 5
+          },
+          {
+            "reference_index": 3,
+            "model_index": 6
+          },
+          {
+            "reference_index": 3,
+            "model_index": 7
+          },
+          {
+            "reference_index": 5,
+            "model_index": 8
+          }
+        ],
+        "only_in_reference": [
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "only_in_model": [
+          1,
+          2
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4
+        ],
+        "only_in_model": []
+      }
+    },
+    "46239": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": []
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": []
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          3
+        ],
+        "only_in_model": [
+          2
+        ]
+      },
+      "First and Last name of Judge": "reference contains model",
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": []
+      }
+    },
+    "46678": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 4
+          }
+        ],
+        "only_in_model": [
+          3,
+          4,
+          5
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          5
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          3,
+          4,
+          5
+        ],
+        "only_in_model": [
+          3
+        ]
+      },
+      "Type of Counsel": "model contains reference",
+      "First and Last name of Judge": "model equals reference",
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          },
+          {
+            "reference_index": 3,
+            "model_index": 3
+          },
+          {
+            "reference_index": 4,
+            "model_index": 4
+          },
+          {
+            "reference_index": 5,
+            "model_index": 5
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": []
+      }
+    },
+    "46348": {
+      "Filing Date": "reference equals model",
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 7,
+            "reference_index": 3
+          }
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          4
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 1
+          },
+          {
+            "model_index": 3,
+            "reference_index": 2
+          },
+          {
+            "model_index": 4,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          5,
+          6,
+          7
+        ],
+        "only_in_reference": []
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 4
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": [
+          2,
+          3
+        ]
+      },
+      "Appeal": "model contains reference",
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 5
+          },
+          {
+            "model_index": 2,
+            "reference_index": 1
+          },
+          {
+            "model_index": 3,
+            "reference_index": 2
+          },
+          {
+            "model_index": 4,
+            "reference_index": 3
+          },
+          {
+            "model_index": 5,
+            "reference_index": 4
+          }
+        ],
+        "only_in_model": [
+          6,
+          7
+        ],
+        "only_in_reference": []
+      }
+    },
+    "46758": {
+      "Filing Date": "reference equals model",
+      "Type of Counsel": {
+        "common": [],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": [
+          2
+        ]
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": []
+      },
+      "Appeal": "model contains reference",
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 2,
+            "model_index": 1
+          },
+          {
+            "reference_index": 13,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4
+        ]
+      }
+    },
+    "46094": {
+      "Filing Date": "model equals reference",
+      "Cause of Action": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 3
+          }
+        ],
+        "only_in_model": [
+          2,
+          3
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 3
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          4,
+          5
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          3
+        ],
+        "only_in_model": [
+          3
+        ]
+      },
+      "Type of Counsel": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": []
+      },
+      "First and Last name of Judge": "reference equals model",
+      "How Long Decrees will Last": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 3
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          4,
+          5
+        ]
+      },
+      "Appeal": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3
+        ],
+        "only_in_model": []
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 6
+          },
+          {
+            "reference_index": 3,
+            "model_index": 2
+          },
+          {
+            "reference_index": 4,
+            "model_index": 3
+          },
+          {
+            "reference_index": 5,
+            "model_index": 4
+          },
+          {
+            "reference_index": 6,
+            "model_index": 5
+          },
+          {
+            "reference_index": 7,
+            "model_index": 7
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": []
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "reference_index": 2,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          1,
+          3,
+          4,
+          5
+        ],
+        "only_in_model": []
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "only_in_model": []
+      },
+      "Significant Terms of Decrees": {
+        "common": [
+          {
+            "reference_index": 2,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          1,
+          3,
+          4
+        ],
+        "only_in_model": []
+      },
+      "Court Rulings": {
+        "common": [
+          {
+            "reference_index": 7,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "only_in_model": []
+      }
+    },
+    "46351": {
+      "Filing Date": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": []
+      },
+      "Type of Counsel": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": []
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2,
+          3
+        ],
+        "only_in_reference": []
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 1,
+            "reference_index": 2
+          },
+          {
+            "model_index": 2,
+            "reference_index": 3
+          },
+          {
+            "model_index": 2,
+            "reference_index": 4
+          },
+          {
+            "model_index": 3,
+            "reference_index": 5
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          6,
+          7,
+          8,
+          9
+        ]
+      }
+    },
+    "43417": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": []
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 4,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3
+        ],
+        "only_in_reference": []
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          },
+          {
+            "model_index": 2,
+            "reference_index": 3
+          }
+        ],
+        "only_in_model": [
+          3
+        ],
+        "only_in_reference": []
+      },
+      "Type of Counsel": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": []
+      },
+      "All Reported Opinions Cited with Shortened Bluebook Citation": {
+        "common": [],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Related Cases Listed by Their Case Code Number": {
+        "common": [],
+        "only_in_reference": [
+          1,
+          2
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Appeal": {
+        "common": [],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3
+        ],
+        "only_in_model": []
+      },
+      "Dates of All Decrees": {
+        "common": [
+          {
+            "reference_index": 2,
+            "model_index": 4
+          },
+          {
+            "reference_index": 4,
+            "model_index": 5
+          }
+        ],
+        "only_in_reference": [
+          1,
+          3,
+          5,
+          6
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ],
+        "only_in_model": []
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ]
+      },
+      "Significant Terms of Decrees": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4
+        ],
+        "only_in_model": []
+      },
+      "Court Rulings": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 3
+          },
+          {
+            "model_index": 3,
+            "reference_index": 5
+          },
+          {
+            "model_index": 4,
+            "reference_index": 6
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          2,
+          4,
+          7,
+          8,
+          9,
+          10,
+          11
+        ]
+      }
+    },
+    "46114": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": "reference contains model",
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2,
+          3
+        ],
+        "only_in_reference": []
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 4
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          1,
+          2,
+          3
+        ]
+      },
+      "Type of Counsel": "model contains reference",
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": []
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 2
+          },
+          {
+            "reference_index": 1,
+            "model_index": 3
+          },
+          {
+            "reference_index": 2,
+            "model_index": 4
+          }
+        ],
+        "only_in_reference": [
+          4,
+          5
+        ],
+        "only_in_model": []
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 1,
+            "model_index": 3
+          },
+          {
+            "reference_index": 7,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "only_in_model": [
+          2
+        ]
+      }
+    },
+    "46625": {
+      "Filing Date": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2,
+          3
+        ],
+        "only_in_reference": []
+      },
+      "Cause of Action": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 4
+          }
+        ],
+        "only_in_model": [
+          3
+        ],
+        "only_in_reference": [
+          2,
+          3
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 3
+          },
+          {
+            "model_index": 2,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          3,
+          4,
+          5
+        ]
+      },
+      "First and Last name of Judge": "model contains reference",
+      "Appeal": "model and reference are different",
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 6,
+            "reference_index": 2
+          },
+          {
+            "model_index": 6,
+            "reference_index": 3
+          },
+          {
+            "model_index": 6,
+            "reference_index": 4
+          },
+          {
+            "model_index": 6,
+            "reference_index": 5
+          }
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Dates of All Decrees": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          1,
+          3
+        ]
+      }
+    },
+    "46341": {
+      "Filing Date": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          1
+        ],
+        "only_in_model": [
+          2
+        ]
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          2
+        ]
+      }
+    },
+    "46390": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 6
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          },
+          {
+            "reference_index": 3,
+            "model_index": 4
+          },
+          {
+            "reference_index": 4,
+            "model_index": 5
+          }
+        ],
+        "only_in_reference": [
+          1,
+          5,
+          6
+        ],
+        "only_in_model": [
+          1,
+          3
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 9,
+            "reference_index": 1
+          },
+          {
+            "model_index": 12,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          },
+          {
+            "model_index": 3,
+            "reference_index": 2
+          },
+          {
+            "model_index": 4,
+            "reference_index": 2
+          },
+          {
+            "model_index": 5,
+            "reference_index": 2
+          },
+          {
+            "model_index": 1,
+            "reference_index": 3
+          }
+        ],
+        "only_in_model": [
+          6,
+          7,
+          8,
+          10,
+          11,
+          13,
+          14
+        ],
+        "only_in_reference": [
+          3
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 4
+          },
+          {
+            "model_index": 3,
+            "reference_index": 5
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          1,
+          3,
+          2
+        ]
+      },
+      "Type of Counsel": {
+        "common": [],
+        "only_in_reference": [
+          1,
+          2,
+          3
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "First and Last name of Judge": "model contains reference",
+      "Related Cases Listed by Their Case Code Number": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2,
+          3
+        ],
+        "only_in_reference": [
+          1
+        ]
+      },
+      "How Long Decrees will Last": {
+        "common": [],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Appeal": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 3
+          },
+          {
+            "model_index": 5,
+            "reference_index": 5
+          },
+          {
+            "model_index": 7,
+            "reference_index": 6
+          },
+          {
+            "model_index": 9,
+            "reference_index": 7
+          }
+        ],
+        "only_in_model": [
+          3,
+          4,
+          6,
+          8,
+          10,
+          11
+        ],
+        "only_in_reference": [
+          4,
+          8
+        ]
+      },
+      "Dates of All Decrees": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 5,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4
+        ],
+        "only_in_model": []
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 3
+          },
+          {
+            "model_index": 2,
+            "reference_index": 15
+          },
+          {
+            "model_index": 3,
+            "reference_index": 5
+          }
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17,
+          18,
+          19,
+          20,
+          21
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 1,
+            "reference_index": 2
+          },
+          {
+            "model_index": 1,
+            "reference_index": 3
+          },
+          {
+            "model_index": 2,
+            "reference_index": 9
+          }
+        ],
+        "only_in_model": [
+          1,
+          2
+        ],
+        "only_in_reference": [
+          4,
+          5,
+          6,
+          7,
+          8,
+          10,
+          11,
+          12
+        ]
+      },
+      "Significant Terms of Decrees": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          2,
+          3
+        ]
+      },
+      "Court Rulings": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          2,
+          4,
+          5
+        ],
+        "only_in_model": []
+      }
+    },
+    "43972": {
+      "Filing Date": "model equals reference",
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": []
+      },
+      "First and Last name of Judge": "model contains reference",
+      "Appeal": "model contains reference",
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": []
+      }
+    },
+    "45157": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": "reference contains model",
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3
+        ],
+        "only_in_model": []
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 2
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          3,
+          4,
+          5
+        ],
+        "only_in_model": []
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "model_index": 3,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          1,
+          2
+        ],
+        "only_in_reference": []
+      },
+      "Class Action or Individual Plaintiffs": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 2,
+            "model_index": 11
+          }
+        ],
+        "only_in_reference": [
+          1,
+          3
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          12,
+          13,
+          14,
+          15,
+          16
+        ]
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16
+        ],
+        "only_in_model": []
+      }
+    },
+    "17268": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "Type of Counsel": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "First and Last name of Judge": "reference contains model",
+      "Date of Settlement": "reference contains model",
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 2,
+            "reference_index": 3
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ]
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 2
+          },
+          {
+            "model_index": 3,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 9
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          10
+        ]
+      },
+      "Court Rulings": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 4
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          5
+        ]
+      }
+    },
+    "46340": {
+      "Filing Date": "model equals reference",
+      "Cause of Action": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 3
+          },
+          {
+            "reference_index": 4,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          3
+        ],
+        "only_in_model": [
+          4,
+          5
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 4
+          },
+          {
+            "model_index": 3,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [
+          4
+        ],
+        "only_in_reference": [
+          3,
+          5
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 2
+          },
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 1,
+            "model_index": 3
+          }
+        ],
+        "only_in_reference": [
+          4
+        ],
+        "only_in_model": []
+      },
+      "First and Last name of Judge": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2,
+          3
+        ],
+        "only_in_reference": [
+          1
+        ]
+      },
+      "All Reported Opinions Cited with Shortened Bluebook Citation": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2,
+          3
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ]
+      },
+      "Related Cases Listed by Their Case Code Number": "reference contains model",
+      "How Long Decrees will Last": {
+        "common": [
+          {
+            "reference_index": 2,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          1,
+          3,
+          4
+        ],
+        "only_in_model": []
+      },
+      "Who are the Parties": {
+        "common": [],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4,
+          5
+        ]
+      },
+      "Dates of All Decrees": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 5
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "reference_index": 4,
+            "model_index": 1
+          },
+          {
+            "reference_index": 4,
+            "model_index": 2
+          },
+          {
+            "reference_index": 4,
+            "model_index": 3
+          }
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13
+        ],
+        "only_in_model": [
+          4,
+          5
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2,
+          3
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ]
+      },
+      "Significant Terms of Decrees": {
+        "common": [],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ]
+      }
+    },
+    "17701": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": "reference contains model",
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 2
+          },
+          {
+            "reference_index": 2,
+            "model_index": 3
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": []
+      },
+      "Type of Counsel": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2,
+          3
+        ],
+        "only_in_reference": []
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": []
+      },
+      "Class Action or Individual Plaintiffs": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": []
+      },
+      "Date of Settlement": {
+        "common": [],
+        "only_in_reference": [
+          1,
+          2
+        ],
+        "only_in_model": [
+          1,
+          2
+        ]
+      },
+      "Whether the Settlement is Court-enforced or Not": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3
+        ],
+        "only_in_model": []
+      },
+      "Appeal": {
+        "common": [],
+        "only_in_reference": [
+          1,
+          2
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 3,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [
+          1,
+          2
+        ],
+        "only_in_reference": [
+          1
+        ]
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 6
+          },
+          {
+            "model_index": 2,
+            "reference_index": 8
+          }
+        ],
+        "only_in_model": [
+          1,
+          2
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          7,
+          9
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "reference_index": 7,
+            "model_index": 1
+          },
+          {
+            "reference_index": 14,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          15,
+          16
+        ],
+        "only_in_model": [
+          3,
+          4,
+          5
+        ]
+      },
+      "Court Rulings": {
+        "common": [
+          {
+            "model_index": 2,
+            "reference_index": 11
+          }
+        ],
+        "only_in_model": [
+          1,
+          3,
+          4,
+          5
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          12
+        ]
+      }
+    },
+    "15426": {
+      "Filing Date": "model equals reference",
+      "Cause of Action": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": [
+          2,
+          3
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 1,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": []
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          3,
+          4,
+          5,
+          6
+        ],
+        "only_in_model": []
+      },
+      "Type of Counsel": "reference contains model",
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          },
+          {
+            "model_index": 3,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          3,
+          4,
+          5
+        ]
+      },
+      "Related Cases Listed by Their Case Code Number": "reference contains model",
+      "How Long Decrees will Last": {
+        "common": [],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ]
+      },
+      "Appeal": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 1,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          3
+        ]
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 5
+          }
+        ],
+        "only_in_reference": [
+          1
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4,
+          6,
+          7
+        ]
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14
+        ],
+        "only_in_model": []
+      },
+      "Significant Terms of Decrees": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          },
+          {
+            "model_index": 3,
+            "reference_index": 3
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": []
+      },
+      "Trials": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15,
+          16,
+          17
+        ]
+      },
+      "Court Rulings": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5
+        ]
+      }
+    },
+    "46482": {
+      "Cause of Action": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 2
+          },
+          {
+            "model_index": 2,
+            "reference_index": 2
+          },
+          {
+            "model_index": 3,
+            "reference_index": 3
+          },
+          {
+            "model_index": 4,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 2
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          3
+        ],
+        "only_in_model": [
+          3,
+          4,
+          5
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 2,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 3
+          },
+          {
+            "reference_index": 3,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          1,
+          4
+        ],
+        "only_in_model": [
+          4
+        ]
+      },
+      "First and Last name of Judge": "reference contains model",
+      "All Reported Opinions Cited with Shortened Bluebook Citation": {
+        "common": [],
+        "only_in_model": [
+          1,
+          2,
+          3
+        ],
+        "only_in_reference": [
+          1
+        ]
+      },
+      "Related Cases Listed by Their Case Code Number": "reference contains model",
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          2,
+          4
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 4
+          },
+          {
+            "model_index": 2,
+            "reference_index": 6
+          }
+        ],
+        "only_in_model": [
+          1,
+          2
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          5,
+          7,
+          8,
+          9,
+          10,
+          11,
+          12,
+          13,
+          14,
+          15
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 6
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          },
+          {
+            "reference_index": 3,
+            "model_index": 3
+          }
+        ],
+        "only_in_reference": [
+          4
+        ],
+        "only_in_model": [
+          1,
+          4,
+          5,
+          7,
+          8
+        ]
+      },
+      "Court Rulings": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 4
+          },
+          {
+            "model_index": 7,
+            "reference_index": 1
+          },
+          {
+            "model_index": 8,
+            "reference_index": 4
+          }
+        ],
+        "only_in_model": [
+          2,
+          3,
+          4,
+          5,
+          6
+        ],
+        "only_in_reference": [
+          3
+        ]
+      }
+    },
+    "46083": {
+      "Filing Date": "model equals reference",
+      "Cause of Action": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2,
+          3
+        ],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2,
+          3
+        ],
+        "only_in_reference": [
+          2,
+          3
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 3
+          },
+          {
+            "model_index": 2,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          2,
+          4
+        ]
+      },
+      "Type of Counsel": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": [
+          2
+        ]
+      },
+      "First and Last name of Judge": "model equals reference",
+      "Date of Settlement": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Appeal": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 1,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": []
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "model_index": 2,
+            "reference_index": 2
+          },
+          {
+            "model_index": 2,
+            "reference_index": 3
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          1,
+          4,
+          5
+        ]
+      },
+      "Dates of All Decrees": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 9
+          },
+          {
+            "model_index": 2,
+            "reference_index": 9
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      },
+      "Factual Basis of Case": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "reference_index": 12,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          10,
+          11
+        ],
+        "only_in_model": []
+      },
+      "Significant Terms of Decrees": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 5
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4
+        ]
+      },
+      "Significant Terms of Settlement": {
+        "common": [
+          {
+            "reference_index": 3,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          1,
+          2
+        ],
+        "only_in_model": []
+      },
+      "Court Rulings": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 10
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9,
+          11
+        ]
+      }
+    },
+    "45858": {
+      "Filing Date": "model equals reference",
+      "Cause of Action": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          1
+        ],
+        "only_in_model": []
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [
+          {
+            "model_index": 2,
+            "reference_index": 2
+          },
+          {
+            "model_index": 3,
+            "reference_index": 4
+          },
+          {
+            "model_index": 4,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          1
+        ],
+        "only_in_reference": [
+          3
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 2,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [],
+        "only_in_model": [
+          2,
+          3,
+          4
+        ]
+      },
+      "Type of Counsel": {
+        "common": [],
+        "only_in_reference": [
+          1
+        ],
+        "only_in_model": [
+          1,
+          2
+        ]
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 2
+          },
+          {
+            "model_index": 2,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": []
+      },
+      "How Long Decrees will Last": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          2
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          2,
+          4,
+          5,
+          6,
+          7
+        ],
+        "only_in_model": []
+      },
+      "Dates of All Decrees": {
+        "common": [
+          {
+            "reference_index": 2,
+            "model_index": 1
+          }
+        ],
+        "only_in_reference": [
+          1,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "only_in_model": [
+          1
+        ]
+      },
+      "Note Important Filings": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 1
+          },
+          {
+            "reference_index": 3,
+            "model_index": 2
+          }
+        ],
+        "only_in_reference": [
+          2,
+          4,
+          5,
+          6,
+          7,
+          8
+        ],
+        "only_in_model": []
+      },
+      "Court Rulings": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 3
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          2,
+          4,
+          5,
+          6
+        ]
+      }
+    },
+    "46805": {
+      "Filing Date": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": []
+      }
+    },
+    "46651": {
+      "Filing Date": "reference equals model",
+      "Cause of Action": {
+        "common": [
+          {
+            "model_index": 2,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          1,
+          3
+        ],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "Statutory or Constitutional Basis for the Case": {
+        "common": [],
+        "only_in_reference": [
+          1
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8,
+          9
+        ]
+      },
+      "Remedy Sought": {
+        "common": [
+          {
+            "model_index": 2,
+            "reference_index": 2
+          }
+        ],
+        "only_in_model": [
+          1,
+          2
+        ],
+        "only_in_reference": [
+          1,
+          3,
+          4,
+          5
+        ]
+      },
+      "Type of Counsel": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          },
+          {
+            "model_index": 2,
+            "reference_index": 1
+          },
+          {
+            "model_index": 3,
+            "reference_index": 1
+          },
+          {
+            "model_index": 4,
+            "reference_index": 1
+          },
+          {
+            "model_index": 5,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [],
+        "only_in_reference": [
+          2
+        ]
+      },
+      "First and Last name of Judge": {
+        "common": [
+          {
+            "model_index": 1,
+            "reference_index": 1
+          }
+        ],
+        "only_in_model": [
+          2
+        ],
+        "only_in_reference": []
+      },
+      "Who are the Parties": {
+        "common": [
+          {
+            "reference_index": 1,
+            "model_index": 10
+          },
+          {
+            "reference_index": 6,
+            "model_index": 9
+          }
+        ],
+        "only_in_reference": [
+          2,
+          3,
+          4,
+          5
+        ],
+        "only_in_model": [
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7,
+          8
+        ]
+      }
+    }
+  }
+}

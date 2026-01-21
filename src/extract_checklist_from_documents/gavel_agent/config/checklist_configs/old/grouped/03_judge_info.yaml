@@ -1,0 +1,17 @@
+# Checklist configuration - Judge Information group
+# Focuses on identifying the presiding judge
+
+# User instruction - what the user wants the agent to do
+user_instruction: |
+  Extract the checklist item from the legal case documents as completely as possible.
+
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: filings, dates, rulings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+# Checklist items to extract - Judge Information group
+checklist_items:
+  First_and_Last_name_of_Judge:
+    description: "The name of the presiding judge (first and last name if available; otherwise whatever portion is provided). The extracted value should be formated as '[full name]'."

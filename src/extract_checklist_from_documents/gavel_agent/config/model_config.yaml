@@ -1,0 +1,31 @@
+# Model configuration for VLLM inference
+# Model name is passed via command line argument to run_agent.py
+
+# Model-specific sampling parameters
+models:
+  # Qwen3 models configuration
+  qwen3:
+    temperature: 0.6
+    top_p: 0.95
+    top_k: 20
+    max_tokens: 32000
+    # Retry configuration for parse errors
+    max_retries: 2
+  
+  # GPT-OSS models configuration
+  gpt-oss:
+    temperature: 0.7
+    top_p: 1.0
+    top_k: -1  # -1 or 0 means no top_k filtering
+    max_tokens: 32000
+    # Retry configuration for parse errors
+    max_retries: 2
+  
+  # Default configuration (fallback for other models)
+  default:
+    temperature: 0.7
+    top_p: 1.0
+    top_k: -1  # -1 or 0 means no top_k filtering
+    max_tokens: 32000
+    # Retry configuration for parse errors
+    max_retries: 2

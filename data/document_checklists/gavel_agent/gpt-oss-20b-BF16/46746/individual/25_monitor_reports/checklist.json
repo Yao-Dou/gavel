@@ -1,0 +1,23 @@
+{
+  "Monitor_Reports": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Step 25",
+            "source_document": "System log",
+            "text": "search_document_regex on all documents (pattern: \"Monitor report\") \u2192 No matches found"
+          },
+          {
+            "location": "Step 32",
+            "source_document": "System log",
+            "text": "search_document_regex on Docket (pattern: \"monitor\") \u2192 No matches found"
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Monitor_Reports",
+    "last_updated": "2025-11-20T05:33:10.555405-05:00"
+  }
+}

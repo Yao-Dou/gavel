@@ -1,0 +1,43 @@
+{
+  "Disputes_Over_Settlement_Enforcement": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Step 3",
+            "source_document": "System Log",
+            "text": "\"search_document_regex\" on all documents (pattern: \"motion to enforce settlement|motion to enforce|contempt|retained jurisdiction|enforcement of settlement\") \u2192 No matches found"
+          },
+          {
+            "location": "Step 9",
+            "source_document": "System Log",
+            "text": "\"search_document_regex\" on Docket (pattern: \"settlement|motion to enforce|contempt|retained jurisdiction|enforcement\") \u2192 No matches found"
+          },
+          {
+            "location": "Step 21",
+            "source_document": "System Log",
+            "text": "\"search_document_regex\" on Order (pattern: \"settlement\") \u2192 Search in 1 document found 0 total matches"
+          },
+          {
+            "location": "Step 13",
+            "source_document": "System Log",
+            "text": "\"search_document_regex\" on Ex Parte Motion for a Temporary Restraining Order and Order to Show Cause (pattern: \"motion to enforce settlement|motion to enforce|contempt|retained jurisdiction|enforcement of settlement\") \u2192 No matches found"
+          },
+          {
+            "location": "Step 12",
+            "source_document": "System Log",
+            "text": "\"search_document_regex\" on all documents (pattern: \"settlement agreement|settlement reached|no settlement\") \u2192 No matches found"
+          },
+          {
+            "location": "Full document",
+            "source_document": "Order Re Preliminary Injunction",
+            "text": "Order Re Preliminary Injunction [Order/Opinion] fully visited (0-19991 tokens) with no matches for enforcement patterns"
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Disputes_Over_Settlement_Enforcement",
+    "last_updated": "2025-11-20T06:39:29.838779-05:00"
+  }
+}

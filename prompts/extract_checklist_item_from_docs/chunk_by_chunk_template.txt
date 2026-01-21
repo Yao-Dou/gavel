@@ -1,0 +1,74 @@
+You are assisting a lawyer in extracting key information from legal case documents. You will be given a document chunk from a legal case. Your task is to {item_description}
+
+# Note: 
+- Do not make assumptions or add information that is not presented in the document chunk.
+- When extracting evidence, quote the exact text from the document chunk.
+- You are processing documents chunk by chunk. Build upon the current state provided below.
+- If no new relevant information is found in this chunk, return the current state unchanged.
+- Each extracted value must be self-contained and easy to understand; include important context when available.
+
+# Current State
+This is the accumulated extraction state from previous chunks:
+{current_state}
+
+# Document Information
+- Document Name: {document_name}
+- Chunk: {chunk_id}/{total_chunks}
+
+# Document Chunk
+{document_chunk}
+
+# Output Format
+Your output should be in the following JSON format—no extra keys, no prose outside of the JSON:
+
+```
+{{
+  "reasoning": "<brief analysis of this document chunk and how you identified any new relevant information or determined that none was present>",
+  "extracted": [
+    {{
+      "evidence": [
+        {{
+          "text": "<verbatim snippet 1>",
+          "source_document": "<document name>",
+          "location": "Chunk {chunk_id}/{total_chunks}"
+        }},
+        {{
+          "text": "<verbatim snippet 2 (if multiple snippets are relevant)>",
+          "source_document": "<document name>",
+          "location": "Chunk {chunk_id}/{total_chunks}"
+        }}
+        // ...
+      ],
+      "value": "<extracted information from the evidence>"
+    }}
+    // ...
+  ]
+}}
+```
+
+## Definitions of each part
+- `reasoning`: A brief analysis of this document chunk and how you identified any new relevant information or determined that none was present.
+- `extracted`: A list of one or more objects, each representing a distinct piece of information relevant to the checklist item. Always use a list, even if there is only one item. This should include both existing items from the current state and any new items found in this chunk.
+- `evidence`: A list of evidence objects, each containing:
+  - `text`: Exact text snippet copied from the document chunk
+  - `source_document`: The title/name of the document where this evidence was found
+  - `location`: The chunk identifier in format "Chunk {chunk_id}/{total_chunks}" where the evidence appears
+- `value`: The extracted information based on the evidence.
+
+## Rules for the JSON schema
+1. **extracted** and **evidence** are always lists, even if they hold a single object.
+2. Copy the **text** in evidence objects exactly as it appears in the document chunk—no rewriting or paraphrasing.
+3. Always include **source_document** and **location** for each piece of evidence.
+4. If the document chunk contains no new relevant information, return the current state's **extracted** list unchanged:
+
+```
+{{
+  "reasoning": "<brief analysis>",
+  "extracted": <current_state_extracted_list>
+}}
+```
+
+5. Merge new information with the current state—do not duplicate existing extractions.
+6. Each distinct piece of information should be a separate item in the **extracted** list.
+7. For any new evidence found in the current chunk, always use "Chunk {chunk_id}/{total_chunks}" as the location. When carrying forward existing evidence from the current state, preserve their original location values unchanged.
+8. When the current state is empty (i.e., this is the first chunk), start fresh with any relevant information found.

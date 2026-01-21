@@ -1,0 +1,44 @@
+You are given two lists of legal information (A and B) about **{checklist_category}**, extracted from two summaries of the same legal case. Your task is to compare these lists based on their **semantic meaning**—that is, what each item conveys, regardless of wording, format, or phrasing.
+
+You should identify:
+1. Items that appear in **both A and B** (i.e., semantically equivalent),
+2. Items that appear **only in A**,
+3. Items that appear **only in B**.
+
+# Information to Compare
+## List A:
+{information_A}
+
+## List B:
+{information_B}
+
+# Output Format
+Structure your response as follows:
+**Reasoning:**
+Provide your detailed analysis of how the two lists relate to each other. Explain any mappings between items, and how you determined whether they were equivalent or different.
+
+**Final Answer:**
+Output a valid JSON object with the following structure:
+
+```json
+{{
+  "common": [
+    {{"A_index": X, "B_index": Y}},
+    ...
+  ],
+  "only_in_A": [X, ...],
+  "only_in_B": [Y, ...]
+}}
+```
+
+Where:
+- `A_index` is the index of the item in List A,
+- `B_index` is the index of the semantically equivalent item in List B,
+- `only_in_A` lists the indices of items in A that do **not** appear in B,
+- `only_in_B` lists the indices of items in B that do **not** appear in A.
+
+# Notes
+- Both List A and B are numbered using 1-based indexing.
+- Match items even if they are paraphrased or formatted differently.
+- Treat legal synonyms and abbreviations as equivalent when appropriate.
+- Return only valid JSON in the **Final Answer** section.

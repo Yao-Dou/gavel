@@ -1,0 +1,176 @@
+{
+  "Class_Action_or_Individual_Plaintiffs": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 171-371",
+            "source_document": "Complaint",
+            "text": "United States of America, by and through its undersigned counsel, brings this civil action"
+          }
+        ],
+        "value": "Plaintiffs: Individual, described as United States of America"
+      }
+    ],
+    "key": "Class_Action_or_Individual_Plaintiffs",
+    "last_updated": "2025-11-20T20:59:40.883608-05:00"
+  },
+  "Filing_Date": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-109",
+            "source_document": "Complaint",
+            "text": "Case 1:22-cv-00329-BLW   Document 1   Filed 08/02/22   Page 1 of 17"
+          }
+        ],
+        "value": "08/02/22"
+      }
+    ],
+    "key": "Filing_Date",
+    "last_updated": "2025-11-20T20:59:40.883562-05:00"
+  },
+  "Type_of_Counsel": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-109",
+            "source_document": "Complaint",
+            "text": "Assistant Attorney General \nJOSHUA REVESZ \nCounsel, Office of the Assistant Attorney General \nALEXANDER K. HAAS \nDirector, Federal Programs Branch \nDANIEL SCHWEI \nSpecial Counsel \nLISA NEWMAN (TX Bar No. 24107878) \nANNA DEFFEBACH  \nEMILY NESTLER \nTrial Attorneys \nJULIE STRAUS HARRIS \nSenior Trial Counsel \nU.S. Department of Justice \nCivil Division, Federal Programs Branch"
+          }
+        ],
+        "value": "Plaintiff: Government counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Page 3 of 3",
+            "source_document": "Stipulation of Dismissal",
+            "text": "Counsel for Defendant\n   2 \n\n   Case 1:22-cv-00329-BLW     Document 182     Filed 03/05/25     Page 3 of 3\n\n   /s/ Daniel W. Bower\n   Daniel W. Bower, ISB #7204\n   MORRIS BOWER & HAWS PLLC\n   1305 12th Ave. Rd.\n   Nampa, Idaho 83686\n   Telephone: (208) 345-3333\n   dbower@morrisbowerhaws.com"
+          }
+        ],
+        "value": "Defendant: Private counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 1000-1311",
+            "source_document": "Stipulation of Dismissal",
+            "text": "/s/ Daniel W. Bower\nDaniel W. Bower, ISB #7204\nMORRIS BOWER & HAWS PLLC\nCounsel for Defendant-Intervenor"
+          }
+        ],
+        "value": "Private counsel: Daniel W. Bower"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-109",
+            "source_document": "Complaint",
+            "text": "BRIAN M. BOYNTON Principal Deputy Assistant Attorney General"
+          }
+        ],
+        "value": "Government counsel: Brian M. Boynton"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-109",
+            "source_document": "Complaint",
+            "text": "BRIAN D. NETTER Deputy Assistant Attorney General"
+          }
+        ],
+        "value": "Government counsel: Brian D. Netter"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-109",
+            "source_document": "Complaint",
+            "text": "JOSHUA REVESZ Counsel, Office of the Assistant Attorney General"
+          }
+        ],
+        "value": "Government counsel: Joshua Revesz"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-109",
+            "source_document": "Complaint",
+            "text": "ALEXANDER K. HAAS Director, Federal Programs Branch"
+          }
+        ],
+        "value": "Government counsel: Alexander K. Haas"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-109",
+            "source_document": "Complaint",
+            "text": "DANIEL SCHWEI Special Counsel"
+          }
+        ],
+        "value": "Government counsel: Daniel Schwei"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-109",
+            "source_document": "Complaint",
+            "text": "LISA NEWMAN (TX Bar)"
+          }
+        ],
+        "value": "Private counsel: Lisa Newman"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 1000-1311",
+            "source_document": "Stipulation of Dismissal",
+            "text": "Brian V. Church Special Counsel"
+          }
+        ],
+        "value": "Government counsel: Brian V. Church"
+      }
+    ],
+    "key": "Type_of_Counsel",
+    "last_updated": "2025-11-20T21:05:03.720241-05:00"
+  },
+  "Who_are_the_Parties": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 171-371",
+            "source_document": "Complaint",
+            "text": "United States of America, by and through its undersigned counsel, brings this civil action"
+          }
+        ],
+        "value": "Plaintiff: United States of America"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 171-371",
+            "source_document": "Complaint",
+            "text": "The State of Idaho, Defendant."
+          }
+        ],
+        "value": "Defendant: State of Idaho"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 162-362",
+            "source_document": "Stipulation of Dismissal",
+            "text": "Defendant-Intervenor the Idaho Legislature"
+          }
+        ],
+        "value": "Defendant-Intervenor: Idaho Legislature"
+      }
+    ],
+    "key": "Who_are_the_Parties",
+    "last_updated": "2025-11-20T21:04:22.684204-05:00"
+  }
+}

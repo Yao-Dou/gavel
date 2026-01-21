@@ -1,0 +1,74 @@
+{
+  "Consolidated_Cases_Noted": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "search summary",
+            "source_document": "search_document_regex results",
+            "text": "Search in 7 documents found 0 total matches for consolidated patterns."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Consolidated_Cases_Noted",
+    "last_updated": "2025-11-20T19:05:37.067286-05:00"
+  },
+  "Related_Cases_Listed_by_Their_Case_Code_Number": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-136",
+            "source_document": "Complaint for Declaratory and Injunctive Relief Introduction",
+            "text": "Case 1:25-cv-22896-XXXX"
+          }
+        ],
+        "value": "1:25-cv-22896-XXXX"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 1805-2005",
+            "source_document": "Docket",
+            "text": "case no. 4:25-cv-00271-RH-MJF"
+          }
+        ],
+        "value": "4:25-cv-00271-RH-MJF"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 297-497",
+            "source_document": "Motion to Stay Preliminary Injunction Pending Appeal and for Administrative Stay",
+            "text": "USCA11 Case: 25-12873"
+          }
+        ],
+        "value": "25-12873"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-139",
+            "source_document": "Omnibus Order",
+            "text": "CASE NO. 25-22896-CV-WILLIAMS"
+          }
+        ],
+        "value": "25-22896-CV-WILLIAMS"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-139",
+            "source_document": "Order (001)",
+            "text": "Case 1:25-cv-22896-KMW"
+          }
+        ],
+        "value": "1:25-cv-22896-KMW"
+      }
+    ],
+    "key": "Related_Cases_Listed_by_Their_Case_Code_Number",
+    "last_updated": "2025-11-20T19:01:31.972835-05:00"
+  }
+}

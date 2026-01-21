@@ -1,0 +1,23 @@
+{
+  "Disputes_Over_Settlement_Enforcement": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Step 7: search_document_regex on all documents",
+            "source_document": "All Documents",
+            "text": "Search across all 10 documents using comprehensive regex pattern (motion to enforce settlement|contempt motion for settlement|settlement enforcement|request to invoke retained jurisdiction|settlement dispute|enforce settlement agreement) returned 0 matches."
+          },
+          {
+            "location": "All fully visited documents (tokens 0-100% coverage)",
+            "source_document": "Order and Findings on Sanctions and Motions, Memorandum Opinion and Order, Memorandum and Order, Final Approval Order and Judgment",
+            "text": "Four fully reviewed Order/Opinion documents (including Sanctions Order, Class Certification Order, and Memorandum Orders) contain no references to settlement enforcement disputes, motions to enforce settlements, or related jurisdictional requests."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Disputes_Over_Settlement_Enforcement",
+    "last_updated": "2025-11-16T02:34:38.193083-05:00"
+  }
+}

@@ -1,0 +1,15 @@
+# Checklist configuration - Note Important Filings only
+# Focuses exclusively on extracting the important filings
+
+# User instruction
+user_instruction: |
+  Extract the important filings from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Note_Important_Filings:
+    description: "Information about the most important filings or motions in the case, summarized as short, self-contained narrative values. Focus on key procedural filings such as motions for temporary restraining orders, preliminary injunctions, motions to dismiss, motions for summary judgment, etc. For each filing, state who filed it, what it asked the court to do, the relevant date(s) if available. Do not just list document titles; instead, write each value so that a reader can understand what happened from that value alone. Extract each filing as a separate value."

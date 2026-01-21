@@ -1,0 +1,23 @@
+{
+  "How_Long_Settlement_will_Last": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "regex search results",
+            "source_document": "all documents",
+            "text": "Search_document_regex on all documents (pattern: \"settlement\\s+.*?\\b(\\d+)\\s+(year|month|day)s?\\b\") returned 0 total matches"
+          },
+          {
+            "location": "tokens 0-10000",
+            "source_document": "Order",
+            "text": "Read Order (tokens 0-10000) contained no settlement duration references"
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "How_Long_Settlement_will_Last",
+    "last_updated": "2025-11-19T07:33:14.232191-05:00"
+  }
+}

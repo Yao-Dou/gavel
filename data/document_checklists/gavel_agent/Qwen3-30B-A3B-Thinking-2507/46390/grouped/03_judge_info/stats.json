@@ -1,0 +1,49 @@
+{
+  "model": "Qwen/Qwen3-30B-A3B-Thinking-2507",
+  "steps": 6,
+  "total_system_prompt_tokens": 5490,
+  "total_user_prompt_tokens": 35192,
+  "total_completion_tokens": 3158,
+  "per_step_details": [
+    {
+      "step": 1,
+      "system_tokens": 1098,
+      "user_tokens": 2060,
+      "completion_tokens": 272,
+      "total_prompt_tokens": 3158,
+      "is_system_cached": false
+    },
+    {
+      "step": 2,
+      "system_tokens": 1098,
+      "user_tokens": 2507,
+      "completion_tokens": 425,
+      "total_prompt_tokens": 3605,
+      "is_system_cached": true
+    },
+    {
+      "step": 3,
+      "system_tokens": 1098,
+      "user_tokens": 10068,
+      "completion_tokens": 1313,
+      "total_prompt_tokens": 11166,
+      "is_system_cached": true
+    },
+    {
+      "step": 4,
+      "system_tokens": 1098,
+      "user_tokens": 10173,
+      "completion_tokens": 653,
+      "total_prompt_tokens": 11271,
+      "is_system_cached": true
+    },
+    {
+      "step": 6,
+      "system_tokens": 1098,
+      "user_tokens": 10384,
+      "completion_tokens": 495,
+      "total_prompt_tokens": 11482,
+      "is_system_cached": true
+    }
+  ]
+}

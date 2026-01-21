@@ -1,0 +1,15 @@
+# Checklist configuration - Court Rulings only
+# Focuses exclusively on extracting the court rulings
+
+# User instruction
+user_instruction: |
+  Extract the court rulings from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Court_Rulings:
+    description: "The court's decisions or orders on key motions or issues. Focus on how the court ruled (granted/denied/issued) on important filings such as: motions to dismiss, motions for summary judgment, motions for preliminary injunctions or temporary restraining orders (TROs), motions for class certification, motions for attorneys' fees, and other significant procedural or substantive rulings. Extract concise descriptions of each ruling."

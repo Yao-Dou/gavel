@@ -1,0 +1,17 @@
+# Checklist configuration - Context group
+# Focuses on the factual basis underlying the case
+
+# User instruction - what the user wants the agent to do
+user_instruction: |
+  Extract the checklist item from the legal case documents as completely as possible.
+
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: filings, dates, rulings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+# Checklist items to extract - Context group
+checklist_items:
+  Factual_Basis_of_Case:
+    description: "Refers to the facts or evidence upon which the case is built. These facts are essential in the legal process and are used to support legal claims or decisions. It typically includes: 1. Details of the relevant events—For example, what happened, when it happened, where it happened, and who was involved. 2. Evidence – Physical evidence, documentary records, witness testimonies, etc., that support these facts. 3. Background information—Context or explanatory facts that provide additional understanding."

@@ -1,0 +1,44 @@
+{
+  "Monitor_Reports": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Search result",
+            "source_document": "All documents",
+            "text": "Regex search on all documents (pattern: 'Monitor found (compliance|non-compliance) with (.*?) as of (.*?)\\.') returned 0 matches."
+          },
+          {
+            "location": "Entire document",
+            "source_document": "Order (001)",
+            "text": "No monitor reports referenced in Order (001) or Complaint (partially read)."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Monitor_Reports",
+    "last_updated": "2025-11-20T03:31:13.368582-05:00"
+  },
+  "Name_of_the_Monitor": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Entire document (tokens 0-7735)",
+            "source_document": "Order (001)",
+            "text": "No mention of court-appointed or agreed-upon monitor in Order (001) (fully read) or Complaint (partially read)."
+          },
+          {
+            "location": "Tokens 0-10000",
+            "source_document": "Complaint for Declaratory and Injunctive Relief",
+            "text": "No mention of monitor in Complaint for Declaratory and Injunctive Relief (tokens 0-10000)."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Name_of_the_Monitor",
+    "last_updated": "2025-11-20T03:31:13.368558-05:00"
+  }
+}

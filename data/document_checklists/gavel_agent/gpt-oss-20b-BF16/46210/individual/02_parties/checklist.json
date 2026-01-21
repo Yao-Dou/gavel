@@ -1,0 +1,58 @@
+{
+  "Who_are_the_Parties": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Page 1",
+            "source_document": "Complaint",
+            "text": "Plaintiff, the United States of America (\u201cUnited States\u201d), by authority of the Attorney General of the United States and through the undersigned attorneys, acting at the request of the Administrator of the United States Environmental Protection Agency (\u201cEPA\u201d), files this Complaint and alleges:"
+          }
+        ],
+        "value": "Plaintiff: United States of America"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Page 7",
+            "source_document": "Complaint",
+            "text": "Denka is a privately owned limited liability company formed under the laws of the State of Delaware, headquartered in LaPlace, Louisiana, and authorized to do business in the State of Louisiana. Denka is a joint venture between majority owner Denka Company Limited and minority owner Mitsui & Co. Ltd., both of which are Japanese companies."
+          }
+        ],
+        "value": "Defendant: Denka Performance Elastomer, LLC"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Page 7",
+            "source_document": "Complaint",
+            "text": "DuPont Specialty Products is a privately owned limited liability company that is headquartered in Delaware and maintains its principal place of business in Delaware. At all times relevant to the Complaint, DuPont Specialty Products has been a corporate entity and therefore a \u201cperson\u201d within the meaning of 42 U.S.C. \u00a7\u00a7 7602(e) and 7603."
+          }
+        ],
+        "value": "Defendant: DuPont Specialty Products USA, LLC"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 2033-2233",
+            "source_document": "Amended Counterclaim",
+            "text": "Counterclaim-Plaintiff DPE owns the Facility on land under lease from DuPont ..."
+          }
+        ],
+        "value": "Plaintiff: Denka Performance Elastomer, LLC"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 2033-2233",
+            "source_document": "Amended Counterclaim",
+            "text": "Counterclaim-Defendant EPA is the federal agency charged with the administration of the Clean Air Act"
+          }
+        ],
+        "value": "Defendant: United States Environmental Protection Agency"
+      }
+    ],
+    "key": "Who_are_the_Parties",
+    "last_updated": "2025-11-20T10:05:09.869648-05:00"
+  }
+}

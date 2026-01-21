@@ -1,0 +1,23 @@
+{
+  "Dates_of_All_Decrees": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "search_document_regex_results (pattern: (?i)decree)",
+            "source_document": "SearchResult",
+            "text": "No matches found for 'decree' in any document."
+          },
+          {
+            "location": "search_document_regex_results (pattern: (?i)(consent decree entered|decree entered|injunction entered|order entered))",
+            "source_document": "SearchResult",
+            "text": "No matches found for 'consent decree entered', 'decree entered', 'injunction entered', or 'order entered' in Order."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Dates_of_All_Decrees",
+    "last_updated": "2025-11-20T08:25:03.176367-05:00"
+  }
+}

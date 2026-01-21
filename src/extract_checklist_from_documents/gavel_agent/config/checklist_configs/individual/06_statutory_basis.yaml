@@ -1,0 +1,15 @@
+# Checklist configuration - Statutory or Constitutional Basis for the Case only
+# Focuses exclusively on extracting the statutory or constitutional basis
+
+# User instruction
+user_instruction: |
+  Extract the statutory or constitutional basis from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Statutory_or_Constitutional_Basis_for_the_Case:
+    description: "The substantive rights and sources of law allegedly violated—the 'what' was violated—such as specific constitutional provisions or clauses (e.g., Fourteenth Amendment – Equal Protection, First Amendment – Freedom of Association, Eighth Amendment) and statutory rights (e.g., ADA Title II, Rehab Act § 504). Do not include the cause-of-action vehicle itself (e.g., 42 U.S.C. § 1983), remedies (injunctive relief, damages), or purely procedural doctrines (e.g., Rule 23, Ex parte Young). Prefer clause-level detail when available; if only the amendment or statute is named, list that. Extract each distinct basis as a separate value."

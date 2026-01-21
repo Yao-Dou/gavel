@@ -1,0 +1,15 @@
+# Checklist configuration - Cause of Action only
+# Focuses exclusively on extracting the cause of action
+
+# User instruction
+user_instruction: |
+  Extract the cause of action from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Cause_of_Action:
+    description: "The legal vehicle(s) used to bring the claims—the 'how' of suing—such as statutes that create a private or enforcement right of action (e.g., 42 U.S.C. § 1983, Title II of the ADA, FTCA) or judge-made vehicles (e.g., Bivens). Do not include underlying rights (constitutional amendments or statutory rights), remedies (injunction, damages, declaratory relief), or procedural doctrines/rules (e.g., Rule 23, Ex parte Young, standing, immunity). Deduplicate repeats so that each cause of action appears only once."

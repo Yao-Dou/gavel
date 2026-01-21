@@ -1,0 +1,93 @@
+{
+  "Remedy_Sought": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Match 1 (tokens 792-992)",
+            "source_document": "Order (002)",
+            "text": "On July 3, Plaintiffs filed an application for a temporary restraining order, which Defendants opposed."
+          }
+        ],
+        "value": "Plaintiff: temporary restraining order"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Page 1 of 2",
+            "source_document": "Order (001)",
+            "text": "Defendants filed two motions with this court requesting a stay pending appeal of the district court\u2019s temporary restraining order."
+          },
+          {
+            "location": "Match 1 (tokens 792-992)",
+            "source_document": "Order (002)",
+            "text": "Defendants filed an emergency motion for a stay pending their appeal of the TRO."
+          }
+        ],
+        "value": "Defendant: stay pending appeal of the TRO"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Page 1 of 2",
+            "source_document": "Order (001)",
+            "text": "Defendants requested a 7-day stay of any order issuing an injunction."
+          }
+        ],
+        "value": "Defendant: 7-day stay of any order issuing an injunction"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 792-992",
+            "source_document": "Order (002)",
+            "text": "Plaintiffs filed an application for a temporary restraining order, which Defendants opposed. After a hearing, the district court determined that Plaintiffs had shown they are likely to succeed in proving that seizures requiring\u2014 but not supported by\u2014reasonable suspicion have occurred as part of Operation At Large in Los Angeles, and that Defendants have authorized or approved that practice. The district court issued the requested TRO on July 11."
+          }
+        ],
+        "value": "Plaintiff: Temporary restraining order to prohibit detentive stops without individualized reasonable suspicion"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 1701-1901",
+            "source_document": "Order (002)",
+            "text": "Plaintiffs indicated at oral argument that they may seek provisional class certification in conjunction with their motion for a preliminary injunction."
+          }
+        ],
+        "value": "Plaintiff: Preliminary injunction (potential provisional class certification)"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 792-992",
+            "source_document": "Order (002)",
+            "text": "Defendants filed an emergency motion for a stay pending their appeal of the TRO."
+          }
+        ],
+        "value": "Defendant: Stay pending appeal of the temporary restraining order"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-670",
+            "source_document": "Order (001)",
+            "text": "Defendants\u2019 motions to this court indicate that the defendants requested a 7\u2011day stay of any order issuing an injunction, and that the district court denied that request, but the referred\u2011to request sought a stay only \u201cto allow the Solicitor General to determine whether to appeal and seek a stay pending appeal.\u201d"
+          }
+        ],
+        "value": "Defendant: 7\u2011day stay of any order issuing an injunction"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-670",
+            "source_document": "Order (001)",
+            "text": "Defendants\u2019 motions to this court indicate that the defendants requested a 7\u2011day stay of any order issuing an injunction, and that the district court denied that request, but the referred\u2011to request sought a stay only \u201cto allow the Solicitor General to determine whether to appeal and seek a stay pending appeal.\u201d"
+          }
+        ],
+        "value": "Defendant: Stay pending appeal to allow the Solicitor General to determine whether to appeal and seek a stay pending appeal"
+      }
+    ],
+    "key": "Remedy_Sought",
+    "last_updated": "2025-11-20T04:17:27.127143-05:00"
+  }
+}

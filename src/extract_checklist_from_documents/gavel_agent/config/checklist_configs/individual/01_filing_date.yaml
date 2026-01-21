@@ -1,0 +1,15 @@
+# Checklist configuration - Filing Date only
+# Focuses exclusively on extracting the filing date
+
+# User instruction
+user_instruction: |
+  Extract the filing date from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Filing_Date:
+    description: "The calendar date on which the lawsuit was first filed/initiated with the court."

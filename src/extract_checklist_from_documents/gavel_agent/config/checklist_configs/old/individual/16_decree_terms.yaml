@@ -1,0 +1,15 @@
+# Checklist configuration - Significant Terms of Decrees only
+# Focuses exclusively on extracting the decree terms
+
+# User instruction
+user_instruction: |
+  Extract the decree terms from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Significant_Terms_of_Decrees:
+    description: "The substantive obligations imposed by any decree—what defendants are ordered to do or refrain from doing."

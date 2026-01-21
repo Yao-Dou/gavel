@@ -1,0 +1,23 @@
+{
+  "Consolidated_Cases_Noted": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Step 3. `search_document_regex` on Docket (pattern: \"consolidated\")",
+            "source_document": "Docket",
+            "text": "Search in Docket document for 'consolidated' pattern returned 0 matches"
+          },
+          {
+            "location": "Page 5, Paragraph 4: \"except that this injunction will not supersede any contrary ruling by that Court or any other federal circuit court or district court outside of this Circuit\"",
+            "source_document": "Opinion and Order",
+            "text": "Opinion and Order references Cabrera v. U.S. Department of Labor, No. 25-cv-1909 (D.D.C. June 18, 2025) as a separate case without indication of consolidation"
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Consolidated_Cases_Noted",
+    "last_updated": "2025-11-19T12:42:05.322207-05:00"
+  }
+}

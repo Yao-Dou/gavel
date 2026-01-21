@@ -1,0 +1,88 @@
+You are given two summaries of the same legal case (Summary A and Summary B). Your task is to evaluate how similar they are in terms of structure and writing style across five specific dimensions. You should focus on **similarity** rather than quality—we want to know how alike these summaries are, not which one is better.
+
+# Summaries to Compare
+## Summary A:
+{summary_A}
+
+## Summary B:
+{summary_B}
+
+# Evaluation Dimensions with Specific Similarity Scales
+
+## 1. **Readability & Jargon Level**
+Compare the reading level and amount of legal jargon vs. plain language. Consider technical terminology density and accessibility to non-legal readers.
+
+**Similarity Scale:**
+- 5 = Nearly identical reading level and jargon density; same balance of technical/plain language throughout
+- 4 = Very similar complexity with minor differences in terminology choices or occasional variance in technical language use
+- 3 = Moderate differences in accessibility; one summary noticeably more technical in some sections but overall similar approach
+- 2 = Significantly different approaches to language complexity; one consistently more technical or accessible than the other
+- 1 = Completely different target audiences (e.g., one highly technical for legal professionals, other simplified for general public)
+
+## 2. **Narrative Order**
+Compare whether events are presented in the same sequence. Consider chronological vs. thematic organization and the order of key facts and arguments.
+
+**Similarity Scale:**
+- 5 = Identical sequence of information presentation; same events, facts, and arguments in same order
+- 4 = Same overall flow with 1-2 elements reordered; core narrative structure preserved
+- 3 = Similar general structure but several sections in different order; recognizable but rearranged
+- 2 = Different organizational approaches with some overlap; mix of chronological and thematic that diverge
+- 1 = Completely different information architecture (e.g., one chronological, other organized by legal issues)
+
+## 3. **Sentence Structure & Voice**
+Compare diversity of sentence types, active vs. passive voice balance, and verb-tense consistency.
+
+**Similarity Scale:**
+- 5 = Nearly identical sentence patterns, voice usage, and tense choices throughout
+- 4 = Very similar writing style with occasional differences in sentence complexity or voice
+- 3 = Moderate variation; one tends toward longer/shorter sentences or more active/passive constructions
+- 2 = Noticeably different writing styles; consistent differences in sentence variety and voice preferences
+- 1 = Completely different approaches (e.g., one uses varied, active sentences; other uses uniform, passive constructions)
+
+## 4. **Formatting & Layout**
+Compare use of headings, bullet lists, numbered lists, paragraphing, and other visible structure cues.
+
+**Similarity Scale:**
+- 5 = Identical formatting choices; same use of headings, lists, and paragraph breaks
+- 4 = Very similar structure with minor variations (e.g., one additional heading or slightly different list formatting)
+- 3 = Similar formatting approach but noticeable differences in execution (e.g., both use headings but different levels/frequency)
+- 2 = Different formatting philosophies; one significantly more structured than the other
+- 1 = Completely different approaches (e.g., one heavily formatted with multiple levels; other is continuous prose)
+
+## 5. **Citation & Reference Style**
+Compare presence, position, and formatting of case/statute citations or footnotes. Consider inline vs. separate citations, citation density, and formatting conventions.
+
+**Similarity Scale:**
+- 5 = Identical citation approach; same style, frequency, and positioning of references
+- 4 = Very similar citation practices with minor formatting differences or occasional variation in placement
+- 3 = Similar citation philosophy but different execution (e.g., both cite cases but different density or positioning)
+- 2 = Different citation approaches; one significantly more reference-heavy or uses different citation style
+- 1 = Completely different or incomparable (e.g., one has extensive citations, other has none; or entirely different citation formats)
+
+# Output Format
+
+Structure your response as follows:
+
+**Analysis:**
+Provide a detailed comparison for each dimension, explaining specific similarities and differences you observe between Summary A and Summary B.
+
+**Scores:**
+Output a valid JSON object with your similarity ratings:
+
+```json
+{{
+  "readability_jargon": X,
+  "narrative_order": X,
+  "sentence_structure": X,
+  "formatting_layout": X,
+  "citation_style": X
+}}
+```
+
+Where X is your similarity rating (1-5) for each dimension.
+
+# Important Notes
+- Focus on similarity, not quality or factual correctness
+- Evaluate style and structure only, ignore content differences
+- Consider the summaries as a whole when rating each dimension
+- Apply the scale objectively for every dimension, strictly following each definition

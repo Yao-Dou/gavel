@@ -1,0 +1,100 @@
+{
+  "Cause_of_Action": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 4740-5027",
+            "source_document": "Order Granting Plaintiffs' Application for Temporary Restraining Order",
+            "text": "The complaint includes causes of action for: (1) ultra vires, against all Defendants; (2) violation of the Tenth Amendment of the U.S. Constitution, against all Defendants; and (3) violation of the Administrative Procedures Act, against Secretary Hegseth and the Department of Defense."
+          }
+        ],
+        "value": "ultra vires"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 4740-5027",
+            "source_document": "Order Granting Plaintiffs' Application for Temporary Restraining Order",
+            "text": "The complaint includes causes of action for: (1) ultra vires, against all Defendants; (2) violation of the Tenth Amendment of the U.S. Constitution, against all Defendants; and (3) violation of the Administrative Procedures Act, against Secretary Hegseth and the Department of Defense."
+          }
+        ],
+        "value": "violation of the Tenth Amendment"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 4740-5027",
+            "source_document": "Order Granting Plaintiffs' Application for Temporary Restraining Order",
+            "text": "The complaint includes causes of action for: (1) ultra vires, against all Defendants; (2) violation of the Tenth Amendment of the U.S. Constitution, against all Defendants; and (3) violation of the Administrative Procedures Act, against Secretary Hegseth and the Department of Defense."
+          }
+        ],
+        "value": "violation of the Administrative Procedures Act"
+      }
+    ],
+    "key": "Cause_of_Action",
+    "last_updated": "2025-11-20T19:12:04.461964-05:00"
+  },
+  "Remedy_Sought": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 4740-5027",
+            "source_document": "Order Granting Plaintiffs' Application for Temporary Restraining Order",
+            "text": "Plaintiffs seek declaratory and injunctive relief. Id. \u00b6 107."
+          }
+        ],
+        "value": "declaratory relief"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 4740-5027",
+            "source_document": "Order Granting Plaintiffs' Application for Temporary Restraining Order",
+            "text": "Plaintiffs seek declaratory and injunctive relief. Id. \u00b6 107."
+          }
+        ],
+        "value": "injunctive relief"
+      }
+    ],
+    "key": "Remedy_Sought",
+    "last_updated": "2025-11-20T19:12:04.462018-05:00"
+  },
+  "Statutory_or_Constitutional_Basis_for_the_Case": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 4740-5027",
+            "source_document": "Order Granting Plaintiffs' Application for Temporary Restraining Order",
+            "text": "The complaint includes causes of action for: (1) ultra vires, against all Defendants; (2) violation of the Tenth Amendment of the U.S. Constitution, against all Defendants; and (3) violation of the Administrative Procedures Act, against Secretary Hegseth and the Department of Defense."
+          }
+        ],
+        "value": "Tenth Amendment of the U.S. Constitution"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 4740-5027",
+            "source_document": "Order Granting Plaintiffs' Application for Temporary Restraining Order",
+            "text": "The complaint includes causes of action for: (1) ultra vires, against all Defendants; (2) violation of the Tenth Amendment of the U.S. Constitution, against all Defendants; and (3) violation of the Administrative Procedures Act, against Secretary Hegseth and the Department of Defense."
+          }
+        ],
+        "value": "Administrative Procedures Act"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 8463-8663",
+            "source_document": "Complaint for Declaratory and Injunctive Relief",
+            "text": "Section 12406 requires that orders pursuant to that section be \u201cissued through the governors of the States or, in the case of the District of Columbia, through the commanding general of the National Guard of the District of Columbia.\u201d 10 U.S.C. \u00a7 12406."
+          }
+        ],
+        "value": "10 U.S.C. \u00a7 12406"
+      }
+    ],
+    "key": "Statutory_or_Constitutional_Basis_for_the_Case",
+    "last_updated": "2025-11-20T19:12:04.462012-05:00"
+  }
+}

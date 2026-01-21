@@ -1,0 +1,15 @@
+# Checklist configuration - Whether the Settlement is Court-enforced or Not only
+# Focuses exclusively on extracting the court enforcement status
+
+# User instruction
+user_instruction: |
+  Extract the court enforcement status from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Whether_the_Settlement_is_Court-enforced_or_Not:
+    description: "An indication of whether the settlement is enforceable by the court (e.g., entered as a consent decree or retained jurisdiction). The extracted value should be formated as '[Yes/No].'"

@@ -1,0 +1,15 @@
+# Checklist configuration - Note Important Filings only
+# Focuses exclusively on extracting the important filings
+
+# User instruction
+user_instruction: |
+  Extract the important filings from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Note_Important_Filings:
+    description: "The most important procedural filings or motions (e.g., complaint, amended complaint, motion to dismiss, summary judgment, etc.). For each identified filing, provide a description as completely as possible."

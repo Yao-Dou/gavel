@@ -1,0 +1,15 @@
+# Checklist configuration - First and Last name of Judge only
+# Focuses exclusively on extracting the judge's name
+
+# User instruction
+user_instruction: |
+  Extract the judge's name from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  First_and_Last_name_of_Judge:
+    description: "The name of the judge(s) involved in the case. Provide the first and last name if available; otherwise state whatever portion is provided (for example, only the last name or only the first name). Do not include Supreme Court Justices. The extracted value should be formatted as '[full name].'"

@@ -1,0 +1,38 @@
+{
+  "Type_of_Counsel": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-200",
+            "source_document": "Docket [PACER]",
+            "text": "United States of America represented by Clare Patricia Wuerker, U.S. Attorney's Office (Norfolk)"
+          },
+          {
+            "location": "tokens 663-750",
+            "source_document": "Order Approving and Entering Consent Decree",
+            "text": "Counsel to the United States\nIs/ Clare P. Wuerker\nAssistant United States Attorney\nUnited States Attorney's Office"
+          }
+        ],
+        "value": "Plaintiff: Government counsel (U.S. Attorney's Office (Norfolk))"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 300-500",
+            "source_document": "Docket [PACER]",
+            "text": "Hampton Roads Regional Jail represented by Jeff Wayne Rosen Authority Pender & Coward PC"
+          },
+          {
+            "location": "tokens 732-810",
+            "source_document": "Order Approving and Entering Consent Decree",
+            "text": "Counsel to the Hampton Roads Regional Jail Authority\nIs/ Jeff W. Rosen\nPender & Coward\n222 Central Park Ave. Ste. 400"
+          }
+        ],
+        "value": "Defendant: Private counsel (Pender & Coward PC (Jeff Wayne Rosen))"
+      }
+    ],
+    "key": "Type_of_Counsel",
+    "last_updated": "2025-11-20T13:01:41.128949-05:00"
+  }
+}

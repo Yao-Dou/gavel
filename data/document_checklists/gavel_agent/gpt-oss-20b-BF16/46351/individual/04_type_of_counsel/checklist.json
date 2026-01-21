@@ -1,0 +1,78 @@
+{
+  "Type_of_Counsel": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 101-301",
+            "source_document": "Docket",
+            "text": "Monica Tranel appearing for Plaintiffs Jonathan St. Goddard, Susan Webber."
+          }
+        ],
+        "value": "Plaintiff: private counsel (Monica Tranel)"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 101-301",
+            "source_document": "Docket",
+            "text": "Summons Issued as to The United States of America, U.S. Attorney and U.S. Attorney General. Issued summons may be downloaded and printed by counsel for service."
+          }
+        ],
+        "value": "Defendant: government counsel (United States Attorney / U.S. Attorney General)"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Match 3 (tokens 101-301)",
+            "source_document": "Docket",
+            "text": "U.S. Attorney and U.S. Attorney General."
+          }
+        ],
+        "value": "Defendant: government counsel (U.S. Attorney for Montana)"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 101-301",
+            "source_document": "Docket",
+            "text": "U.S. Attorney and U.S. Attorney General."
+          }
+        ],
+        "value": "Defendant: government counsel (U.S. Attorney General)"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-150",
+            "source_document": "Complaint for Declaratory and Injunctive Relief",
+            "text": "Monica J. Tranel \nTRANEL LAW FIRM, P.C. \n401 Washington Street \nMissoula, MT  59802 \n(406) 926-2662 \nmtranel@tranelfirm.com \n\nAttorneys for Plaintiffs Susan Webber and Jonathan St. Goddard"
+          }
+        ],
+        "value": "Plaintiff: private counsel (Tranelfirm)"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 1194-1394",
+            "source_document": "Docket",
+            "text": "MOTION to Transfer to U.S. Court of International Trade. Luke Mathers appearing for Defendants Kristi Noem, The United States of America, U.S. Department of Homeland Security."
+          }
+        ],
+        "value": "Defendant: government counsel (U.S. Department of Homeland Security)"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 2287-2487",
+            "source_document": "Docket",
+            "text": "MOTION to Intervene. Jesse Laslovich appearing for Interested Party Montana Farmers Union."
+          }
+        ],
+        "value": "Plaintiff: public interest nonprofit (Montana Farmers Union)"
+      }
+    ],
+    "key": "Type_of_Counsel",
+    "last_updated": "2025-11-20T08:02:50.066020-05:00"
+  }
+}

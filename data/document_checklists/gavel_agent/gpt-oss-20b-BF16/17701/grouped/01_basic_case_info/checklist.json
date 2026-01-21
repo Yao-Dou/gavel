@@ -1,0 +1,201 @@
+{
+  "Class_Action_or_Individual_Plaintiffs": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-200",
+            "source_document": "Class Action Complaint",
+            "text": "Plaintiffs,  (Class Action)"
+          }
+        ],
+        "value": "Plaintiffs: Class Action"
+      }
+    ],
+    "key": "Class_Action_or_Individual_Plaintiffs",
+    "last_updated": "2025-11-20T22:16:37.023295-05:00"
+  },
+  "Filing_Date": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Tokens 0-144",
+            "source_document": "Docket (001)",
+            "text": "Hernandez et al v City Of Houston  Date Filed: 12/05/2016"
+          },
+          {
+            "location": "Tokens 0-200",
+            "source_document": "Class Action Complaint",
+            "text": "Case 4:16-cv-03577   Document 1   Filed in TXSD on 12/05/16"
+          }
+        ],
+        "value": "12/05/2016"
+      }
+    ],
+    "key": "Filing_Date",
+    "last_updated": "2025-11-20T22:17:09.226906-05:00"
+  },
+  "Type_of_Counsel": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 1888-2088",
+            "source_document": "Docket (001)",
+            "text": "Eric Aguirre  represented by  Anna Rotman"
+          }
+        ],
+        "value": "Plaintiff: Eric Aguirre - Private Counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 46-246",
+            "source_document": "Docket (001)",
+            "text": "Juan Hernandez represented by Anna Rotman"
+          }
+        ],
+        "value": "Plaintiff: Juan Hernandez - Private Counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 1052-1252",
+            "source_document": "Docket (001)",
+            "text": "DeQuan Kirkwood represented by Anna Rotman"
+          }
+        ],
+        "value": "Plaintiff: DeQuan Kirkwood - Private Counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 1280-1480",
+            "source_document": "Docket (001)",
+            "text": "Manuel Trevino represented by Anna Rotman"
+          }
+        ],
+        "value": "Plaintiff: Manuel Trevino - Private Counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 1508-1708",
+            "source_document": "Docket (001)",
+            "text": "Kent Wheatfall represented by Anna Rotman"
+          }
+        ],
+        "value": "Plaintiff: Kent Wheatfall - Private Counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 766-966",
+            "source_document": "Docket (001)",
+            "text": "James Dossett represented by Patrick King"
+          }
+        ],
+        "value": "Plaintiff: James Dossett - Private Counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 1894-2094",
+            "source_document": "Docket (001)",
+            "text": "City Of Houston represented by Connica M Lemond"
+          }
+        ],
+        "value": "Defendant: City Of Houston - Government Counsel"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 1894-2094",
+            "source_document": "Docket (001)",
+            "text": "Litchfield Cavo"
+          }
+        ],
+        "value": "Defendant: City Of Houston - Private Counsel"
+      }
+    ],
+    "key": "Type_of_Counsel",
+    "last_updated": "2025-11-20T22:18:44.622584-05:00"
+  },
+  "Who_are_the_Parties": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 1888-2088",
+            "source_document": "Docket (001)",
+            "text": "Eric Aguirre  represented by  Anna Rotman"
+          }
+        ],
+        "value": "Plaintiff: Eric Aguirre, resident of [unknown], Texas."
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-200",
+            "source_document": "Class Action Complaint",
+            "text": "Named Plaintiff Juan Hernandez is a resident of Houston, Texas."
+          }
+        ],
+        "value": "Plaintiff: Juan Hernandez, resident of Houston, Texas."
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-200",
+            "source_document": "Class Action Complaint",
+            "text": "Named Plaintiff DeQuan Kirkwood is a resident of Houston, Texas."
+          }
+        ],
+        "value": "Plaintiff: DeQuan Kirkwood, resident of Houston, Texas."
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-200",
+            "source_document": "Class Action Complaint",
+            "text": "Named Plaintiff Manuel Trevino is a resident of Katy, Texas."
+          }
+        ],
+        "value": "Plaintiff: Manuel Trevino, resident of Katy, Texas."
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-200",
+            "source_document": "Class Action Complaint",
+            "text": "Named Plaintiff Kent Wheatfall is a resident of Houston, Texas."
+          }
+        ],
+        "value": "Plaintiff: Kent Wheatfall, resident of Houston, Texas."
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-200",
+            "source_document": "Class Action Complaint",
+            "text": "Named Plaintiff James Dossett is a resident of Baytown, Texas."
+          }
+        ],
+        "value": "Plaintiff: James Dossett, resident of Baytown, Texas."
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-100",
+            "source_document": "Docket (001)",
+            "text": "Defendant: City Of Houston"
+          }
+        ],
+        "value": "Defendant: City Of Houston, Texas."
+      }
+    ],
+    "key": "Who_are_the_Parties",
+    "last_updated": "2025-11-20T22:18:44.622571-05:00"
+  }
+}

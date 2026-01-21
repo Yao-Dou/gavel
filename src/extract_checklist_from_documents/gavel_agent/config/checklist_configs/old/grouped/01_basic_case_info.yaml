@@ -1,0 +1,26 @@
+# Checklist configuration - Basic Case Information group
+# Focuses on fundamental case details and parties involved
+
+# User instruction - what the user wants the agent to do
+user_instruction: |
+  Extract all 4 checklist items from the legal case documents as completely as possible.
+
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: filings, dates, rulings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+# Checklist items to extract - Basic Case Information group
+checklist_items:
+  Filing_Date:
+    description: "The calendar date on which the lawsuit was first filed/initiated with the court."
+
+  Who_are_the_Parties:
+    description: "Descriptions of each party, identifying plaintiffs and defendants and their roles, capacities, or offices. The extracted value should be formated as 'Plaintiff: [description]' or 'Defendant: [description]'."
+
+  Class_Action_or_Individual_Plaintiffs:
+    description: "A designation of whether plaintiffs proceed as a class action or as individual plaintiffs (with a brief description of the individuals when applicable). The extracted value should be formated as 'Plaintiffs: Class Action' or 'Plaintiffs: Individual, described as [description]'."
+
+  Type_of_Counsel:
+    description: "The category of legal representation for each party (e.g., private counsel, legal services/public defender, public interest organization such as the ACLU, government counsel)."

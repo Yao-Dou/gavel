@@ -1,0 +1,65 @@
+{
+  "model": "unsloth/gpt-oss-20b-BF16",
+  "steps": 8,
+  "total_system_prompt_tokens": 14308,
+  "total_user_prompt_tokens": 44661,
+  "total_completion_tokens": 5655,
+  "per_step_details": [
+    {
+      "step": 1,
+      "system_tokens": 2044,
+      "user_tokens": 485,
+      "completion_tokens": 27,
+      "total_prompt_tokens": 2529,
+      "is_system_cached": false
+    },
+    {
+      "step": 2,
+      "system_tokens": 2044,
+      "user_tokens": 994,
+      "completion_tokens": 207,
+      "total_prompt_tokens": 3038,
+      "is_system_cached": true
+    },
+    {
+      "step": 3,
+      "system_tokens": 2044,
+      "user_tokens": 6141,
+      "completion_tokens": 846,
+      "total_prompt_tokens": 8185,
+      "is_system_cached": true
+    },
+    {
+      "step": 4,
+      "system_tokens": 2044,
+      "user_tokens": 6227,
+      "completion_tokens": 624,
+      "total_prompt_tokens": 8271,
+      "is_system_cached": true
+    },
+    {
+      "step": 5,
+      "system_tokens": 2044,
+      "user_tokens": 11467,
+      "completion_tokens": 2718,
+      "total_prompt_tokens": 13511,
+      "is_system_cached": true
+    },
+    {
+      "step": 6,
+      "system_tokens": 2044,
+      "user_tokens": 11946,
+      "completion_tokens": 512,
+      "total_prompt_tokens": 13990,
+      "is_system_cached": true
+    },
+    {
+      "step": 8,
+      "system_tokens": 2044,
+      "user_tokens": 7401,
+      "completion_tokens": 721,
+      "total_prompt_tokens": 9445,
+      "is_system_cached": true
+    }
+  ]
+}

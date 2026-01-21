@@ -1,0 +1,15 @@
+# Checklist configuration - Monitor Reports only
+# Focuses exclusively on extracting the monitor reports
+
+# User instruction
+user_instruction: |
+  Extract the monitor reports from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Monitor_Reports:
+    description: "A monitor's report explains whether a defendant is complying with a court order, so people want to know which terms of the order are being complied with. The extracted value should be formated as 'Monitor found [compliance/non-compliance] with [specific requirement] as of [date].'"

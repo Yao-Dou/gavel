@@ -1,0 +1,39 @@
+{
+  "Consolidated_Cases_Noted": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Document header, tokens 0-102",
+            "source_document": "Class Action Complaint and Demand for Jury Trial",
+            "text": "Case: 4:20-cv-00021-SA-JMV Doc #: 1 Filed: 02/10/20 1 of 15 PageID #: 3101"
+          },
+          {
+            "location": "Document header, tokens 0-101",
+            "source_document": "Agreed Protective Order",
+            "text": "CIVIL ACTION NO. 4:20-cv-00021-SA-JMV"
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Consolidated_Cases_Noted",
+    "last_updated": "2025-11-19T18:22:45.081298-05:00"
+  },
+  "Related_Cases_Listed_by_Their_Case_Code_Number": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Search results summary",
+            "source_document": "All documents",
+            "text": "No other case numbers referenced in document corpus (searched all documents for regex pattern \\d{2}-cv-\\d{4,5} yielded only matches for 4:20-cv-00021)"
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Related_Cases_Listed_by_Their_Case_Code_Number",
+    "last_updated": "2025-11-19T18:22:45.081322-05:00"
+  }
+}

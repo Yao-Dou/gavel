@@ -1,0 +1,15 @@
+# Checklist configuration - Statutory or Constitutional Basis for the Case only
+# Focuses exclusively on extracting the statutory or constitutional basis
+
+# User instruction
+user_instruction: |
+  Extract the statutory or constitutional basis from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Statutory_or_Constitutional_Basis_for_the_Case:
+    description: "The governing statute(s) or constitutional provision(s) underlying the claims, including specific clauses and amendments when constitutional."

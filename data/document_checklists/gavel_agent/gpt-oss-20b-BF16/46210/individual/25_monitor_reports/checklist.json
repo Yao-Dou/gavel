@@ -1,0 +1,23 @@
+{
+  "Monitor_Reports": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 40600-40800",
+            "source_document": "Petition for Review",
+            "text": "Search for \"monitor report\" returned only regulatory text and no compliance status. Example snippet from Petition for Review (tokens 40600-40800):\n```\nP&R II General\nSSM?\n\u2022 clarifying that the pressure vessel Provisions tables (Table 3 to subpart F\nrequirements at 40 CFR 63.119(a)(7) 1. NESHAP of part 63 and Table 1 to subpart W of\nonly apply to pressure vessels that are We are finalizing the proposed part 63, respectively) to eliminate\n... \n```\nThis snippet contains no statement of compliance or non\u2011compliance, indicating that no monitor report is present."
+          },
+          {
+            "location": "tokens 40809-41009",
+            "source_document": "Underlying Decision from Which Petition Arises",
+            "text": "Search for \"monitor report\" returned 8 matches across documents but none include a compliance assessment. Example snippet from Underlying Decision (tokens 40809-41009):\n```\nthat are We are finalizing the proposed part 63, respectively) to eliminate\n... \n```\nAgain, no compliance status is indicated."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Monitor_Reports",
+    "last_updated": "2025-11-20T10:21:29.070443-05:00"
+  }
+}

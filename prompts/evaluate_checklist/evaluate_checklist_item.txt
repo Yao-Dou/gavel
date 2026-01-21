@@ -1,0 +1,30 @@
+You are given two pieces of legal information (A and B) about **{checklist_category}**, extracted from two summaries of the same case. Your task is to compare these pieces of information based on their **semantic meaning** - that is, what they actually convey, regardless of how they are worded or formatted.
+
+# Information to Compare
+## Information A:
+{information_A}
+
+## Information B:
+{information_B}
+
+# Relationship Options
+Determine which of these four relationships best describes how A and B relate to each other:
+1. **"A contains B"** - A includes all the core information in B and adds **substantive** extra facts.
+2. **"B contains A"** - B includes all the core information in A and adds **substantive** extra facts.
+3. **"A equals B"** - A and B convey the same underlying fact or value, after ignoring superficial differences.
+4. **"A and B are different"** - A and B contain different or conflicting information.
+
+# Output Format
+Structure your response as follows:
+**Reasoning:** Provide your detailed analysis of how the two pieces of information relate to each other
+
+**Final Answer:** State one of the four options: "A contains B", "B contains A", "A equals B", or "A and B are different"
+
+# Note
+When comparing A and B, ignore superficial differences such as:
+- Formatting (bullets, numbering, line breaks, quotation marks)
+- Field labels or lead-in text (e.g., "Full name:", "The judge is")
+- Honorifics and generic titles that don’t change the underlying entity (e.g., "Judge", "Mr.", "Dr.")
+- Boilerplate or section headers
+
+Focus on the core factual content of A and B after ignoring these elements.

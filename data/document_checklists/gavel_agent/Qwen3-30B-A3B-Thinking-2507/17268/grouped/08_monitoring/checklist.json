@@ -1,0 +1,34 @@
+{
+  "Monitor_Reports": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Regex search (Step 3) and document review",
+            "source_document": "All documents",
+            "text": "No monitor reports exist in corpus; regex search for 'monitor report' returned 0 matches across all documents."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Monitor_Reports",
+    "last_updated": "2025-11-19T18:20:20.410969-05:00"
+  },
+  "Name_of_the_Monitor": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Regex search for 'monitor report' (0 matches) and full document review",
+            "source_document": "All documents",
+            "text": "No document contains a reference to a court-appointed or agreed-upon monitor."
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Name_of_the_Monitor",
+    "last_updated": "2025-11-19T18:20:20.410944-05:00"
+  }
+}

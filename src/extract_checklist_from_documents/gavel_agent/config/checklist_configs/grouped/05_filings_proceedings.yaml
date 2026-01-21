@@ -1,0 +1,29 @@
+# Checklist configuration - Filings and Proceedings group
+# Focuses on procedural history, court actions, and appeals
+
+# User instruction - what the user wants the agent to do
+user_instruction: |
+  Extract all 5 checklist items from the legal case documents as completely as possible.
+
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: filings, dates, rulings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+# Checklist items to extract - Filings and Proceedings group
+checklist_items:
+  Note_Important_Filings:
+    description: "Information about the most important filings or motions in the case, summarized as short, self-contained narrative values. Focus on key procedural filings such as motions for temporary restraining orders, preliminary injunctions, motions to dismiss, motions for summary judgment, etc. For each filing, state who filed it, what it asked the court to do, the relevant date(s) if available. Do not just list document titles; instead, write each value so that a reader can understand what happened from that value alone. Extract each filing as a separate value."
+
+  Court_Rulings:
+    description: "The court's decisions or orders on key motions or issues, expressed as short, self-contained narrative values. Focus on how the court ruled on key motions or issues, such as: granted/denied motions to dismiss, granted/denied summary judgment, issued preliminary injunctions or TROs, certified/denied class certification, or made other significant procedural or substantive rulings. For each ruling, state what motion or issue the court decided, how it ruled (e.g., granted, denied, etc.), who brought the motion (if clear), and the relevant date(s) if available. Do not just restate document titles; instead, write each value so that a reader can understand what the court decided from that value alone. Extract each ruling as a separate value."
+
+  All_Reported_Opinions_Cited_with_Shortened_Bluebook_Citation:
+    description: "All citations to judicial opinions that include a reporter or database citation, represented in shortened Bluebook form (case name included only when it immediately precedes the citation); excludes id./supra/infra, docket-only references, slip opinions without reporter/database cites, and non-case sources."
+
+  Trials:
+    description: "Information about any trials, including scheduling, proceedings, outcomes, and materially related rulings."
+
+  Appeal:
+    description: "Information about any appeals taken, including the appealing party/parties and the appellate court. The extracted value should be formated as 'Appeal: [parties] appealed to [court].'"

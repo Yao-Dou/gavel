@@ -1,0 +1,80 @@
+{
+  "Cause_of_Action": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Page 10, Count One heading",
+            "source_document": "Complaint",
+            "text": "Count One: Violation of The Administrative Procedure Act (5 U.S.C. \u00a7 706(2)(A))"
+          }
+        ],
+        "value": "Violation of The Administrative Procedure Act"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Page 11, Count Two heading",
+            "source_document": "Complaint",
+            "text": "Count Two: Violation of The Spending Clause (U.S. Const., Art. I, Sec. 8, cl. 1)"
+          }
+        ],
+        "value": "Violation of The Spending Clause"
+      }
+    ],
+    "key": "Cause_of_Action",
+    "last_updated": "2025-11-19T16:57:25.770791-05:00"
+  },
+  "Remedy_Sought": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Page 4, paragraph 4",
+            "source_document": "Complaint",
+            "text": "Erie County brings this action seeking injunctive and declaratory relief requiring Americorps to comply with its own rules and the United States Constitution."
+          }
+        ],
+        "value": "injunctive relief"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Page 4, paragraph 4",
+            "source_document": "Complaint",
+            "text": "Erie County brings this action seeking injunctive and declaratory relief requiring Americorps to comply with its own rules and the United States Constitution."
+          }
+        ],
+        "value": "declaratory relief"
+      }
+    ],
+    "key": "Remedy_Sought",
+    "last_updated": "2025-11-19T16:57:25.770831-05:00"
+  },
+  "Statutory_or_Constitutional_Basis_for_the_Case": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Page 10, Count One heading",
+            "source_document": "Complaint",
+            "text": "Count One: Violation of The Administrative Procedure Act (5 U.S.C. \u00a7 706(2)(A))"
+          }
+        ],
+        "value": "5 U.S.C. \u00a7 706(2)(A)"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Page 11, Count Two heading",
+            "source_document": "Complaint",
+            "text": "Count Two: Violation of The Spending Clause (U.S. Const., Art. I, Sec. 8, cl. 1)"
+          }
+        ],
+        "value": "U.S. Const., Art. I, Sec. 8, cl. 1"
+      }
+    ],
+    "key": "Statutory_or_Constitutional_Basis_for_the_Case",
+    "last_updated": "2025-11-19T16:57:25.770821-05:00"
+  }
+}

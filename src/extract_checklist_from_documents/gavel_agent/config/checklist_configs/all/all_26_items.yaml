@@ -1,0 +1,102 @@
+# Checklist configuration - defines the items to extract and user instructions
+# This can be customized for different extraction tasks
+
+# User instruction - what the user wants the agent to do
+# This will be included in the prompt sent to the LLM
+user_instruction: |
+  Extract all 26 checklist items from the legal case documents as completely as possible.
+
+# Optional: Task-specific constraints beyond what's in the system prompt
+# Leave empty ([]) if standard extraction rules apply
+# Add constraints here only for special requirements specific to this task
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: filings, dates, rulings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+
+# Examples of additional constraints you might add:
+#   - "Pay special attention to dates in footnotes"
+#   - "Include dissenting opinions in the citation list"
+#   - "For settlement terms, check both main text and exhibits"
+
+# Checklist items to extract
+# Definitions from item_specific_info_improved.json
+checklist_items:
+  Filing_Date:
+    description: "The calendar date on which the lawsuit was first filed/initiated with the court."
+
+  Cause_of_Action:
+    description: "The legal vehicle(s) used to bring the claims—the \"how\" of suing—such as statutes that create a private or enforcement right of action (e.g., 42 U.S.C. § 1983, Title II of the ADA, FTCA) or judge-made vehicles (e.g., Bivens). Do not include underlying rights (constitutional amendments or statutory rights), remedies (injunction, damages, declaratory relief), or procedural doctrines/rules (e.g., Rule 23, Ex parte Young, standing, immunity). Deduplicate repeats so that each cause of action appears only once."
+
+  Statutory_or_Constitutional_Basis_for_the_Case:
+    description: "The substantive rights and sources of law allegedly violated—the \"what\" was violated—such as specific constitutional provisions or clauses (e.g., Fourteenth Amendment – Equal Protection, First Amendment – Freedom of Association, Eighth Amendment) and statutory rights (e.g., ADA Title II, Rehab Act § 504). Do not include the cause-of-action vehicle itself (e.g., 42 U.S.C. § 1983), remedies (injunctive relief, damages), or purely procedural doctrines (e.g., Rule 23, Ex parte Young). Prefer clause-level detail when available; if only the amendment or statute is named, list that. Extract each distinct basis as a separate value."
+
+  Remedy_Sought:
+    description: "The remedies each party asks the court to grant, not what the court ultimately ordered or what the parties settled. Include requests from both plaintiffs and defendants. Extract each requested remedy as a separate value, formatted as: 'Plaintiff: [remedy]' or 'Defendant: [remedy]'."
+
+  Type_of_Counsel:
+    description: "The type(s) of counsel representing each side, using brief category labels (e.g., private counsel, public interest nonprofit, government counsel, pro se) and including specific organizations in parentheses when available (e.g., Public interest nonprofit (ACLU)). If both sides are represented, extract each as a separate value formatted as 'Plaintiff: …' and 'Defendant: …'. Do not include an entry for a side if the type of counsel is not clear from the documents."
+
+  First_and_Last_name_of_Judge:
+    description: "The name of the judge(s) involved in the case. Provide the first and last name if available; otherwise state whatever portion is provided (for example, only the last name or only the first name). Do not include Supreme Court Justices. The extracted value should be formatted as '[full name]'."
+
+  All_Reported_Opinions_Cited_with_Shortened_Bluebook_Citation:
+    description: "All citations to judicial opinions that include a reporter or database citation, represented in shortened Bluebook form (case name included only when it immediately precedes the citation); excludes id./supra/infra, docket-only references, slip opinions without reporter/database cites, and non-case sources."
+
+  Class_Action_or_Individual_Plaintiffs:
+    description: "A designation of whether plaintiffs proceed as a class action or as individual plaintiffs (with a brief description of the individuals when applicable). The extracted value should be formated as 'Plaintiffs: Class Action' or 'Plaintiffs: Individual, described as [description]'."
+
+  Related_Cases_Listed_by_Their_Case_Code_Number:
+    description: "Any related matters identified by their case numbers/codes."
+
+  How_Long_Decrees_will_Last:
+    description: "The duration of decree obligations, for any formal court order or judgment such as an injunction, consent decree, or stipulated judgment/injunction, as opposed to a negotiated agreement between parties. Only include obligations that are ordered by the court. Extract each duration as a separate value, formatted as: '[duration]: [decree obligation].'"
+
+  Date_of_Settlement:
+    description: "The settlement-related dates, including execution/signing date(s), court approval dates (if approved but not entered as an order), amendment dates, enforcement/retention dates without incorporation (e.g., when a court retains jurisdiction over the settlement but does not enter it as an order), and termination/expiration dates of the settlement agreement (if contractual). Do not include any date once the settlement (in whole or in part) is incorporated into a judgment or order. Extract each date as a separate value, formatted as: '[date]: [settlement event].'"
+
+  How_Long_Settlement_will_Last:
+    description: "The duration of settlement obligations, including any monitoring periods, for negotiated agreements between parties that resolve a dispute, as opposed to formal court orders or judgments. Only include settlement obligations that are not incorporated into a court order or judgment. Extract each duration as a separate value, formatted as: '[duration]: [settlement obligation].'"
+
+  Whether_the_Settlement_is_Court-enforced_or_Not:
+    description: "Whether a settlement (not entered as an order/judgment) is court-enforced. Answer “Yes” if the court explicitly retains jurisdiction to enforce the settlement without incorporating it into an order or judgment (e.g., Kokkonen retention), and “No” if it is a private agreement with no retained jurisdiction. The extracted value should be formatted as '[Yes/No].'"
+
+  Name_of_the_Monitor:
+    description: "The name of any court-appointed or agreed-upon monitor, if one exists."
+
+  Appeal:
+    description: "Information about any appeals taken, including the appealing party/parties and the appellate court. The extracted value should be formated as 'Appeal: [parties] appealed to [court].'"
+
+  Who_are_the_Parties:
+    description: "Descriptions of each party, identifying plaintiffs and defendants and their roles, capacities, or offices. The extracted value should be formated as 'Plaintiff: [description]' or 'Defendant: [description]'."
+
+  Consolidated_Cases_Noted:
+    description: "Any indication that the case has been consolidated with other case(s), including identifying information."
+
+  Dates_of_All_Decrees:
+    description: "The decree-related dates, including entry dates, modification/amendment dates (of the order), suspension/stay dates, partial termination dates, and full termination/vacatur dates, for injunctions, consent decrees, and stipulated judgments/injunctions. If a settlement later becomes a court order (e.g., “consent decree entered”), include the entry date of that order here (pre-entry settlement dates do not belong here). Do not include dates for non-decree items (e.g., private settlements not entered as orders). Extract each date as a separate value, formatted as: '[date]: [decree event].'"
+
+  Factual_Basis_of_Case:
+    description: "Refers to the facts or evidence upon which the case is built. These facts are essential in the legal process and are used to support legal claims or decisions. It typically includes: 1. Details of the relevant events—For example, what happened, when it happened, where it happened, and who was involved. 2. Evidence – Physical evidence, documentary records, witness testimonies, etc., that support these facts. 3. Background information—Context or explanatory facts that provide additional understanding."
+
+  Note_Important_Filings:
+    description: "Information about the most important filings or motions in the case, summarized as short, self-contained narrative values. Focus on key procedural filings such as motions for temporary restraining orders, preliminary injunctions, motions to dismiss, motions for summary judgment, etc. For each filing, state who filed it, what it asked the court to do, the relevant date(s) if available. Do not just list document titles; instead, write each value so that a reader can understand what happened from that value alone. Extract each filing as a separate value."
+
+  Significant_Terms_of_Decrees:
+    description: "The substantive obligations ordered by the court. This includes consent decrees and stipulated judgments/injunctions because they are entered as court orders. Do not include terms that appear only in a settlement agreement unless those terms are expressly incorporated into (and thus ordered by) the court. Extract each term as a separate value. If only part of a settlement is incorporated into an order, extract only the incorporated terms."
+
+  Significant_Terms_of_Settlement:
+    description: "The substantive obligations agreed to in a settlement that is not entered as a court order. Do not include any terms the court ordered (such as those in consent decrees or stipulated judgments/injunctions). A settlement may be court-approved or enforced, but as long as it is not entered as an order, it is a settlement. Extract each term as a separate value. If some terms are incorporated into an order, extract only the non-incorporated (purely contractual) terms."
+
+  Monitor_Reports:
+    description: "A monitor's report explains whether a defendant is complying with a court order, so people want to know which terms of the order are being complied with. The extracted value should be formated as 'Monitor found [compliance/non-compliance] with [specific requirement] as of [date].'"
+
+  Trials:
+    description: "Information about any trials, including scheduling, proceedings, outcomes, and materially related rulings."
+
+  Court_Rulings:
+    description: "The court's decisions or orders on key motions or issues, expressed as short, self-contained narrative values. Focus on how the court ruled on key motions or issues, such as: granted/denied motions to dismiss, granted/denied summary judgment, issued preliminary injunctions or TROs, certified/denied class certification, or made other significant procedural or substantive rulings. For each ruling, state what motion or issue the court decided, how it ruled (e.g., granted, denied, etc.), who brought the motion (if clear), and the relevant date(s) if available. Do not just restate document titles; instead, write each value so that a reader can understand what the court decided from that value alone. Extract each ruling as a separate value."
+
+  Disputes_Over_Settlement_Enforcement:
+    description: "The disputes about enforcing a settlement (a negotiated agreement not entered as a court order), such as motions to enforce, motions for contempt, or requests invoking retained jurisdiction. Exclude any disputes over decrees (consent decrees or stipulated judgments/injunctions). Extract each dispute as a separate value, including the date, movant, issue, and outcome (or 'pending')."

@@ -1,0 +1,29 @@
+# Checklist configuration - Filings and Proceedings group
+# Focuses on procedural history, court actions, and appeals
+
+# User instruction - what the user wants the agent to do
+user_instruction: |
+  Extract all 5 checklist items from the legal case documents as completely as possible.
+
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: filings, dates, rulings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+# Checklist items to extract - Filings and Proceedings group
+checklist_items:
+  Note_Important_Filings:
+    description: "The most important procedural filings or motions (e.g., complaint, amended complaint, motion to dismiss, summary judgment, etc.). For each identified filing, provide a description as completely as possible."
+
+  Court_Rulings:
+    description: "The court's decisions or orders on key motions or issues. Focus on how the court ruled (granted/denied/issued) on important filings such as: motions to dismiss, motions for summary judgment, motions for preliminary injunctions or temporary restraining orders (TROs), motions for class certification, motions for attorneys' fees, and other significant procedural or substantive rulings. Extract concise descriptions of each ruling."
+
+  All_Reported_Opinions_Cited_with_Shortened_Bluebook_Citation:
+    description: "All citations to judicial opinions that include a reporter or database citation, represented in shortened Bluebook form (case name included only when it immediately precedes the citation); excludes id./supra/infra, docket-only references, slip opinions without reporter/database cites, and non-case sources."
+
+  Trials:
+    description: "Information about any trials, including scheduling, proceedings, outcomes, and materially related rulings."
+
+  Appeal:
+    description: "Information about any appeals taken, including the appealing party/parties and the appellate court. The extracted value should be formated as 'Appeal: [parties] appealed to [court].'"

@@ -1,0 +1,15 @@
+# Checklist configuration - Disputes Over Settlement Enforcement only
+# Focuses exclusively on extracting the enforcement disputes
+
+# User instruction
+user_instruction: |
+  Extract the enforcement disputes from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Disputes_Over_Settlement_Enforcement:
+    description: "The disputes about enforcing a settlement (a negotiated agreement not entered as a court order), such as motions to enforce, motions for contempt, or requests invoking retained jurisdiction. Exclude any disputes over decrees (consent decrees or stipulated judgments/injunctions). Extract each dispute as a separate value, including the date, movant, issue, and outcome (or 'pending')."

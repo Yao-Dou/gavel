@@ -1,0 +1,15 @@
+# Checklist configuration - All Reported Opinions Cited with Shortened Bluebook Citation only
+# Focuses exclusively on extracting the reported opinions
+
+# User instruction
+user_instruction: |
+  Extract the reported opinions from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  All_Reported_Opinions_Cited_with_Shortened_Bluebook_Citation:
+    description: "All citations to judicial opinions that include a reporter or database citation, represented in shortened Bluebook form (case name included only when it immediately precedes the citation); excludes id./supra/infra, docket-only references, slip opinions without reporter/database cites, and non-case sources."

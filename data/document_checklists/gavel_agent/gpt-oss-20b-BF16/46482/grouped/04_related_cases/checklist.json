@@ -1,0 +1,74 @@
+{
+  "Consolidated_Cases_Noted": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-100",
+            "source_document": "Docket",
+            "text": "Case 1:25-cv-01266 Document 1 Filed 04/24/25 Page 1 of 34"
+          }
+        ],
+        "value": "Not Applicable"
+      }
+    ],
+    "key": "Consolidated_Cases_Noted",
+    "last_updated": "2025-11-20T19:39:47.913834-05:00"
+  },
+  "Related_Cases_Listed_by_Their_Case_Code_Number": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-101",
+            "source_document": "Complaint",
+            "text": "Civil Action No. 1:25-cv-01266"
+          },
+          {
+            "location": "tokens 0-100",
+            "source_document": "Docket",
+            "text": "1:25-cv-01266"
+          }
+        ],
+        "value": "1:25-cv-01266"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 21787-21987",
+            "source_document": "Memorandum in Opposition to Plaintiff's Motion for a Preliminary Injunction",
+            "text": "Case 1:25-cv-01266-TNM"
+          }
+        ],
+        "value": "1:25-cv-01266-TNM"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 204-404",
+            "source_document": "Docket",
+            "text": "Case related to Case No. 25-cv-00999."
+          },
+          {
+            "location": "tokens 0-160",
+            "source_document": "Plaintiffs\u2019 Memorandum of Law in Support of Their Motion for a Preliminary Injunction",
+            "text": "Case No. 1:25-cv-00999 (TNM)"
+          }
+        ],
+        "value": "1:25-cv-00999"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 0-101",
+            "source_document": "Memorandum Opinion",
+            "text": "Case No. 1:25-cv-00999 (TNM)"
+          }
+        ],
+        "value": "1:25-cv-00999-TNM"
+      }
+    ],
+    "key": "Related_Cases_Listed_by_Their_Case_Code_Number",
+    "last_updated": "2025-11-20T19:41:10.679097-05:00"
+  }
+}

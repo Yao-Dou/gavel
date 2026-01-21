@@ -1,0 +1,44 @@
+You are assisting a lawyer in extracting key information from a legal case summary. Given a case summary, {item_description}
+
+# Note: Do not make assumptions or add information that is not presented in the summary.
+
+# Case Summary
+{case_summary}
+
+# Output Format
+Your output should be in the following JSON format—no extra keys, no prose outside of the JSON:
+
+```
+{{
+  "reasoning": "<brief analysis of the case summary and how you identified the relevant information or determined that none was present>",
+  "extracted": [
+    {{
+      "evidence": [
+        "<verbatim snippet 1>",
+        "<verbatim snippet 2 (if multiple snippets are relevant)>"
+        // ...
+      ],
+      "value": "<extracted information from the evidence>"
+    }}
+    // ...
+  ]
+}}
+```
+
+## Definitions of each part
+- `reasoning`: A brief analysis of the case summary and how you identified the relevant information or determined that none was present.
+- `extracted`: A list of one or more objects, each representing a distinct piece of information relevant to the checklist item (e.g., multiple court rulings, decree dates, or cited opinions). Always use a list, even if there is only one item.
+- `evidence`: One or more exact text snippets copied from the case summary that support the extracted information. Always return as a list of strings.
+- `value`: The extracted information.
+
+## Rules for the JSON schema
+1. **extracted** and **evidence** is always a list, even if they hold a single object.
+2. Copy the **evidence** exactly as it appears in the case summary—no rewriting.
+3. If the case summary contains no relevant information, output the **extracted** as an empty list:
+
+```
+{{
+  "reasoning": "<brief analysis>",
+  "extracted": []
+}}
+```

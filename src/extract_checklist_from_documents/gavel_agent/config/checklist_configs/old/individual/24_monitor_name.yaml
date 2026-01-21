@@ -1,0 +1,15 @@
+# Checklist configuration - Name of the Monitor only
+# Focuses exclusively on extracting the monitor name
+
+# User instruction
+user_instruction: |
+  Extract the monitor name from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Name_of_the_Monitor:
+    description: "The name of any court-appointed or agreed-upon monitor, if one exists."

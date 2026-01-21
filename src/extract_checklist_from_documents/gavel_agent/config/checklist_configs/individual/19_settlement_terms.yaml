@@ -1,0 +1,15 @@
+# Checklist configuration - Significant Terms of Settlement only
+# Focuses exclusively on extracting the settlement terms
+
+# User instruction
+user_instruction: |
+  Extract the settlement terms from the legal documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Significant_Terms_of_Settlement:
+    description: "The substantive obligations agreed to in a settlement that is not entered as a court order. Do not include any terms the court ordered (such as those in consent decrees or stipulated judgments/injunctions). A settlement may be court-approved or enforced, but as long as it is not entered as an order, it is a settlement. Extract each term as a separate value. If some terms are incorporated into an order, extract only the non-incorporated (purely contractual) terms."

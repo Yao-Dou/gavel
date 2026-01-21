@@ -1,0 +1,100 @@
+{
+  "Cause_of_Action": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Page 4 of 34",
+            "source_document": "Complaint",
+            "text": "These actions are also unlawful because they violate the constitutional Separation of Powers and constitute unlawful ultra vires agency action. 11.  This suit seeks declaratory and injunctive relief against Defendants\u2019 unlawful restriction of IES\u2019s and its Centers\u2019 data, and against Defendants\u2019 imminent and ongoing failure to maintain and update IES\u2019s and its Centers\u2019 data as required by Congress."
+          }
+        ],
+        "value": "Violation of the Administrative Procedure Act (APA)"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Page 4 of 34",
+            "source_document": "Complaint",
+            "text": "These actions are also unlawful because they violate the constitutional Separation of Powers and constitute unlawful ultra vires agency action."
+          }
+        ],
+        "value": "Violation of constitutional Separation of Powers"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 4301-4501",
+            "source_document": "Complaint",
+            "text": "The statutory provision in ESRA, Congress mandated that the mission of NCES is ... 20 U.S.C. \u00a7\u00a7 9541\u201348."
+          }
+        ],
+        "value": "Violation of statutory authority under the Education Statistics Reform Act (ESRA)"
+      }
+    ],
+    "key": "Cause_of_Action",
+    "last_updated": "2025-11-20T19:34:40.306647-05:00"
+  },
+  "Remedy_Sought": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "Page 4 of 34",
+            "source_document": "Complaint",
+            "text": "This suit seeks declaratory and injunctive relief against Defendants\u2019 unlawful restriction ..."
+          }
+        ],
+        "value": "declaratory relief"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Page 4 of 34",
+            "source_document": "Complaint",
+            "text": "This suit seeks declaratory and injunctive relief against Defendants\u2019 unlawful restriction ..."
+          }
+        ],
+        "value": "injunctive relief"
+      }
+    ],
+    "key": "Remedy_Sought",
+    "last_updated": "2025-11-20T19:34:40.306687-05:00"
+  },
+  "Statutory_or_Constitutional_Basis_for_the_Case": {
+    "extracted": [
+      {
+        "evidence": [
+          {
+            "location": "tokens 12461-12726",
+            "source_document": "Complaint",
+            "text": "5 U.S.C. \u00a7 706(2)(C)"
+          }
+        ],
+        "value": "Administrative Procedure Act (APA) \u2013 5 U.S.C. \u00a7 706"
+      },
+      {
+        "evidence": [
+          {
+            "location": "tokens 4301-4501",
+            "source_document": "Complaint",
+            "text": "20 U.S.C. \u00a7\u00a7 9541\u201348."
+          }
+        ],
+        "value": "Education Statistics Reform Act (ESRA) \u2013 20 U.S.C. \u00a7\u00a7 9541\u201348"
+      },
+      {
+        "evidence": [
+          {
+            "location": "Page 4 of 34",
+            "source_document": "Complaint",
+            "text": "violate the constitutional Separation of Powers"
+          }
+        ],
+        "value": "Constitutional Separation of Powers"
+      }
+    ],
+    "key": "Statutory_or_Constitutional_Basis_for_the_Case",
+    "last_updated": "2025-11-20T19:34:40.306680-05:00"
+  }
+}

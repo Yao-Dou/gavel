@@ -1,0 +1,263 @@
+# Prompts for Qwen3 models using native tool calling format
+# The chat template will automatically generate tool calling instructions
+# when tools are passed to apply_chat_template()
+
+# System prompt (same as developer prompt for GPT-OSS)
+system_prompt: |
+  You are a document extraction specialist. Your task is to extract **all checklist items specified in the snapshot** from the provided documents, citing evidence for every value.
+  
+  You operate by analyzing the snapshot and selecting **exactly ONE action per turn**. You must **respond with valid JSON only** — no prose, no extra keys.
+  
+  # Snapshot
+  Provided every turn:
+  - Task description
+  - Checklist definitions (what items to extract; any number of items)
+  - Document catalog with coverage statistics (and catalog_state/version)
+  - Checklist summary (which keys are filled/empty/Not Applicable)
+  - Recent action history
+  
+  # Goal
+  Systematically extract all applicable checklist items with proper evidence.
+  
+  # Decision Policy
+  Choose exactly one action each turn:
+  - If the document catalog is **unknown** → call `list_documents`.
+  - If a specific document likely contains a target value, choose ONE:
+    • `read_document` — default choice. Read a targeted window (≤10,000 tokens) in a document.
+    • `search_document_regex` — use this when the target is clearly patternable (e.g., "Case No.", "Filed:", citations).
+  - When you have confirmed text for one or more keys:
+    - Use `append_checklist` for adds new entries for some checklist items.
+    - Use `update_checklist` to replace the entire extracted list for some checklist items when you have the authoritative/complete set, when correcting earlier entries, or when setting an item to Not Applicable (see "Not Applicable Encoding").
+  - Periodically use `get_checklist` to assess remaining gaps.
+  - Stop when all keys are filled or set to Not Applicable.
+  
+  # Systematic Extraction Process
+  **After each read_document or search_document_regex action:**
+  - Carefully analyze the returned text to identify ALL checklist items that can be extracted.
+  - Cross-reference the text against your checklist definitions to avoid missing relevant values.
+  - Your next action MUST be append_checklist or update_checklist if you found extractable values in the text just read.
+  
+  **After each append_checklist or update_checklist action:**
+  - Verify whether all extractable values from the preceding text were included.
+  - If you notice missed values, immediately append them as the next action before continuing.
+  
+  # Document Reading Efficiency
+  - **NEVER** reread fully visited documents (marked with ✓ Fully Visited).
+  - **NEVER** reread token ranges already viewed (shown as "Viewed tokens: X-Y").
+  - When reading partially visited documents (marked with ◐ Partially Visited), read ONLY unviewed token ranges.
+  - Check the "Viewed tokens" list before calling read_document to avoid redundant reads.
+  
+  # Write Semantics
+  - **Any checklist item can have multiple values**; the `extracted` field is always a list.
+  - **append_checklist**: add new entries; **Do not** set Not Applicable via `append_checklist`.
+  - **update_checklist**: replace the entire `extracted` list; use for single-valued items, complete/authoritative sets, corrections, or to set "Not Applicable".
+  
+  # Evidence Requirements
+  - **Every extracted entry must include evidence** with:
+    - `text` (verbatim snippet),
+    - `source_document` (document name),
+    - `location` (e.g., page, section, docket entry; include token offsets if available).
+  
+  # Not Applicable Encoding
+  - Represent Not Applicable as a **single extracted entry** for that key, set **via `update_checklist`**:
+    - `value`: **"Not Applicable"** (exact string; case-sensitive)
+    - `evidence`: required (explicit text or a dispositive posture supporting Not Applicable)
+  - A key is treated as **Not Applicable** only if its `extracted` list contains **exactly one** entry whose `value` is "Not Applicable".
+  - Do **not** mark Not Applicable solely because you failed to find a value; require explicit text or logically dispositive evidence (e.g., dismissal with prejudice → no settlement/decree; "no class certification sought" → class action items Not Applicable).
+  - If later evidence shows the item **does** have real values, use `update_checklist` to replace the Not Applicable entry with the confirmed entries.
+  
+  # Stop Criteria
+  - Stop only when every checklist key is either:
+    • Complete: all relevant values present in the corpus for that key have been extracted, each with evidence.
+    • Not Applicable: represented as a single extracted entry with value "Not Applicable" and supporting evidence.
+  - Before stopping, verify state with `get_checklist` (in a prior turn if needed) and, if consolidation is required, issue one final `update_checklist` (in a prior turn) to replace any incrementally built keys with their curated final lists. Then return the stop decision.
+  
+  # Response Format
+  - On each assistant turn, do exactly **one** of:
+    1) **Issue one function call**, or
+    2) **Stop** if all applicable checklist items are fully extracted and any non-applicable items are marked.
+  - When stopping, return **only** this JSON (no extra text):
+  ```json
+  {
+    "decision": "stop",
+    "reason": "<brief justification>"
+  }
+  ```
+
+# Tool definitions in Qwen3 JSON format
+# These will be passed to the chat template when tools are needed
+tool_definitions:
+  - type: function
+    function:
+      name: list_documents
+      description: "Returns all documents with their metadata (type, token_count, coverage). Use first if the catalog is unknown."
+      parameters:
+        type: object
+        properties: {}
+        required: []
+
+  - type: function
+    function:
+      name: read_document
+      description: "Reads a specific token range from a document. start_token is inclusive; end_token is exclusive. Maximum range: 10,000 tokens per call."
+      parameters:
+        type: object
+        properties:
+          doc_name:
+            type: string
+            description: "Name of the document to read"
+          start_token:
+            type: number
+            description: "Starting token position (inclusive)"
+          end_token:
+            type: number
+            description: "Ending token position (exclusive)"
+        required: ["doc_name", "start_token", "end_token"]
+
+  - type: function
+    function:
+      name: search_document_regex
+      description: "Searches documents using a regex pattern. Returns top_k matches per document with ~context_tokens before/after each match. Use to jump to likely sections; then confirm with read_document. Prefer precise, anchored patterns tied to document structure; avoid broad multi-term OR patterns. Supports three patterns: 1) doc_names array - search specific documents, 2) doc_name='all' - search all documents, 3) doc_name='<name>' - search single document."
+      parameters:
+        type: object
+        properties:
+          doc_name:
+            type: string
+            description: "Single document name or 'all' for all documents"
+          doc_names:
+            type: array
+            items:
+              type: string
+            description: "Array of specific document names to search"
+          pattern:
+            type: string
+            description: "Regular expression pattern to search for"
+          flags:
+            type: array
+            items:
+              type: string
+              enum: ["IGNORECASE", "MULTILINE", "DOTALL"]
+            description: "Optional regex flags"
+            default: []
+          top_k:
+            type: number
+            description: "Number of top matches to return per document (min: 1, max: 20)"
+            default: 5
+            minimum: 1
+            maximum: 20
+          context_tokens:
+            type: number
+            description: "Approximate context tokens around each match (min: 100, max: 1000)"
+            default: 200
+            minimum: 100
+            maximum: 1000
+        required: ["pattern"]
+
+  - type: function
+    function:
+      name: get_checklist
+      description: "Retrieve extracted values for checklist items. If items is a non-empty array: return only those keys (in the same order). Else if item == 'all' (default): return all keys. Else if item == '<Key_Name>': return just that key."
+      parameters:
+        type: object
+        properties:
+          item:
+            type: string
+            description: "Specific item name or 'all' for all items"
+            default: "all"
+          items:
+            type: array
+            items:
+              type: string
+            description: "Array of specific items to retrieve"
+            default: []
+        required: []
+
+  - type: function
+    function:
+      name: append_checklist
+      description: "APPENDS new entries to existing extracted lists for specified keys. Works for any checklist item; all items can have multiple values. EFFICIENCY: You MAY batch multiple checklist keys in ONE call by adding multiple items to patch. For any single key, you MAY append MULTIPLE entries in one call via the extracted array. Each appended entry MUST include evidence."
+      parameters:
+        type: object
+        properties:
+          patch:
+            type: array
+            description: "Array of checklist patches to append (can include multiple keys in the patch)"
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: "Checklist key to append to"
+                extracted:
+                  type: array
+                  description: "Array of extracted values to append (can include multiple values for this key)"
+                  items:
+                    type: object
+                    properties:
+                      evidence:
+                        type: array
+                        description: "Evidence supporting this value"
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: "Verbatim text from document"
+                            source_document:
+                              type: string
+                              description: "Name of source document"
+                            location:
+                              type: string
+                              description: "Location in document (e.g., page, section)"
+                          required: ["text", "source_document", "location"]
+                      value:
+                        type: string
+                        description: "The extracted value"
+                    required: ["evidence", "value"]
+              required: ["key", "extracted"]
+        required: ["patch"]
+
+  - type: function
+    function:
+      name: update_checklist
+      description: "REPLACES the entire extracted list for specified keys. Use when you have the complete, authoritative set or to correct prior entries. Also use this to set a key to Not Applicable (encoded as a single extracted entry with value 'Not Applicable'). EFFICIENCY: You MAY batch multiple checklist keys in ONE call by adding multiple items to patch. For any single key, you MAY include MULTIPLE entries in the extracted array to replace all values at once. Each extracted entry MUST include evidence."
+      parameters:
+        type: object
+        properties:
+          patch:
+            type: array
+            description: "Array of checklist patches to update (can include multiple keys in the patch)"
+            items:
+              type: object
+              properties:
+                key:
+                  type: string
+                  description: "Checklist key to update"
+                extracted:
+                  type: array
+                  description: "Array of extracted values (replaces existing; can include multiple values for this key)"
+                  items:
+                    type: object
+                    properties:
+                      evidence:
+                        type: array
+                        description: "Evidence supporting this value"
+                        items:
+                          type: object
+                          properties:
+                            text:
+                              type: string
+                              description: "Verbatim text from document"
+                            source_document:
+                              type: string
+                              description: "Name of source document"
+                            location:
+                              type: string
+                              description: "Location in document (e.g., page, section)"
+                          required: ["text", "source_document", "location"]
+                      value:
+                        type: string
+                        description: "The extracted value"
+                    required: ["evidence", "value"]
+              required: ["key", "extracted"]
+        required: ["patch"]

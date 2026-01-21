@@ -1,0 +1,63 @@
+You are assisting a lawyer in extracting key information from legal case documents. You will be given multiple documents related to a legal case. Your task is to {item_description}
+
+# Note: 
+- Do not make assumptions or add information that is not presented in the documents.
+- When extracting evidence, quote the exact text from the documents.
+- Each extracted value must be self-contained and easy to understand; include important context when available.
+
+# Case Documents
+{case_documents}
+
+# Output Format
+Your output should be in the following JSON format—no extra keys, no prose outside of the JSON:
+
+```
+{
+  "reasoning": "<brief analysis of the case documents and how you identified the relevant information or determined that none was present>",
+  "extracted": [
+    {
+      "evidence": [
+        {
+          "text": "<verbatim snippet 1>",
+          "source_document": "<document name>",
+          "location": "<page number or section>"
+        },
+        {
+          "text": "<verbatim snippet 2 (if multiple snippets are relevant)>",
+          "source_document": "<document name>",
+          "location": "<page number or section>"
+        }
+        // ...
+      ],
+      "value": "<extracted information from the evidence>"
+    }
+    // ...
+  ]
+}
+```
+
+## Definitions of each part
+- `reasoning`: A brief analysis of the case documents and how you identified the relevant information or determined that none was present.
+- `extracted`: A list of one or more objects, each representing a distinct piece of information relevant to the checklist item. Always use a list, even if there is only one item.
+- `evidence`: A list of evidence objects, each containing:
+  - `text`: Exact text snippet copied from the case documents
+  - `source_document`: The title/name of the document where this evidence was found
+  - `location`: The page number or section identifier where the evidence appears
+- `value`: The extracted information based on the evidence.
+
+## Rules for the JSON schema
+1. **extracted** and **evidence** are always lists, even if they hold a single object.
+2. Copy the **text** in evidence objects exactly as it appears in the case documents—no rewriting or paraphrasing.
+3. Always include **source_document** and **location** for each piece of evidence.
+4. If the case documents contain no relevant information, output the **extracted** as an empty list:
+
+```
+{
+  "reasoning": "<brief analysis>",
+  "extracted": []
+}
+```
+
+5. Extract information from all relevant documents—do not stop after finding information in just one document.
+6. Each distinct piece of information should be a separate item in the **extracted** list.
+7. If you cannot determine the specific page number or section, you may use descriptive locations like "beginning of document", "middle section", or "near the end".

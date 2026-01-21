@@ -1,0 +1,29 @@
+# Checklist configuration - Settlements group
+# Focuses on settlement agreements and enforcement
+
+# User instruction - what the user wants the agent to do
+user_instruction: |
+  Extract all 5 checklist items from the legal case documents as completely as possible.
+
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: filings, dates, rulings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+# Checklist items to extract - Settlements group
+checklist_items:
+  Significant_Terms_of_Settlement:
+    description: "The substantive obligations agreed to in any settlement—what the parties agree to do or refrain from doing."
+
+  Date_of_Settlement:
+    description: "The calendar date on which a settlement was reached, executed, or approved. The extracted value should be formated as '[date]: [settlement].'"
+
+  How_Long_Settlement_will_Last:
+    description: "The duration terms of settlement obligations or monitoring periods. The extracted value should be formated as '[duration]: [settlement].'"
+
+  Whether_the_Settlement_is_Court-enforced_or_Not:
+    description: "An indication of whether the settlement is enforceable by the court (e.g., entered as a consent decree or retained jurisdiction). The extracted value should be formated as '[Yes/No].'"
+
+  Disputes_Over_Settlement_Enforcement:
+    description: "Information about disagreements, motions, or proceedings concerning enforcement of a settlement."

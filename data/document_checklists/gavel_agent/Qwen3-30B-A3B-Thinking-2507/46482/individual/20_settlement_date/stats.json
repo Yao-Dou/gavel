@@ -1,0 +1,89 @@
+{
+  "model": "Qwen/Qwen3-30B-A3B-Thinking-2507",
+  "steps": 11,
+  "total_system_prompt_tokens": 10980,
+  "total_user_prompt_tokens": 70711,
+  "total_completion_tokens": 12596,
+  "per_step_details": [
+    {
+      "step": 1,
+      "system_tokens": 1098,
+      "user_tokens": 2093,
+      "completion_tokens": 185,
+      "total_prompt_tokens": 3191,
+      "is_system_cached": false
+    },
+    {
+      "step": 2,
+      "system_tokens": 1098,
+      "user_tokens": 2382,
+      "completion_tokens": 591,
+      "total_prompt_tokens": 3480,
+      "is_system_cached": true
+    },
+    {
+      "step": 3,
+      "system_tokens": 1098,
+      "user_tokens": 7669,
+      "completion_tokens": 928,
+      "total_prompt_tokens": 8767,
+      "is_system_cached": true
+    },
+    {
+      "step": 4,
+      "system_tokens": 1098,
+      "user_tokens": 7723,
+      "completion_tokens": 704,
+      "total_prompt_tokens": 8821,
+      "is_system_cached": true
+    },
+    {
+      "step": 5,
+      "system_tokens": 1098,
+      "user_tokens": 8865,
+      "completion_tokens": 885,
+      "total_prompt_tokens": 9963,
+      "is_system_cached": true
+    },
+    {
+      "step": 6,
+      "system_tokens": 1098,
+      "user_tokens": 10986,
+      "completion_tokens": 2293,
+      "total_prompt_tokens": 12084,
+      "is_system_cached": true
+    },
+    {
+      "step": 7,
+      "system_tokens": 1098,
+      "user_tokens": 11135,
+      "completion_tokens": 722,
+      "total_prompt_tokens": 12233,
+      "is_system_cached": true
+    },
+    {
+      "step": 8,
+      "system_tokens": 1098,
+      "user_tokens": 7530,
+      "completion_tokens": 4225,
+      "total_prompt_tokens": 8628,
+      "is_system_cached": true
+    },
+    {
+      "step": 9,
+      "system_tokens": 1098,
+      "user_tokens": 7632,
+      "completion_tokens": 1655,
+      "total_prompt_tokens": 8730,
+      "is_system_cached": true
+    },
+    {
+      "step": 11,
+      "system_tokens": 1098,
+      "user_tokens": 4696,
+      "completion_tokens": 408,
+      "total_prompt_tokens": 5794,
+      "is_system_cached": true
+    }
+  ]
+}
