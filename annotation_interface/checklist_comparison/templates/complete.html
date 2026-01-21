@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="header">
+    <h1>Annotation Complete</h1>
+</div>
+
+<div class="content" style="text-align: center; padding: 60px 30px;">
+    <h2 style="color: #27ae60; margin-bottom: 20px;">Thank you for completing the annotations!</h2>
+    <p style="font-size: 18px; color: #666; margin-bottom: 30px;">
+        Your contributions have been saved and will help improve legal case summary analysis.
+    </p>
+    <div style="background-color: #f8f9fa; padding: 20px; border-radius: 8px; display: inline-block;">
+        <p style="margin-bottom: 10px;">Session ID: <code>{{ session.get('session_id', 'N/A') }}</code></p>
+        <p>Total annotations completed: <strong>{{ session.get('current_index', 0) }}</strong></p>
+    </div>
+</div>
+{% endblock %}

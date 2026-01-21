@@ -1,0 +1,73 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="header">
+    <h1>Legal Summary Writing Style Comparison</h1>
+</div>
+
+<div class="content" style="max-width: 500px; margin: 0 auto;">
+    <div style="text-align: center; margin-bottom: 30px;">
+        <h2>Please enter your username to continue</h2>
+        <p style="color: #666;">Dataset: <strong>{{ data_source }}</strong></p>
+        {% if adjudicated %}
+        <p style="color: #d9534f; font-weight: bold;">Mode: Adjudication (Pilot data only)</p>
+        {% endif %}
+        <p style="color: #666;">Your progress will be automatically saved and you can resume where you left off.</p>
+    </div>
+
+    {% if error %}
+    <div style="background-color: #f8d7da; color: #721c24; padding: 15px; border-radius: 6px; margin-bottom: 20px; border: 1px solid #f5c6cb;">
+        {{ error }}
+    </div>
+    {% endif %}
+
+    <form method="POST" style="background-color: #f8f9fa; padding: 30px; border-radius: 8px; border: 1px solid #dee2e6;">
+        <div style="margin-bottom: 20px;">
+            <label for="username" style="display: block; margin-bottom: 8px; font-weight: 500;">Username:</label>
+            <input 
+                type="text" 
+                id="username" 
+                name="username" 
+                required 
+                autofocus
+                style="width: 100%; padding: 12px; border: 1px solid #ddd; border-radius: 4px; font-size: 16px; box-sizing: border-box;"
+                placeholder="Enter your username"
+            >
+        </div>
+        
+        <button 
+            type="submit" 
+            class="btn btn-primary" 
+            style="width: 100%; padding: 12px; font-size: 16px;"
+        >
+            Start Annotation
+        </button>
+    </form>
+
+    <div style="margin-top: 30px; padding: 20px; background-color: #e3f2fd; border-radius: 8px; border: 1px solid #bbdefb;">
+        <h4 style="margin-bottom: 10px; color: #1976d2;">Instructions:</h4>
+        <ul style="margin: 0; padding-left: 20px; color: #666;">
+            <li>Enter your assigned username to access your specific annotation tasks</li>
+            <li>Your progress is automatically saved after each annotation</li>
+            <li>If you close the browser, you can resume from where you left off</li>
+            <li>Contact the administrator if you have issues with your username</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Auto-focus on the username input when page loads
+document.addEventListener('DOMContentLoaded', function() {
+    document.getElementById('username').focus();
+});
+
+// Submit form on Enter key
+document.getElementById('username').addEventListener('keypress', function(e) {
+    if (e.key === 'Enter') {
+        this.closest('form').submit();
+    }
+});
+</script>
+{% endblock %}

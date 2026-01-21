@@ -1,0 +1,978 @@
+{% extends "base.html" %}
+
+{% block extra_styles %}
+<style>
+    /* Summary display styles - exact same as annotate.html */
+    .summary-container {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 30px;
+        margin: 20px 0;
+    }
+
+    .summary-box {
+        padding: 20px;
+        border: 2px solid #e0e0e0;
+        border-radius: 8px;
+        background-color: #fafafa;
+        height: 500px;
+        display: flex;
+        flex-direction: column;
+        min-width: 0;
+    }
+
+    .summary-box h3 {
+        color: #3498db;
+        margin-bottom: 15px;
+        flex-shrink: 0;
+    }
+
+    .summary-content {
+        white-space: pre-wrap;
+        word-wrap: break-word;
+        line-height: 1.5;
+        overflow-y: auto;
+        flex: 1;
+        padding-right: 10px;
+    }
+
+    /* Custom scrollbar for summary content */
+    .summary-content::-webkit-scrollbar {
+        width: 8px;
+    }
+
+    .summary-content::-webkit-scrollbar-track {
+        background: #f1f1f1;
+        border-radius: 4px;
+    }
+
+    .summary-content::-webkit-scrollbar-thumb {
+        background: #c1c1c1;
+        border-radius: 4px;
+    }
+
+    .summary-content::-webkit-scrollbar-thumb:hover {
+        background: #999;
+    }
+
+    /* Tab navigation styles */
+    .tabs-container {
+        margin-top: 30px;
+    }
+
+    .tabs-header {
+        display: flex;
+        gap: 10px;
+        margin-bottom: 20px;
+        border-bottom: 2px solid #e0e0e0;
+        padding-bottom: 0;
+    }
+
+    .tab-button {
+        background-color: #f8f9fa;
+        border: 2px solid #e0e0e0;
+        border-bottom: none;
+        padding: 12px 20px;
+        font-size: 15px;
+        cursor: pointer;
+        border-radius: 8px 8px 0 0;
+        transition: all 0.3s;
+        position: relative;
+        bottom: -2px;
+    }
+
+    .tab-button:hover {
+        background-color: #e9ecef;
+    }
+
+    .tab-button.active {
+        background-color: #fff;
+        border-color: #e0e0e0;
+        border-bottom: 2px solid #fff;
+        font-weight: 600;
+    }
+
+    .tab-status {
+        margin-left: 8px;
+    }
+
+    .tab-status.not-rated::after {
+        content: '○';
+        color: #e74c3c;
+        font-size: 20px;
+    }
+
+    .tab-status.rated::after {
+        content: '✓';
+        color: #27ae60;
+        font-size: 16px;
+    }
+
+    /* Tab content */
+    .tab-content {
+        display: none;
+        padding: 20px;
+        background-color: #f8f9fa;
+        border-radius: 8px;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    .aspect-description {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border-left: 4px solid #3498db;
+    }
+
+    .aspect-title {
+        font-size: 18px;
+        font-weight: 600;
+        color: #2c3e50;
+        margin-bottom: 10px;
+    }
+
+    /* Previous ratings section for adjudication */
+    .previous-ratings-section {
+        background-color: #fff3cd;
+        padding: 20px;
+        border-radius: 8px;
+        margin-bottom: 20px;
+        border-left: 4px solid #ffc107;
+    }
+
+    .previous-ratings-title {
+        font-size: 16px;
+        font-weight: 600;
+        color: #856404;
+        margin-bottom: 15px;
+    }
+
+    .rating-bubbles {
+        display: flex;
+        gap: 15px;
+        justify-content: center;
+    }
+
+    .rating-bubble {
+        background-color: #fff;
+        border: 2px solid #ffc107;
+        border-radius: 50%;
+        width: 50px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-weight: bold;
+        font-size: 20px;
+        color: #856404;
+        box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+
+    /* Rating scale - same as annotate.html */
+    .rating-scale {
+        background-color: #fff;
+        padding: 20px;
+        border-radius: 8px;
+        border-left: 4px solid #e74c3c;
+    }
+
+    .rating-options-container {
+        display: flex;
+        gap: 10px;
+        margin-top: 15px;
+    }
+
+    .rating-option {
+        flex: 1;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 15px 10px;
+        border: 2px solid #e0e0e0;
+        border-radius: 6px;
+        cursor: pointer;
+        transition: all 0.2s;
+        text-align: center;
+    }
+
+    .rating-option:hover {
+        border-color: #3498db;
+        background-color: #f0f8ff;
+    }
+
+    .rating-option.selected {
+        border-color: #3498db;
+        background-color: #e3f2fd;
+    }
+
+    .rating-option input[type="radio"] {
+        display: none;
+    }
+
+    .rating-label {
+        width: 100%;
+    }
+
+    .rating-value {
+        font-size: 25px;
+        font-weight: bold;
+        color: #3498db;
+    }
+
+    .rating-title {
+        font-weight: 600;
+        font-size: 16px;
+        margin-bottom: 5px;
+        color: #2c3e50;
+    }
+
+    .rating-description {
+        color: #666;
+        font-size: 15px;
+        line-height: 1.5;
+    }
+
+    /* General question section */
+    .general-question-section {
+        background-color: #fff;
+        padding: 25px;
+        border-radius: 8px;
+        margin: 30px 0 20px 0;
+        border-left: 4px solid #9b59b6;
+    }
+
+    .feedback-textarea {
+        width: 100%;
+        min-height: 80px;
+        padding: 10px;
+        border: 2px solid #e0e0e0;
+        border-radius: 6px;
+        font-family: inherit;
+        font-size: 14px;
+        resize: vertical;
+    }
+
+    .feedback-textarea:focus {
+        outline: none;
+        border-color: #9b59b6;
+    }
+
+    /* Buttons */
+    .btn {
+        padding: 12px 30px;
+        font-size: 16px;
+        border: none;
+        border-radius: 6px;
+        cursor: pointer;
+        font-weight: 500;
+        transition: all 0.3s;
+    }
+
+    .btn-primary {
+        background-color: #3498db;
+        color: white;
+    }
+
+    .btn-primary:hover {
+        background-color: #2980b9;
+    }
+
+    .btn-primary:disabled {
+        background-color: #95a5a6;
+        cursor: not-allowed;
+    }
+
+    .btn-secondary {
+        background-color: #95a5a6;
+        color: white;
+    }
+
+    .btn-secondary:hover {
+        background-color: #7f8c8d;
+    }
+
+    /* Actions */
+    .actions {
+        display: flex;
+        justify-content: space-between;
+        margin-top: 30px;
+    }
+
+    .skip-text {
+        color: #666;
+        font-size: 14px;
+    }
+</style>
+{% endblock %}
+
+{% block content %}
+{% if preview_mode %}
+<div style="background-color: #fff3cd; padding: 20px; text-align: center; border-bottom: 2px solid #ffc107;">
+    <h3 style="margin: 0; color: #856404;">Preview Mode - Adjudication</h3>
+    <p style="margin: 10px 0 0; color: #856404;">Please log in to start adjudicating</p>
+</div>
+{% endif %}
+
+<div class="header">
+    {% if username %}
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <h1>Legal Summary Adjudication</h1>
+            <div style="color: #666; font-size: 14px;">
+                Welcome, {{ username }} | Dataset: <strong>{{ data_source }}</strong>
+                | <span style="color: #ffc107; font-weight: bold;">⚖️ Adjudication Mode</span>
+            </div>
+        </div>
+        <div style="text-align: right;">
+            <div class="progress">Instance {{ current_index }} of {{ total_pairs }}</div>
+            <div id="time-display" style="color: #666; font-size: 12px; margin-top: 3px;">Time: 0:00</div>
+            <a href="/logout" style="color: #666; text-decoration: none; font-size: 14px; margin-top: 5px; display: inline-block;">Logout</a>
+        </div>
+    </div>
+    {% else %}
+    <h1>Legal Summary Adjudication</h1>
+    <div class="progress">Instance {{ current_index }} of {{ total_pairs }} (Preview)</div>
+    {% endif %}
+</div>
+
+<div class="content" {% if preview_mode %}style="filter: blur(3px); pointer-events: none;"{% endif %}>
+    <div class="instructions">
+        <h3>Adjudication Instructions</h3>
+        <p>You are reviewing ratings from 3 annotators for the same legal case summaries. Your task is to provide a final adjudicated rating for each of the five dimensions.</p>
+        <p><strong>Important:</strong> Consider all 3 ratings shown in yellow boxes and provide your best judgment for the final rating. Focus on similarity rather than quality.</p>
+        {% if existing_annotation %}
+        <div style="background-color: #d4edda; padding: 10px; border-left: 4px solid #28a745; margin-top: 15px; border-radius: 4px;">
+            <strong>Note:</strong> You have previously adjudicated this case. Your previous ratings have been loaded for review.
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="comparison-section">
+        <h3>Case ID: {{ case_id }}</h3>
+
+        <!-- Summary display - same as annotate.html -->
+        <div class="summary-container">
+            <div class="summary-box">
+                <h3>Summary A</h3>
+                <div class="summary-content">{{ summary_a }}</div>
+            </div>
+            <div class="summary-box">
+                <h3>Summary B</h3>
+                <div class="summary-content">{{ summary_b }}</div>
+            </div>
+        </div>
+
+        <!-- Tabs for 5 aspects -->
+        <div class="tabs-container">
+            <div class="tabs-header">
+                <button class="tab-button active" onclick="showTab('readability')" data-tab="readability">
+                    Readability & Jargon
+                    <span class="tab-status not-rated" id="status-readability"></span>
+                </button>
+                <button class="tab-button" onclick="showTab('narrative')" data-tab="narrative">
+                    Narrative Order
+                    <span class="tab-status not-rated" id="status-narrative"></span>
+                </button>
+                <button class="tab-button" onclick="showTab('sentence')" data-tab="sentence">
+                    Sentence Structure
+                    <span class="tab-status not-rated" id="status-sentence"></span>
+                </button>
+                <button class="tab-button" onclick="showTab('formatting')" data-tab="formatting">
+                    Formatting & Layout
+                    <span class="tab-status not-rated" id="status-formatting"></span>
+                </button>
+                <button class="tab-button" onclick="showTab('citation')" data-tab="citation">
+                    Citation Style
+                    <span class="tab-status not-rated" id="status-citation"></span>
+                </button>
+            </div>
+
+            <!-- Tab content for each aspect -->
+            <div class="tab-content active" id="tab-readability">
+                <div class="aspect-description">
+                    <div class="aspect-title">Readability & Jargon Level</div>
+                    <p>Compare the reading level and amount of legal jargon vs. plain language. Consider technical terminology density and accessibility to non-legal readers.</p>
+                </div>
+
+                {% if all_ratings and all_ratings.readability_jargon %}
+                <div class="previous-ratings-section">
+                    <div class="previous-ratings-title">Previous Annotator Ratings:</div>
+                    <div class="rating-bubbles">
+                        {% for rating in all_ratings.readability_jargon %}
+                        <div class="rating-bubble">{{ rating }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="rating-scale">
+                    <h4>Your adjudicated rating for readability & jargon (1 = completely different, 5 = nearly identical)</h4>
+                    <div class="rating-options-container">
+                        <div class="rating-option" onclick="selectRating('readability', 1, this)">
+                            <input type="radio" name="readability_rating" value="1" id="readability_1">
+                            <label class="rating-label" for="readability_1">
+                                <div class="rating-value">1</div>
+                                <div class="rating-title">Completely different</div>
+                                <div class="rating-description">Completely different target audiences (e.g., one highly technical for legal professionals, other simplified for general public)</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('readability', 2, this)">
+                            <input type="radio" name="readability_rating" value="2" id="readability_2">
+                            <label class="rating-label" for="readability_2">
+                                <div class="rating-value">2</div>
+                                <div class="rating-title">Significantly different</div>
+                                <div class="rating-description">Significantly different approaches to language complexity; one consistently more technical or accessible than the other</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('readability', 3, this)">
+                            <input type="radio" name="readability_rating" value="3" id="readability_3">
+                            <label class="rating-label" for="readability_3">
+                                <div class="rating-value">3</div>
+                                <div class="rating-title">Moderate differences</div>
+                                <div class="rating-description">Moderate differences in accessibility; one summary noticeably more technical in some sections but overall similar approach</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('readability', 4, this)">
+                            <input type="radio" name="readability_rating" value="4" id="readability_4">
+                            <label class="rating-label" for="readability_4">
+                                <div class="rating-value">4</div>
+                                <div class="rating-title">Very similar</div>
+                                <div class="rating-description">Very similar complexity with minor differences in terminology choices or occasional variance in technical language use</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('readability', 5, this)">
+                            <input type="radio" name="readability_rating" value="5" id="readability_5">
+                            <label class="rating-label" for="readability_5">
+                                <div class="rating-value">5</div>
+                                <div class="rating-title">Nearly identical</div>
+                                <div class="rating-description">Nearly identical reading level and jargon density; same balance of technical/plain language throughout</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-narrative">
+                <div class="aspect-description">
+                    <div class="aspect-title">Narrative Order</div>
+                    <p>Compare whether events are presented in the same sequence. Consider chronological vs. thematic organization and the order of key facts and arguments.</p>
+                </div>
+
+                {% if all_ratings and all_ratings.narrative_order %}
+                <div class="previous-ratings-section">
+                    <div class="previous-ratings-title">Previous Annotator Ratings:</div>
+                    <div class="rating-bubbles">
+                        {% for rating in all_ratings.narrative_order %}
+                        <div class="rating-bubble">{{ rating }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="rating-scale">
+                    <h4>Your adjudicated rating for narrative order (1 = completely different, 5 = identical sequence)</h4>
+                    <div class="rating-options-container">
+                        <div class="rating-option" onclick="selectRating('narrative', 1, this)">
+                            <input type="radio" name="narrative_rating" value="1" id="narrative_1">
+                            <label class="rating-label" for="narrative_1">
+                                <div class="rating-value">1</div>
+                                <div class="rating-title">Completely different</div>
+                                <div class="rating-description">Completely different organization (e.g., one chronological, other thematic) or opposite presentation order</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('narrative', 2, this)">
+                            <input type="radio" name="narrative_rating" value="2" id="narrative_2">
+                            <label class="rating-label" for="narrative_2">
+                                <div class="rating-value">2</div>
+                                <div class="rating-title">Substantially different</div>
+                                <div class="rating-description">Substantially different sequencing; major events or arguments presented in different order</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('narrative', 3, this)">
+                            <input type="radio" name="narrative_rating" value="3" id="narrative_3">
+                            <label class="rating-label" for="narrative_3">
+                                <div class="rating-value">3</div>
+                                <div class="rating-title">Moderate differences</div>
+                                <div class="rating-description">Similar overall structure with noticeable differences in section order or some events rearranged</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('narrative', 4, this)">
+                            <input type="radio" name="narrative_rating" value="4" id="narrative_4">
+                            <label class="rating-label" for="narrative_4">
+                                <div class="rating-value">4</div>
+                                <div class="rating-title">Very similar</div>
+                                <div class="rating-description">Very similar narrative flow with only minor reordering of details or slight emphasis differences</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('narrative', 5, this)">
+                            <input type="radio" name="narrative_rating" value="5" id="narrative_5">
+                            <label class="rating-label" for="narrative_5">
+                                <div class="rating-value">5</div>
+                                <div class="rating-title">Identical sequence</div>
+                                <div class="rating-description">Identical or nearly identical sequence; events and arguments presented in the same order throughout</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-sentence">
+                <div class="aspect-description">
+                    <div class="aspect-title">Sentence Structure</div>
+                    <p>Compare sentence complexity, variety, and length patterns. Consider use of compound/complex sentences vs. simple sentences and overall sentence rhythm.</p>
+                </div>
+
+                {% if all_ratings and all_ratings.sentence_structure %}
+                <div class="previous-ratings-section">
+                    <div class="previous-ratings-title">Previous Annotator Ratings:</div>
+                    <div class="rating-bubbles">
+                        {% for rating in all_ratings.sentence_structure %}
+                        <div class="rating-bubble">{{ rating }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="rating-scale">
+                    <h4>Your adjudicated rating for sentence structure (1 = completely different, 5 = nearly identical)</h4>
+                    <div class="rating-options-container">
+                        <div class="rating-option" onclick="selectRating('sentence', 1, this)">
+                            <input type="radio" name="sentence_rating" value="1" id="sentence_1">
+                            <label class="rating-label" for="sentence_1">
+                                <div class="rating-value">1</div>
+                                <div class="rating-title">Completely different</div>
+                                <div class="rating-description">Completely different sentence styles (e.g., one uses all short simple sentences, other uses complex compound structures)</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('sentence', 2, this)">
+                            <input type="radio" name="sentence_rating" value="2" id="sentence_2">
+                            <label class="rating-label" for="sentence_2">
+                                <div class="rating-value">2</div>
+                                <div class="rating-title">Significantly different</div>
+                                <div class="rating-description">Significantly different approaches; one notably more complex or varied in sentence structure</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('sentence', 3, this)">
+                            <input type="radio" name="sentence_rating" value="3" id="sentence_3">
+                            <label class="rating-label" for="sentence_3">
+                                <div class="rating-value">3</div>
+                                <div class="rating-title">Moderate differences</div>
+                                <div class="rating-description">Similar complexity levels but noticeable differences in sentence variety or average length</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('sentence', 4, this)">
+                            <input type="radio" name="sentence_rating" value="4" id="sentence_4">
+                            <label class="rating-label" for="sentence_4">
+                                <div class="rating-value">4</div>
+                                <div class="rating-title">Very similar</div>
+                                <div class="rating-description">Very similar patterns with minor variations in sentence structure or occasional differences in complexity</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('sentence', 5, this)">
+                            <input type="radio" name="sentence_rating" value="5" id="sentence_5">
+                            <label class="rating-label" for="sentence_5">
+                                <div class="rating-value">5</div>
+                                <div class="rating-title">Nearly identical</div>
+                                <div class="rating-description">Nearly identical sentence patterns; same mix of simple and complex sentences with similar rhythm</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-formatting">
+                <div class="aspect-description">
+                    <div class="aspect-title">Formatting & Layout</div>
+                    <p>Compare use of paragraphs, bullet points, numbering, headings, and white space. Consider overall visual organization and structure.</p>
+                </div>
+
+                {% if all_ratings and all_ratings.formatting_layout %}
+                <div class="previous-ratings-section">
+                    <div class="previous-ratings-title">Previous Annotator Ratings:</div>
+                    <div class="rating-bubbles">
+                        {% for rating in all_ratings.formatting_layout %}
+                        <div class="rating-bubble">{{ rating }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="rating-scale">
+                    <h4>Your adjudicated rating for formatting & layout (1 = completely different, 5 = identical formatting)</h4>
+                    <div class="rating-options-container">
+                        <div class="rating-option" onclick="selectRating('formatting', 1, this)">
+                            <input type="radio" name="formatting_rating" value="1" id="formatting_1">
+                            <label class="rating-label" for="formatting_1">
+                                <div class="rating-value">1</div>
+                                <div class="rating-title">Completely different</div>
+                                <div class="rating-description">Completely different formatting (e.g., one uses bullets and sections, other is continuous prose)</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('formatting', 2, this)">
+                            <input type="radio" name="formatting_rating" value="2" id="formatting_2">
+                            <label class="rating-label" for="formatting_2">
+                                <div class="rating-value">2</div>
+                                <div class="rating-title">Substantially different</div>
+                                <div class="rating-description">Substantially different visual organization; different approaches to structuring content</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('formatting', 3, this)">
+                            <input type="radio" name="formatting_rating" value="3" id="formatting_3">
+                            <label class="rating-label" for="formatting_3">
+                                <div class="rating-value">3</div>
+                                <div class="rating-title">Moderate differences</div>
+                                <div class="rating-description">Similar basic structure with noticeable differences in use of formatting elements</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('formatting', 4, this)">
+                            <input type="radio" name="formatting_rating" value="4" id="formatting_4">
+                            <label class="rating-label" for="formatting_4">
+                                <div class="rating-value">4</div>
+                                <div class="rating-title">Very similar</div>
+                                <div class="rating-description">Very similar formatting with minor differences in paragraph breaks or occasional formatting choices</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('formatting', 5, this)">
+                            <input type="radio" name="formatting_rating" value="5" id="formatting_5">
+                            <label class="rating-label" for="formatting_5">
+                                <div class="rating-value">5</div>
+                                <div class="rating-title">Identical formatting</div>
+                                <div class="rating-description">Identical or nearly identical formatting; same use of paragraphs, lists, and visual organization</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-citation">
+                <div class="aspect-description">
+                    <div class="aspect-title">Citation Style</div>
+                    <p>Compare how legal references, case citations, and statutes are presented. Consider citation format, frequency, and integration into the text.</p>
+                </div>
+
+                {% if all_ratings and all_ratings.citation_style %}
+                <div class="previous-ratings-section">
+                    <div class="previous-ratings-title">Previous Annotator Ratings:</div>
+                    <div class="rating-bubbles">
+                        {% for rating in all_ratings.citation_style %}
+                        <div class="rating-bubble">{{ rating }}</div>
+                        {% endfor %}
+                    </div>
+                </div>
+                {% endif %}
+
+                <div class="rating-scale">
+                    <h4>Your adjudicated rating for citation style (1 = completely different, 5 = identical approach)</h4>
+                    <div class="rating-options-container">
+                        <div class="rating-option" onclick="selectRating('citation', 1, this)">
+                            <input type="radio" name="citation_rating" value="1" id="citation_1">
+                            <label class="rating-label" for="citation_1">
+                                <div class="rating-value">1</div>
+                                <div class="rating-title">Completely different</div>
+                                <div class="rating-description">Completely different or incomparable (e.g., one has extensive citations, other has none; or entirely different citation formats)</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('citation', 2, this)">
+                            <input type="radio" name="citation_rating" value="2" id="citation_2">
+                            <label class="rating-label" for="citation_2">
+                                <div class="rating-value">2</div>
+                                <div class="rating-title">Different citation approaches</div>
+                                <div class="rating-description">Different citation approaches; one significantly more reference-heavy or uses different citation style</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('citation', 3, this)">
+                            <input type="radio" name="citation_rating" value="3" id="citation_3">
+                            <label class="rating-label" for="citation_3">
+                                <div class="rating-value">3</div>
+                                <div class="rating-title">Similar citation philosophy</div>
+                                <div class="rating-description">Similar citation philosophy but different execution (e.g., both cite cases but different density or positioning)</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('citation', 4, this)">
+                            <input type="radio" name="citation_rating" value="4" id="citation_4">
+                            <label class="rating-label" for="citation_4">
+                                <div class="rating-value">4</div>
+                                <div class="rating-title">Very similar practices</div>
+                                <div class="rating-description">Very similar citation practices with minor formatting differences or occasional variation in placement</div>
+                            </label>
+                        </div>
+                        <div class="rating-option" onclick="selectRating('citation', 5, this)">
+                            <input type="radio" name="citation_rating" value="5" id="citation_5">
+                            <label class="rating-label" for="citation_5">
+                                <div class="rating-value">5</div>
+                                <div class="rating-title">Identical citation approach</div>
+                                <div class="rating-description">Identical citation approach; same style, frequency, and positioning of references</div>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Feedback section -->
+    <div class="general-question-section">
+        <h3>Feedback (Optional)</h3>
+        <p>Any comments about this adjudication or the summaries?</p>
+        <textarea id="feedback" class="feedback-textarea" placeholder="Enter any feedback or comments here..."></textarea>
+    </div>
+
+    <div class="actions">
+        <button onclick="skipAnnotation()" class="btn btn-secondary">
+            Skip this instance
+        </button>
+        <button onclick="submitAdjudication()" class="btn btn-primary" id="submit-btn">
+            Submit Adjudication
+        </button>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Track instance start time
+const instanceStartTime = Date.now();
+
+// Track ratings
+let ratings = {
+    readability: null,
+    narrative: null,
+    sentence: null,
+    formatting: null,
+    citation: null
+};
+
+// Function to show a specific tab
+function showTab(tabName) {
+    // Hide all tab contents
+    document.querySelectorAll('.tab-content').forEach(content => {
+        content.classList.remove('active');
+    });
+
+    // Remove active class from all buttons
+    document.querySelectorAll('.tab-button').forEach(button => {
+        button.classList.remove('active');
+    });
+
+    // Show selected tab content
+    document.getElementById(`tab-${tabName}`).classList.add('active');
+
+    // Add active class to clicked button
+    document.querySelector(`[data-tab="${tabName}"]`).classList.add('active');
+}
+
+// Function to select rating
+function selectRating(aspect, value, element) {
+    // Remove previous selection in this aspect
+    const container = element.closest('.rating-options-container');
+    container.querySelectorAll('.rating-option').forEach(opt => {
+        opt.classList.remove('selected');
+    });
+
+    // Add selection to clicked element
+    element.classList.add('selected');
+
+    // Check the radio button
+    const radio = element.querySelector('input[type="radio"]');
+    if (radio) {
+        radio.checked = true;
+    }
+
+    // Update ratings
+    ratings[aspect] = value;
+
+    // Update tab status
+    updateTabStatus(aspect);
+
+    // Check if all tabs are complete
+    checkCompletion();
+}
+
+// Update tab status indicator
+function updateTabStatus(aspect) {
+    const statusElement = document.getElementById(`status-${aspect}`);
+    if (statusElement) {
+        if (ratings[aspect] !== null) {
+            statusElement.classList.remove('not-rated');
+            statusElement.classList.add('rated');
+        } else {
+            statusElement.classList.remove('rated');
+            statusElement.classList.add('not-rated');
+        }
+    }
+}
+
+// Check if all ratings are complete
+function checkCompletion() {
+    const allRated = Object.values(ratings).every(r => r !== null);
+    const submitBtn = document.getElementById('submit-btn');
+    if (submitBtn) {
+        if (allRated) {
+            submitBtn.classList.remove('disabled');
+        } else {
+            submitBtn.classList.add('disabled');
+        }
+    }
+}
+
+// Function to validate form
+function validateForm() {
+    const aspects = ['readability', 'narrative', 'sentence', 'formatting', 'citation'];
+    const missing = [];
+
+    for (let aspect of aspects) {
+        if (ratings[aspect] === null) {
+            const labels = {
+                'readability': 'Readability & Jargon',
+                'narrative': 'Narrative Order',
+                'sentence': 'Sentence Structure',
+                'formatting': 'Formatting & Layout',
+                'citation': 'Citation Style'
+            };
+            missing.push(labels[aspect]);
+        }
+    }
+
+    if (missing.length > 0) {
+        alert('Please complete ratings for: ' + missing.join(', '));
+        return false;
+    }
+
+    return true;
+}
+
+// Submit adjudication
+function submitAdjudication() {
+    if (!validateForm()) {
+        return;
+    }
+
+    const timeSpent = Math.round((Date.now() - instanceStartTime) / 1000);
+
+    const annotationData = {
+        annotation: {
+            readability_jargon: ratings.readability,
+            narrative_order: ratings.narrative,
+            sentence_structure: ratings.sentence,
+            formatting_layout: ratings.formatting,
+            citation_style: ratings.citation
+        },
+        feedback: document.getElementById('feedback').value,
+        time_spent_seconds: timeSpent
+    };
+
+    fetch('/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(annotationData)
+    })
+    .then(response => response.json())
+    .then(data => {
+        if (data.success) {
+            window.location.reload();
+        } else {
+            alert('Error submitting adjudication. Please try again.');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error submitting adjudication. Please try again.');
+    });
+}
+
+// Skip annotation
+function skipAnnotation() {
+    if (confirm('Are you sure you want to skip this instance?')) {
+        const timeSpent = Math.round((Date.now() - instanceStartTime) / 1000);
+
+        fetch('/skip', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({ time_spent_seconds: timeSpent })
+        })
+        .then(response => response.json())
+        .then(data => {
+            if (data.success) {
+                window.location.reload();
+            }
+        });
+    }
+}
+
+// Function to load existing adjudication
+function loadExistingAdjudication(existingData) {
+    if (!existingData || !existingData.annotation) return;
+
+    const annotation = existingData.annotation;
+
+    // Map annotation keys to aspect names
+    const keyMap = {
+        'readability_jargon': 'readability',
+        'narrative_order': 'narrative',
+        'sentence_structure': 'sentence',
+        'formatting_layout': 'formatting',
+        'citation_style': 'citation'
+    };
+
+    for (let [key, aspect] of Object.entries(keyMap)) {
+        const rating = annotation[key];
+        if (rating) {
+            // Find the rating option with the correct value
+            const selector = `#tab-${aspect} .rating-option input[value="${rating}"]`;
+            const radio = document.querySelector(selector);
+            if (radio) {
+                const optionDiv = radio.closest('.rating-option');
+                if (optionDiv) {
+                    selectRating(aspect, rating, optionDiv);
+                }
+            }
+        }
+    }
+
+    // Load feedback
+    if (existingData.feedback) {
+        document.getElementById('feedback').value = existingData.feedback;
+    }
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    // Initialize tab statuses
+    const aspects = ['readability', 'narrative', 'sentence', 'formatting', 'citation'];
+    aspects.forEach(aspect => {
+        updateTabStatus(aspect);
+    });
+
+    // Load existing adjudication if available
+    {% if existing_annotation %}
+    const existingAnnotation = {{ existing_annotation | tojson | safe }};
+    loadExistingAdjudication(existingAnnotation);
+    {% endif %}
+
+    // Check initial completion state
+    checkCompletion();
+});
+
+// Update time display every second
+function updateTimeDisplay() {
+    const currentTime = Date.now();
+    const elapsedSeconds = Math.floor((currentTime - instanceStartTime) / 1000);
+    const minutes = Math.floor(elapsedSeconds / 60);
+    const seconds = elapsedSeconds % 60;
+    const timeDisplay = document.getElementById('time-display');
+    if (timeDisplay) {
+        timeDisplay.textContent = `Time: ${minutes}:${seconds.toString().padStart(2, '0')}`;
+    }
+}
+
+setInterval(updateTimeDisplay, 1000);
+</script>
+{% endblock %}

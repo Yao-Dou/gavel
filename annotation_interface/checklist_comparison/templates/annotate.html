@@ -1,0 +1,584 @@
+{% extends "base.html" %}
+
+{% block content %}
+{% if preview_mode %}
+<!-- Preview mode overlay -->
+<div id="preview-overlay" style="position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.7); z-index: 1000; display: flex; align-items: center; justify-content: center;">
+    <div style="background: white; padding: 30px; border-radius: 10px; text-align: center; max-width: 500px;">
+        <h2 style="color: #3498db; margin-bottom: 15px;">Preview Mode</h2>
+        <p style="margin-bottom: 20px; color: #666;">You need to log in to start annotating. This is just a preview of the interface.</p>
+        <a href="/login" class="btn btn-primary">Login to Start Annotating</a>
+    </div>
+</div>
+{% endif %}
+
+<div class="header">
+    {% if username %}
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <div>
+            <h1>Legal Case Summary Checklist Comparison</h1>
+            <div style="color: #666; font-size: 14px;">Welcome, {{ username }}</div>
+        </div>
+        <div style="text-align: right;">
+            <div class="progress">Instance {{ current_index }} of {{ total_pairs }}</div>
+            <div id="time-display" style="color: #666; font-size: 12px; margin-top: 3px;">Time: 0:00</div>
+            <a href="/logout" style="color: #666; text-decoration: none; font-size: 14px; margin-top: 5px; display: inline-block;">Logout</a>
+        </div>
+    </div>
+    {% else %}
+    <h1>Legal Case Summary Checklist Comparison</h1>
+    <div class="progress">Instance {{ current_index }} of {{ total_pairs }} (Preview)</div>
+    {% endif %}
+</div>
+
+<div class="content" {% if preview_mode %}style="filter: blur(3px); pointer-events: none;"{% endif %}>
+    <div class="instructions">
+        <h3>Task Instructions</h3>
+        {% if is_list %}
+        <p>You are comparing two lists of legal information about <strong>{{ checklist_item }}</strong>. 
+        Your task is to match semantically equivalent items between the two lists by dragging items from List B to match with items in List A.</p>
+        <ul>
+            <li>Click and drag items from List B to the matching item in List A</li>
+            <li>Items may be paraphrased or formatted differently but convey the same meaning</li>
+            <li>Some items may not have matches - that's okay</li>
+            <li>Click on a matched pair to unmatch them</li>
+        </ul>
+        {% else %}
+        <p>You are comparing two pieces of legal information about <strong>{{ checklist_item }}</strong>. 
+        Your task is to determine the semantic relationship between these two pieces of information.</p>
+        <p>Choose the option that best describes how Information A and Information B relate to each other.</p>
+        {% endif %}
+    </div>
+
+    <div class="comparison-section">
+        <h3>Case ID: {{ case_id }} | Category: {{ checklist_item }}</h3>
+        
+        {% if is_list %}
+        <!-- List comparison interface -->
+        <div class="item-container" id="list-container">
+            <div class="item-box">
+                <h3>List A</h3>
+                <div id="list-a" class="list-container">
+                    {% for item in item_a %}
+                    <div class="list-item" data-index="{{ loop.index0 }}" data-list="a">
+                        {{ loop.index }}. {{ item }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+            <div class="item-box">
+                <h3>List B</h3>
+                <div id="list-b" class="list-container">
+                    {% for item in item_b %}
+                    <div class="list-item draggable" data-index="{{ loop.index0 }}" data-list="b" draggable="true">
+                        {{ loop.index }}. {{ item }}
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+        <div id="matches-summary" style="margin-top: 20px; padding: 15px; background-color: #f8f9fa; border-radius: 8px;">
+            <h4>Current Matches:</h4>
+            <div id="matches-list"></div>
+        </div>
+        {% else %}
+        <!-- String comparison interface -->
+        <div class="item-container">
+            <div class="item-box">
+                <h3>Information A</h3>
+                <div class="item-content">{{ item_a }}</div>
+            </div>
+            <div class="item-box">
+                <h3>Information B</h3>
+                <div class="item-content">{{ item_b }}</div>
+            </div>
+        </div>
+        
+        <div class="options-section">
+            <h4>Select the relationship between A and B:</h4>
+            <div class="radio-group">
+                <label class="radio-option">
+                    <input type="radio" name="relationship" value="A contains B">
+                    <span><strong>A contains B</strong> - A includes all the information in B, plus additional information</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="relationship" value="B contains A">
+                    <span><strong>B contains A</strong> - B includes all the information in A, plus additional information</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="relationship" value="A equals B">
+                    <span><strong>A equals B</strong> - A and B convey the same information (semantically equivalent)</span>
+                </label>
+                <label class="radio-option">
+                    <input type="radio" name="relationship" value="A and B are different">
+                    <span><strong>A and B are different</strong> - A and B contain different or conflicting information</span>
+                </label>
+            </div>
+        </div>
+        {% endif %}
+    </div>
+
+    <div class="feedback-section">
+        <h4>Feedback (Optional)</h4>
+        <textarea id="feedback" class="feedback-textarea" placeholder="Any comments or issues with this instance?"></textarea>
+        <label class="problem-checkbox">
+            <input type="checkbox" id="has-problem">
+            <span>This instance has a problem (e.g., unclear information, formatting issues)</span>
+        </label>
+    </div>
+
+    <div class="button-group">
+        <button class="btn btn-secondary" onclick="skipInstance()">Skip</button>
+        <button class="btn btn-primary" onclick="submitAnnotation()" id="submit-btn">Submit</button>
+    </div>
+
+    <div class="loading">
+        <p>Saving annotation...</p>
+    </div>
+
+    <div class="success-message" id="success-message">
+        <p>Annotation saved successfully! Loading next instance...</p>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script>
+// Global variables
+let matches = {};
+let reverseMatches = {}; // Track B->A mappings for one-to-one constraint
+let matchColorMap = {}; // Store color assignments for each match (key: "aIndex-bIndex")
+let nextColorIndex = 0; // Track the next color to use
+let isListComparison = {{ 'true' if is_list else 'false' }};
+
+// Time tracking variables
+let instanceStartTime = Date.now(); // Record when the page loads
+let timeSpentSeconds = 0; // Will be calculated on submission
+
+// Color palette for matches
+const matchColors = [
+    '#FF6B6B', '#4ECDC4', '#45B7D1', '#F7DC6F', '#BB8FCE',
+    '#85C1E2', '#F8C471', '#82E0AA', '#F85A40', '#00B8A9',
+    '#FFB6B9', '#FFA07A', '#98D8C8', '#FDCB6E', '#D63031'
+];
+
+// Helper functions for consistent styling
+function applyMatchStyle(element, color) {
+    element.classList.add('matched');
+    element.style.backgroundColor = color + '40';
+    element.style.borderColor = color;
+    element.style.borderWidth = '2px';
+    element.style.borderStyle = 'solid';
+}
+
+function resetItemStyle(element) {
+    element.classList.remove('matched');
+    element.style.backgroundColor = '';
+    element.style.borderColor = '#ddd';
+    element.style.borderWidth = '2px';
+    element.style.borderStyle = 'solid';
+    element.style.fontWeight = '';
+    element.style.boxShadow = '';
+}
+
+// Initialize
+document.addEventListener('DOMContentLoaded', function() {
+    if (!isListComparison) {
+        // String comparison - handle radio button selection
+        const radioOptions = document.querySelectorAll('.radio-option');
+        radioOptions.forEach(option => {
+            option.addEventListener('click', function() {
+                radioOptions.forEach(opt => opt.classList.remove('selected'));
+                this.classList.add('selected');
+                this.querySelector('input[type="radio"]').checked = true;
+            });
+        });
+    } else {
+        // List comparison - initialize drag and drop
+        initializeDragAndDrop();
+    }
+});
+
+// List matching functionality
+function initializeDragAndDrop() {
+    const listBItems = document.querySelectorAll('#list-b .list-item');
+    const listAItems = document.querySelectorAll('#list-a .list-item');
+    
+    // Make list B items draggable
+    listBItems.forEach(item => {
+        item.addEventListener('dragstart', handleDragStart);
+        item.addEventListener('dragend', handleDragEnd);
+    });
+    
+    // Make list A items drop targets
+    listAItems.forEach(item => {
+        item.addEventListener('dragover', handleDragOver);
+        item.addEventListener('drop', handleDrop);
+        item.addEventListener('dragleave', handleDragLeave);
+    });
+    
+    // Click to unmatch
+    document.querySelectorAll('.list-item').forEach(item => {
+        item.addEventListener('click', handleUnmatch);
+    });
+}
+
+let draggedElement = null;
+
+function handleDragStart(e) {
+    draggedElement = this;
+    this.classList.add('dragging');
+    e.dataTransfer.effectAllowed = 'move';
+    e.dataTransfer.setData('text/html', this.innerHTML);
+}
+
+function handleDragEnd(e) {
+    this.classList.remove('dragging');
+    draggedElement = null;
+    
+    // Clear all hover effects and restore proper backgrounds
+    restoreAllBackgrounds();
+}
+
+function restoreAllBackgrounds() {
+    document.querySelectorAll('#list-a .list-item').forEach(item => {
+        const aIndex = parseInt(item.dataset.index);
+        if (matches[aIndex] !== undefined) {
+            // Restore match color
+            const bIndex = matches[aIndex];
+            const matchKey = `${aIndex}-${bIndex}`;
+            const matchColor = matchColorMap[matchKey];
+            if (matchColor) {
+                applyMatchStyle(item, matchColor);
+            }
+        } else {
+            // Clear background for unmatched items
+            resetItemStyle(item);
+        }
+    });
+}
+
+function handleDragOver(e) {
+    if (e.preventDefault) {
+        e.preventDefault();
+    }
+    e.dataTransfer.dropEffect = 'move';
+    this.style.backgroundColor = '#e3f2fd';
+    return false;
+}
+
+function handleDragLeave(e) {
+    // Restore correct background based on match state
+    const aIndex = parseInt(this.dataset.index);
+    if (matches[aIndex] !== undefined) {
+        const bIndex = matches[aIndex];
+        const matchKey = `${aIndex}-${bIndex}`;
+        const matchColor = matchColorMap[matchKey];
+        if (matchColor) {
+            this.style.backgroundColor = matchColor + '40';
+        }
+    } else {
+        this.style.backgroundColor = '';
+    }
+}
+
+function handleDrop(e) {
+    if (e.stopPropagation) {
+        e.stopPropagation();
+    }
+    
+    if (draggedElement && this.dataset.list === 'a') {
+        const aIndex = parseInt(this.dataset.index);
+        const bIndex = parseInt(draggedElement.dataset.index);
+        
+        // Check if this exact match already exists - if so, do nothing
+        if (matches[aIndex] === bIndex && reverseMatches[bIndex] === aIndex) {
+            return false;
+        }
+        
+        // Check if B item is already matched to another A item
+        if (reverseMatches[bIndex] !== undefined && reverseMatches[bIndex] !== aIndex) {
+            // Remove the previous match
+            const previousAIndex = reverseMatches[bIndex];
+            const oldMatchKey = `${previousAIndex}-${bIndex}`;
+            delete matches[previousAIndex];
+            delete matchColorMap[oldMatchKey]; // Clean up color mapping
+            
+            const previousAItem = document.querySelector(`#list-a .list-item[data-index="${previousAIndex}"]`);
+            resetItemStyle(previousAItem);
+        }
+        
+        // Check if A item already has a match
+        if (matches[aIndex] !== undefined) {
+            const previousBIndex = matches[aIndex];
+            const oldMatchKey = `${aIndex}-${previousBIndex}`;
+            delete reverseMatches[previousBIndex];
+            delete matchColorMap[oldMatchKey]; // Clean up color mapping
+            
+            const previousBItem = document.querySelector(`#list-b .list-item[data-index="${previousBIndex}"]`);
+            resetItemStyle(previousBItem);
+        }
+        
+        // Create new match
+        matches[aIndex] = bIndex;
+        reverseMatches[bIndex] = aIndex;
+        
+        // Assign color for this match (check if it already existed before)
+        const matchKey = `${aIndex}-${bIndex}`;
+        let matchColor;
+        
+        if (matchColorMap[matchKey]) {
+            // Reuse existing color for this exact match
+            matchColor = matchColorMap[matchKey];
+        } else {
+            // Assign new color for new match
+            matchColor = matchColors[nextColorIndex % matchColors.length];
+            matchColorMap[matchKey] = matchColor;
+            nextColorIndex++; // Only increment for truly new matches
+        }
+        
+        // Update visual feedback with color
+        applyMatchStyle(this, matchColor);
+        applyMatchStyle(draggedElement, matchColor);
+        
+        updateMatchesSummary();
+    }
+    
+    return false;
+}
+
+function handleUnmatch(e) {
+    if (this.classList.contains('matched')) {
+        const index = parseInt(this.dataset.index);
+        const list = this.dataset.list;
+        
+        if (list === 'a' && matches[index] !== undefined) {
+            // Remove match
+            const bIndex = matches[index];
+            const matchKey = `${index}-${bIndex}`;
+            delete matches[index];
+            delete reverseMatches[bIndex];
+            delete matchColorMap[matchKey]; // Remove color mapping
+            
+            // Update visual feedback
+            resetItemStyle(this);
+            const bItem = document.querySelector(`#list-b .list-item[data-index="${bIndex}"]`);
+            resetItemStyle(bItem);
+            
+            updateMatchesSummary();
+        } else if (list === 'b' && reverseMatches[index] !== undefined) {
+            // Find which A item this B item is matched to
+            const aIndex = reverseMatches[index];
+            const matchKey = `${aIndex}-${index}`;
+            delete matches[aIndex];
+            delete reverseMatches[index];
+            delete matchColorMap[matchKey]; // Remove color mapping
+            
+            const aItem = document.querySelector(`#list-a .list-item[data-index="${aIndex}"]`);
+            resetItemStyle(aItem);
+            resetItemStyle(this);
+            
+            updateMatchesSummary();
+        }
+    }
+}
+
+function updateMatchesSummary() {
+    const summaryDiv = document.getElementById('matches-list');
+    summaryDiv.innerHTML = '';
+    
+    if (Object.keys(matches).length === 0) {
+        summaryDiv.innerHTML = '<p style="color: #666;">No matches yet. Drag items from List B to List A to create matches.</p>';
+    } else {
+        const matchList = document.createElement('ul');
+        matchList.style.listStyle = 'none';
+        matchList.style.padding = '0';
+        
+        // Show matches with their assigned colors
+        for (let aIndex in matches) {
+            const bIndex = matches[aIndex];
+            const matchKey = `${aIndex}-${bIndex}`;
+            const matchColor = matchColorMap[matchKey];
+            
+            if (matchColor) {
+                const li = document.createElement('li');
+                li.style.padding = '5px 10px';
+                li.style.marginBottom = '5px';
+                li.style.backgroundColor = matchColor + '40';
+                li.style.borderLeft = `4px solid ${matchColor}`;
+                li.style.borderRadius = '4px';
+                li.innerHTML = `<strong>A${parseInt(aIndex) + 1}</strong> ↔ <strong>B${parseInt(bIndex) + 1}</strong>`;
+                
+                matchList.appendChild(li);
+            }
+        }
+        
+        summaryDiv.appendChild(matchList);
+    }
+}
+
+// Form submission
+function getAnnotation() {
+    if (isListComparison) {
+        // Format matches for list comparison
+        const common = [];
+        for (let aIndex in matches) {
+            common.push({
+                A_index: parseInt(aIndex) + 1,  // Convert to 1-based indexing
+                B_index: matches[aIndex] + 1
+            });
+        }
+        
+        // Find unmatched items
+        const totalA = document.querySelectorAll('#list-a .list-item').length;
+        const totalB = document.querySelectorAll('#list-b .list-item').length;
+        
+        const only_in_A = [];
+        for (let i = 0; i < totalA; i++) {
+            if (!(i in matches)) {
+                only_in_A.push(i + 1);  // 1-based indexing
+            }
+        }
+        
+        const matchedBIndices = new Set(Object.values(matches).map(idx => parseInt(idx)));
+        const only_in_B = [];
+        for (let i = 0; i < totalB; i++) {
+            if (!matchedBIndices.has(i)) {
+                only_in_B.push(i + 1);  // 1-based indexing
+            }
+        }
+        
+        return {
+            type: 'list',
+            matches: {
+                common: common,
+                only_in_A: only_in_A,
+                only_in_B: only_in_B
+            }
+        };
+    } else {
+        // String comparison
+        const selected = document.querySelector('input[name="relationship"]:checked');
+        return {
+            type: 'string',
+            relationship: selected ? selected.value : null
+        };
+    }
+}
+
+function submitAnnotation() {
+    // Check if in preview mode
+    {% if preview_mode %}
+    document.getElementById('preview-overlay').style.display = 'flex';
+    return;
+    {% endif %}
+    
+    const annotation = getAnnotation();
+    
+    // Validate
+    if (!isListComparison && !annotation.relationship) {
+        alert('Please select a relationship between A and B.');
+        return;
+    }
+    
+    // Calculate time spent in seconds
+    const currentTime = Date.now();
+    timeSpentSeconds = Math.round((currentTime - instanceStartTime) / 1000);
+    
+    // Disable buttons and show loading
+    document.getElementById('submit-btn').disabled = true;
+    document.querySelector('.loading').classList.add('active');
+    
+    // Prepare data
+    const data = {
+        annotation: annotation,
+        has_problem: document.getElementById('has-problem').checked,
+        feedback: document.getElementById('feedback').value,
+        time_spent_seconds: timeSpentSeconds
+    };
+    
+    // Submit to server
+    fetch('/submit', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(data)
+    })
+    .then(response => response.json())
+    .then(result => {
+        if (result.success) {
+            document.querySelector('.loading').classList.remove('active');
+            document.getElementById('success-message').classList.add('active');
+            
+            // Redirect to next instance after delay
+            setTimeout(() => {
+                window.location.reload();
+            }, 1500);
+        } else {
+            alert('Error saving annotation. Please try again.');
+            document.getElementById('submit-btn').disabled = false;
+            document.querySelector('.loading').classList.remove('active');
+        }
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Error saving annotation. Please try again.');
+        document.getElementById('submit-btn').disabled = false;
+        document.querySelector('.loading').classList.remove('active');
+    });
+}
+
+function skipInstance() {
+    // Check if in preview mode
+    {% if preview_mode %}
+    document.getElementById('preview-overlay').style.display = 'flex';
+    return;
+    {% endif %}
+    
+    if (confirm('Are you sure you want to skip this instance?')) {
+        // Calculate time spent even for skipped instances
+        const currentTime = Date.now();
+        timeSpentSeconds = Math.round((currentTime - instanceStartTime) / 1000);
+        
+        fetch('/skip', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+                time_spent_seconds: timeSpentSeconds
+            })
+        })
+        .then(() => {
+            window.location.reload();
+        });
+    }
+}
+
+// Initialize matches summary for list comparison
+if (isListComparison) {
+    updateMatchesSummary();
+}
+
+// Update time display every second
+function updateTimeDisplay() {
+    const currentTime = Date.now();
+    const elapsedSeconds = Math.floor((currentTime - instanceStartTime) / 1000);
+    const minutes = Math.floor(elapsedSeconds / 60);
+    const seconds = elapsedSeconds % 60;
+    const formattedTime = `${minutes}:${seconds.toString().padStart(2, '0')}`;
+    
+    const timeDisplay = document.getElementById('time-display');
+    if (timeDisplay) {
+        timeDisplay.textContent = `Time: ${formattedTime}`;
+    }
+}
+
+// Start the timer update interval
+setInterval(updateTimeDisplay, 1000);
+
+// Initial time display update
+updateTimeDisplay();
+</script>
+{% endblock %}
