@@ -48,14 +48,17 @@ gavel/
 │   ├── evaluate_checklist/             # Evaluation prompts
 │   ├── generate_summary.txt            # Summary generation
 │   └── evaluate_writing_style.txt      # Style comparison
-└── src/                                # Source code
-    ├── create_batch_*.ipynb            # Batch API job creation (3 notebooks)
-    ├── retrieve_batch_*.ipynb          # Result retrieval (3 notebooks)
-    ├── vllm_inference.py               # Local GPU inference engine
-    ├── submit_vllm_inference_jobs.sh   # SLURM job submission
-    └── extract_checklist_from_documents/
-        ├── chunk_by_chunk_iterative_updating/  # Iterative extraction
-        └── gavel_agent/                        # Agentic extraction
+├── src/                                # Source code
+│   ├── create_batch_*.ipynb            # Batch API job creation (3 notebooks)
+│   ├── retrieve_batch_*.ipynb          # Result retrieval (3 notebooks)
+│   ├── vllm_inference.py               # Local GPU inference engine
+│   ├── submit_vllm_inference_jobs.sh   # SLURM job submission
+│   └── extract_checklist_from_documents/
+│       ├── chunk_by_chunk_iterative_updating/  # Iterative extraction
+│       └── gavel_agent/                        # Agentic extraction
+└── annotation_interface/               # Human annotation interfaces
+    ├── checklist_comparison/           # Compare checklist values
+    └── writing_comparison/             # Compare writing styles
 ```
 
 ---
@@ -246,6 +249,7 @@ See [prompts/README.md](prompts/README.md) for detailed template documentation.
 | Prompt Templates | [prompts/README.md](prompts/README.md) |
 | Source Code | [src/README.md](src/README.md) |
 | GAVEL-Agent | [gavel_agent/README.md](src/extract_checklist_from_documents/gavel_agent/README.md) |
+| Annotation Interfaces | [annotation_interface/README.md](annotation_interface/README.md) |
 
 ---
 
