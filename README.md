@@ -273,7 +273,7 @@ See [prompts/README.md](prompts/README.md) for detailed template documentation.
 ```bibtex
 @article{dou2026gavel,
   title={Gavel: Agent Meets Checklist for Evaluating LLMs on Long-Context Legal Summarization},
-  author={Dou, Yao and Xu, Wei},
+  author={Dou, Yao and Mamut, Benjamin and Xu, Wei},
   journal={arXiv preprint arXiv:2601.04424},
   year={2026}
 }
