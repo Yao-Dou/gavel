@@ -1,0 +1,15 @@
+# Checklist configuration - Secondary Benefit Outcome only
+# Focuses exclusively on extracting secondary benefit outcomes.
+
+# User instruction
+user_instruction: |
+  Extract the secondary benefit outcomes from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Secondary_Benefit_Outcome:
+    description: "Additional benefit (efficacy) outcomes that are not labeled primary — outcomes the review tracks alongside the primary endpoint to provide a fuller picture of efficacy. Do not include adverse-effect outcomes (use Harm_Safety_Outcome) or the primary outcome (use Primary_Benefit_Outcome). Extract each secondary benefit outcome as a separate value."

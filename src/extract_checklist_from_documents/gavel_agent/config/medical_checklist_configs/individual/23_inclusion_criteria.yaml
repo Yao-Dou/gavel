@@ -1,0 +1,15 @@
+# Checklist configuration - Inclusion Criteria only
+# Focuses exclusively on extracting study-level inclusion criteria.
+
+# User instruction
+user_instruction: |
+  Extract the inclusion criteria for studies from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Inclusion_Criteria:
+    description: "Eligibility criteria the review used to include or exclude studies (e.g., 'RCTs only', 'adults ≥18 years', 'studies with ≥12 weeks follow-up', 'published in English'). These are criteria for studies, not for participants within studies (participant-level criteria belong in Population_Defined). Extract each criterion as a separate value."

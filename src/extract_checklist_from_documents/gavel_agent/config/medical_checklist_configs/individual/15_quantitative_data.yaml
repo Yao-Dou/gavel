@@ -1,0 +1,15 @@
+# Checklist configuration - Quantitative Data only
+# Focuses exclusively on extracting numerical results.
+
+# User instruction
+user_instruction: |
+  Extract the quantitative results from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Quantitative_Data:
+    description: "Numerical results reported in the review — risk ratios, odds ratios, hazard ratios, mean differences, percentages, absolute risk differences, NNT, confidence intervals, p-values, etc. (e.g., 'RR 0.75, 95% CI 0.60 to 0.94', '15% vs 22% (absolute reduction 7%)', 'mean difference -2.3 points (95% CI -3.5 to -1.1)'). Extract each numerical result as a separate value, linking the figure to the outcome and comparison when available."

@@ -1,0 +1,15 @@
+# Checklist configuration - Primary Benefit Outcome only
+# Focuses exclusively on extracting the primary benefit outcome.
+
+# User instruction
+user_instruction: |
+  Extract the primary benefit outcome from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Primary_Benefit_Outcome:
+    description: "The primary benefit (efficacy) outcome the review evaluates — the main efficacy endpoint pre-specified by the authors. Include only outcomes the review explicitly labels as primary, main, or central. Do not include secondary efficacy outcomes (use Secondary_Benefit_Outcome) or safety/adverse-effect outcomes (use Harm_Safety_Outcome). Extract each primary outcome as a separate value, formatted as: '[outcome name]: [brief definition or measurement scale, if given]'."

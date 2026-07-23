@@ -1,0 +1,15 @@
+# Checklist configuration - Evidence Gaps only
+# Focuses exclusively on extracting noted evidence gaps and limitations.
+
+# User instruction
+user_instruction: |
+  Extract the evidence gaps from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Evidence_Gaps:
+    description: "Missing outcomes, populations, comparisons, or settings the review notes as having insufficient data (e.g., 'No studies in children', 'Limited data on long-term safety', 'No head-to-head trials versus newer agents'). Broader than Evidence_Absence: includes gaps and limitations beyond direct no-data statements. Extract each gap as a separate value."

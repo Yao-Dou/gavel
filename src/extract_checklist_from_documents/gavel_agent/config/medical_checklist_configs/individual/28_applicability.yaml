@@ -1,0 +1,15 @@
+# Checklist configuration - Applicability only
+# Focuses exclusively on extracting applicability/generalizability statements.
+
+# User instruction
+user_instruction: |
+  Extract the applicability statements from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Applicability:
+    description: "Statements about whom the findings apply to, where they generalize, or explicit limits on generalizability (e.g., 'Findings apply primarily to adults aged 18–65 in high-income settings; generalizability to children or low-resource settings is unclear'). Extract each applicability statement as a separate value."

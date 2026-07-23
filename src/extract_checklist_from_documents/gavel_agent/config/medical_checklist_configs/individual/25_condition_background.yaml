@@ -1,0 +1,15 @@
+# Checklist configuration - Condition Background only
+# Focuses exclusively on extracting background information about the condition.
+
+# User instruction
+user_instruction: |
+  Extract the condition background information from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Condition_Background:
+    description: "Disease mechanism, prevalence, progression, natural history, burden, or pathophysiology described as context (e.g., 'Alzheimer''s disease is a progressive neurodegenerative disorder affecting approximately 50 million people worldwide'). Context about the condition itself, distinct from Condition_Defined (which states what condition the review studies). Extract each background statement as a separate value."

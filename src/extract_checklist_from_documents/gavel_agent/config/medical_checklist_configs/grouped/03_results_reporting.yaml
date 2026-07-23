@@ -1,0 +1,30 @@
+# Checklist configuration - Results Reporting group
+# Focuses on how results are reported: direction of effects, qualitative magnitude, numerical data, and evidence absence.
+
+# User instruction - what the user wants the agent to do
+user_instruction: |
+  Extract all 5 checklist items from the medical review documents as completely as possible.
+
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: outcomes, study designs, certainty levels, quantitative findings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+
+# Checklist items to extract - Results Reporting group
+checklist_items:
+  Benefit_Direction:
+    description: "The stated direction of effect for benefit outcomes (e.g., 'increase', 'decrease', 'no difference', 'improvement', 'reduction', 'little to no difference'). Extract directional findings per outcome. Do not include effects on harms (use Harm_Direction). Format as: '[outcome]: [direction]'."
+
+  Harm_Direction:
+    description: "The stated direction of effect for harm/safety outcomes (e.g., 'increase in adverse events', 'no difference in serious harms', 'reduction in gastrointestinal side effects'). Format as: '[harm outcome]: [direction]'."
+
+  Magnitude_Descriptor:
+    description: "Qualitative magnitude qualifiers used to describe effect size in plain language (e.g., 'slightly', 'little to no', 'small', 'moderate', 'large', 'substantial'). These are the verbal hedges authors use alongside numerical results. Do not include the numerical effect itself — that belongs in Quantitative_Data. Extract each magnitude descriptor as a separate value, linking to its outcome when stated, formatted as: '[outcome]: [magnitude descriptor]'."
+
+  Quantitative_Data:
+    description: "Numerical results reported in the review — risk ratios, odds ratios, hazard ratios, mean differences, percentages, absolute risk differences, NNT, confidence intervals, p-values, etc. (e.g., 'RR 0.75, 95% CI 0.60 to 0.94', '15% vs 22% (absolute reduction 7%)', 'mean difference -2.3 points (95% CI -3.5 to -1.1)'). Extract each numerical result as a separate value, linking the figure to the outcome and comparison when available."
+
+  Evidence_Absence:
+    description: "Explicit statements that no data, no studies, or insufficient evidence was found for an outcome or comparison (e.g., 'No studies reported on long-term mortality', 'We found no eligible trials for this comparison'). Do not infer absence; require explicit statements. Closely related to Evidence_Gaps but narrower: Evidence_Absence is for direct no-data statements, while Evidence_Gaps covers broader limitations. Extract each absence statement as a separate value, formatted as: '[outcome/topic]: no data found' or quote the relevant phrasing."

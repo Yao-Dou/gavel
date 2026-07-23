@@ -1,0 +1,15 @@
+# Checklist configuration - Study Design only
+# Focuses exclusively on extracting study designs of included studies.
+
+# User instruction
+user_instruction: |
+  Extract the study designs of the included studies from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Study_Design:
+    description: "The study design(s) of the studies included in the review (e.g., 'RCTs', 'cluster-randomized trials', 'observational cohort studies', 'cross-over trials'). This refers to designs of the included primary studies, not the review's own design. Extract each distinct study design as a separate value."

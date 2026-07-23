@@ -1,0 +1,15 @@
+# Checklist configuration - Comparator Defined only
+# Focuses exclusively on extracting the comparator (control, placebo, or alternative treatment).
+
+# User instruction
+user_instruction: |
+  Extract the comparator (control, placebo, or alternative treatment) from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Comparator_Defined:
+    description: "The control condition, placebo, usual care, alternative treatment, or no-treatment arm against which the intervention is compared (e.g., 'placebo', 'usual care', 'standard pharmacotherapy', 'sham acupuncture', 'no intervention'). If multiple comparators are described, extract each as a separate value. Do not extract the intervention itself — that belongs in Intervention_Defined."

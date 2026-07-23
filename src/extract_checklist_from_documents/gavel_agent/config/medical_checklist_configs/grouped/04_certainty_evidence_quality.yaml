@@ -1,0 +1,39 @@
+# Checklist configuration - Certainty and Evidence Quality group
+# Focuses on confidence in the evidence: certainty ratings, downgrading reasons, study design, counts, search strategy, inclusion criteria, and gaps.
+
+# User instruction - what the user wants the agent to do
+user_instruction: |
+  Extract all 8 checklist items from the medical review documents as completely as possible.
+
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: outcomes, study designs, certainty levels, quantitative findings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+
+# Checklist items to extract - Certainty and Evidence Quality group
+checklist_items:
+  Certainty_Level:
+    description: "The confidence/certainty rating expressed by the review for a given finding (e.g., 'very low certainty', 'low certainty', 'moderate certainty', 'high certainty', 'very uncertain', 'GRADE: moderate'). Extract each certainty rating as a separate value, linked to the outcome, formatted as: '[outcome]: [certainty level]'."
+
+  Reason_Downgrading:
+    description: "Reasons given for a lower certainty rating, such as study limitations, risk of bias, imprecision, inconsistency, indirectness, publication bias, or small sample size (e.g., 'downgraded for risk of bias and imprecision'). Extract each downgrading reason as a separate value linked to the outcome, formatted as: '[outcome]: [reason(s) for downgrading]'."
+
+  Study_Design:
+    description: "The study design(s) of the studies included in the review (e.g., 'RCTs', 'cluster-randomized trials', 'observational cohort studies', 'cross-over trials'). This refers to designs of the included primary studies, not the review's own design. Extract each distinct study design as a separate value."
+
+  Number_Studies:
+    description: "The total number of studies included in the review (e.g., '12 studies', '34 RCTs included'). If multiple counts exist (e.g., per comparison or per subgroup), extract each with context, formatted as: '[count]: [scope/comparison]'."
+
+  Total_Sample_Size:
+    description: "The total number of participants across all included studies (e.g., 'N = 4,532 participants', '2,108 patients across 12 trials'). If reported per comparison or per arm, extract each with context."
+
+  Search_Strategy:
+    description: "How the literature search was conducted — databases searched, search dates, inclusion of grey literature, language restrictions (e.g., 'MEDLINE, EMBASE, and Cochrane CENTRAL searched through January 2025', 'no language restrictions', 'included unpublished trial registry entries'). Extract each distinct element as a separate value, or as one comprehensive value if the review describes it succinctly."
+
+  Inclusion_Criteria:
+    description: "Eligibility criteria the review used to include or exclude studies (e.g., 'RCTs only', 'adults ≥18 years', 'studies with ≥12 weeks follow-up', 'published in English'). These are criteria for studies, not for participants within studies (participant-level criteria belong in Population_Defined). Extract each criterion as a separate value."
+
+  Evidence_Gaps:
+    description: "Missing outcomes, populations, comparisons, or settings the review notes as having insufficient data (e.g., 'No studies in children', 'Limited data on long-term safety', 'No head-to-head trials versus newer agents'). Broader than Evidence_Absence: includes gaps and limitations beyond direct no-data statements. Extract each gap as a separate value."

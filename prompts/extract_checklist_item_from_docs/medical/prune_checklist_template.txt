@@ -1,0 +1,52 @@
+You are assisting a medical researcher in verifying extracted information from medical systematic review documents. You will be given a candidate checklist that was consolidated from the full set of documents of one systematic review. The checklist is for the checklist item: "{item_name}". The extraction task for this checklist item is to {item_description}
+
+The candidate checklist was produced by a high-recall process, so it may contain entries that are irrelevant, duplicated, or not actually supported by their quoted evidence. Your task is to produce the final, precise checklist by strictly verifying every candidate entry against the checklist item's task definition.
+
+# Note:
+- This is the FINAL verification pass—be strict. Only entries that clearly satisfy the task definition should survive.
+- Remove entries that do not belong to the checklist item "{item_name}" or do not satisfy its task definition.
+- Remove entries whose value is not supported by their quoted evidence.
+- Merge duplicate or near-duplicate entries that describe the same fact into one entry: choose the clearest, most complete value, and combine their evidence lists (drop only exactly-identical duplicate evidence objects).
+- You may rewrite an entry's **value** to make it self-contained, accurate, and easy to understand, but only based on its quoted evidence.
+- Copy surviving evidence objects byte-for-byte: never edit, rewrite, shorten, or renumber the "text", "source_document", or "location" fields.
+- Do not introduce any new facts or new evidence.
+
+# Candidate Checklist
+{checklist}
+
+# Output Format
+Your output should be in the following JSON format—no extra keys, no prose outside of the JSON:
+
+```
+{{
+  "reasoning": "<brief description of which entries you removed, merged, or kept, and why>",
+  "extracted": [
+    {{
+      "evidence": [
+        {{
+          "text": "<verbatim evidence text copied unchanged from the candidate checklist>",
+          "source_document": "<source_document copied unchanged>",
+          "location": "<location copied unchanged>"
+        }}
+        // ...
+      ],
+      "value": "<the verified, self-contained value>"
+    }}
+    // ...
+  ]
+}}
+```
+
+## Rules for the JSON schema
+1. **extracted** and **evidence** are always lists, even if they hold a single object.
+2. Every evidence object in your output must be copied unchanged from the candidate checklist.
+3. If no entries survive verification, output **extracted** as an empty list:
+
+```
+{{
+  "reasoning": "<brief analysis>",
+  "extracted": []
+}}
+```
+
+4. Each distinct piece of information should be a separate item in the **extracted** list.

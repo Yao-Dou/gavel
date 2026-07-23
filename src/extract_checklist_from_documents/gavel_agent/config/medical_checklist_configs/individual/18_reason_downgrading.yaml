@@ -1,0 +1,15 @@
+# Checklist configuration - Reason for Downgrading only
+# Focuses exclusively on extracting reasons for downgraded certainty.
+
+# User instruction
+user_instruction: |
+  Extract the reasons for downgrading certainty from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Reason_Downgrading:
+    description: "Reasons given for a lower certainty rating, such as study limitations, risk of bias, imprecision, inconsistency, indirectness, publication bias, or small sample size (e.g., 'downgraded for risk of bias and imprecision'). Extract each downgrading reason as a separate value linked to the outcome, formatted as: '[outcome]: [reason(s) for downgrading]'."

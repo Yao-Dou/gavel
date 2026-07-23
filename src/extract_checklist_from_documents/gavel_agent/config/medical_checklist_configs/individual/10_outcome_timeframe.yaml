@@ -1,0 +1,15 @@
+# Checklist configuration - Outcome Timeframe only
+# Focuses exclusively on extracting outcome assessment timeframes.
+
+# User instruction
+user_instruction: |
+  Extract the outcome timeframes from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Outcome_Timeframe:
+    description: "When (after intervention start) outcomes were assessed (e.g., 'at 12 weeks', 'at 1 year', 'at end of treatment', 'at 30 days post-discharge'). Distinct from Timing_Intervention (the duration of the intervention itself). Extract each timeframe as a separate value, linking to the outcome when possible, formatted as: '[outcome]: [timeframe]'."

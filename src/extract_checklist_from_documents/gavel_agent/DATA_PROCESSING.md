@@ -1,17 +1,27 @@
-# Data Processing for Legal Agent
+# Data Processing for the Gavel Agent
 
-This document describes how to process legal case documents for use with the legal agent scaffold.
+This document describes how to process case documents for use with the agent scaffold. Two input schemas are supported, selected with `--domain`:
+
+- `--domain legal` (default): multi_lexsum court-case format
+- `--domain medical`: Cochrane systematic-review format
 
 ## Data Format
 
-### Input Format
-The input data is located in `data/full_case_data/` (JSON files containing a list of cases). Each case has:
+### Input Format (legal, default)
+The input data is located in `data/full_case_data/` at the repo root (JSON files containing a list of cases). Each case has:
 - `case_id`: Unique identifier
 - `case_documents_text`: List of document texts
 - `case_documents_title`: List of document titles
 - `case_documents_doc_type`: List of document types
 - `case_documents_token_num`: Token counts (will be recalculated)
-- Additional metadata (filing_date, case_url, etc.)
+- Additional metadata (filing_date, case_url, case_type)
+
+### Input Format (medical)
+Medical input lives in `data/full_case_data/medical/` (e.g. `10_human_eval_cases.json`). Each record is one Cochrane review whose sections (Background, Objectives, Methods, Results, Discussion, References) act as the "documents". Differences from the legal schema:
+- `case_id` is a PMC identifier (e.g. `PMC11706636`)
+- There is **no** `case_documents_doc_type` (or per-document dates) — the section titles are used as document types
+- Case-level metadata fields are `publication_date`, `case_url`, `doi`, `pmid`, `journal`, `authors`, `year`, `title`, `subjects`
+- Output is prefixed with the domain: `data/medical_<input_stem>/`
 
 ### Output Format
 The processed data is organized as:
@@ -35,7 +45,11 @@ Each case directory contains:
 ### Basic Processing
 Process all cases from an input file:
 ```bash
+# Legal (default domain) -> data/20_human_eval_cases/
 python data_processing.py ../../../data/full_case_data/20_human_eval_cases.json
+
+# Medical -> data/medical_10_human_eval_cases/
+python data_processing.py ../../../data/full_case_data/medical/10_human_eval_cases.json --domain medical
 ```
 
 ### Process Specific Cases
@@ -72,12 +86,18 @@ python data_processing.py input.json --model Qwen/Qwen3-14B
 
 After processing, run the agent on a specific case:
 ```bash
+# Legal
 python run_agent.py data/20_human_eval_cases/46210 --model Qwen/Qwen3-8B
+
+# Medical (must pass the medical checklist config)
+python run_agent.py data/medical_10_human_eval_cases/PMC11706636 \
+    --checklist-config config/medical_checklist_configs/all/all_29_items.yaml
 ```
 
-Or process multiple cases in batch:
+Or sweep every prepared case with the batch runner (see `./run_agent_jobs.sh --help`):
 ```bash
-python run_agent.py data/20_human_eval_cases --batch
+./run_agent_jobs.sh                    # legal
+./run_agent_jobs.sh --domain medical   # medical
 ```
 
 ## Token Counts
@@ -95,11 +115,13 @@ Documents are named using the pattern:
 ```
 
 Where:
-- `doc_type`: Sanitized document type (e.g., "complaint", "motion")
+- `doc_type`: Sanitized document type (legal: e.g. "complaint", "motion"; medical: the section title, e.g. "background", "methods")
 - `index`: 3-digit document index
-- `sanitized_title`: Optional sanitized title (first 20 chars)
+- `sanitized_title`: Optional sanitized title (first 20 chars; omitted when identical to the doc type, as in medical sections)
 
 ## Metadata Structure
+
+Domain-specific case-level fields are propagated into `metadata.json` when present — legal: `filing_date`, `case_url`, `case_type`; medical: `publication_date`, `case_url`, `doi`, `pmid`, `journal`, `authors`, `year`, `title`, `subjects`.
 
 Each case's `metadata.json` contains:
 ```json

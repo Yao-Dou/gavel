@@ -26,7 +26,7 @@ developer_prompt: |
   - If the document catalog is **unknown** → call `list_documents`.
   - If a specific document likely contains a target value, choose ONE:
     • `read_document` — default choice. Read a targeted window (≤10,000 tokens) in a document.
-    • `search_document_regex` — use this when the target is clearly patternable (e.g., "Case No.", "Filed:", citations).
+    • `search_document_regex` — use this when the target is clearly patternable (e.g., dates, identifiers, formatted phrases, section headers).
   - When you have confirmed text for one or more keys:
     - Use `append_checklist` for adds new entries for some checklist items.
     - Use `update_checklist` to replace the entire extracted list for some checklist items when you have the authoritative/complete set, when correcting earlier entries, or when setting an item to Not Applicable (see "Not Applicable Encoding").
@@ -65,7 +65,7 @@ developer_prompt: |
     - `value`: **"Not Applicable"** (exact string; case-sensitive)
     - `evidence`: required (explicit text or a dispositive posture supporting Not Applicable)
   - A key is treated as **Not Applicable** only if its `extracted` list contains **exactly one** entry whose `value` is "Not Applicable".
-  - Do **not** mark Not Applicable solely because you failed to find a value; require explicit text or logically dispositive evidence (e.g., dismissal with prejudice → no settlement/decree; "no class certification sought" → class action items Not Applicable).
+  - Do **not** mark Not Applicable solely because you failed to find a value; require explicit text or logically dispositive evidence that rules out the category (e.g., an explicit "no data found" statement, or a finding that logically eliminates a category of items).
   - If later evidence shows the item **does** have real values, use `update_checklist` to replace the Not Applicable entry with the confirmed entries.
   
   # Stop Criteria

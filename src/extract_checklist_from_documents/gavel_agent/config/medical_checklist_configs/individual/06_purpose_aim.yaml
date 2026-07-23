@@ -1,0 +1,15 @@
+# Checklist configuration - Purpose / Aim only
+# Focuses exclusively on extracting the aim or purpose of the review.
+
+# User instruction
+user_instruction: |
+  Extract the aim or purpose of the review from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Purpose_Aim:
+    description: "The explicit aim, objective, or research question of the review — what the review sought to determine, paraphrased or quoted from the review (e.g., 'To assess the effects of statins on cardiovascular mortality in adults', 'To evaluate the safety and efficacy of GLP-1 agonists for weight loss in obese adults without diabetes'). Typically a single value per review; extract each distinct stated aim if multiple."

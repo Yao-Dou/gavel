@@ -1,0 +1,15 @@
+# Checklist configuration - Evidence Currency only
+# Focuses exclusively on extracting how up-to-date the review is.
+
+# User instruction
+user_instruction: |
+  Extract the evidence currency (search/publication date) from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Evidence_Currency:
+    description: "How up-to-date the review is — search date, publication date, or any explicit currency statement (e.g., 'Search current to March 2024', 'Last updated in 2023'). Extract each currency-related statement as a separate value."

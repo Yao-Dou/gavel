@@ -1,0 +1,24 @@
+# Checklist configuration - Contextual / Background Information group
+# Focuses on background context: condition mechanism/burden, intervention rationale, and definitions of technical terms.
+
+# User instruction - what the user wants the agent to do
+user_instruction: |
+  Extract all 3 checklist items from the medical review documents as completely as possible.
+
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: outcomes, study designs, certainty levels, quantitative findings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+
+# Checklist items to extract - Contextual / Background Information group
+checklist_items:
+  Condition_Background:
+    description: "Disease mechanism, prevalence, progression, natural history, burden, or pathophysiology described as context (e.g., 'Alzheimer''s disease is a progressive neurodegenerative disorder affecting approximately 50 million people worldwide'). Context about the condition itself, distinct from Condition_Defined (which states what condition the review studies). Extract each background statement as a separate value."
+
+  Intervention_Rationale:
+    description: "The biological, behavioral, or theoretical reason the intervention is expected to work — its mechanism of action or hypothesized pathway (e.g., 'SSRIs increase synaptic serotonin levels, hypothesized to alleviate depressive symptoms'). Distinct from Intervention_Defined (which is what the intervention is). Extract each rationale as a separate value."
+
+  Definition_Technical_Terms:
+    description: "Plain-language explanations of medical, statistical, or methodological terminology used in the review (e.g., 'odds ratio: a measure comparing the odds of an outcome between two groups', 'placebo: an inactive treatment used for comparison'). Extract each defined term as a separate value, formatted as: '[term]: [plain-language definition]'."

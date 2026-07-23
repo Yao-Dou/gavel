@@ -1,0 +1,33 @@
+# Checklist configuration - Clinical Question Structure group
+# Focuses on the core PICO-style framing of the review: condition, population, intervention, comparator, timing, and aim.
+
+# User instruction - what the user wants the agent to do
+user_instruction: |
+  Extract all 6 checklist items from the medical review documents as completely as possible.
+
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: outcomes, study designs, certainty levels, quantitative findings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+
+# Checklist items to extract - Clinical Question Structure group
+checklist_items:
+  Condition_Defined:
+    description: "The health condition, disease, or clinical problem the review investigates, as explicitly stated. Capture the condition name with any qualifiers describing stage, severity, subtype, or anatomical site (e.g., 'type 2 diabetes mellitus', 'major depressive disorder', 'post-stroke upper-limb spasticity'). Do not include disease mechanism, prevalence, or burden — those belong in Condition_Background. Extract each distinct condition as a separate value."
+
+  Population_Defined:
+    description: "The group(s) of people the evidence applies to, defined by age, sex, demographic, clinical status, setting, or comorbidities (e.g., 'adults aged 65+ with mild cognitive impairment', 'pregnant women at <20 weeks gestation', 'children under 5 in low-resource settings'). This is the population-level scope of the review, distinct from Inclusion_Criteria (which describes criteria for studies eligible for inclusion). Extract each distinct population as a separate value, formatted as: '[population descriptor]'."
+
+  Intervention_Defined:
+    description: "The treatment, exposure, intervention, or strategy being studied, including drug name(s) and class, dose, route, device, behavior, or program (e.g., 'metformin 500 mg twice daily, oral', 'cognitive behavioral therapy weekly sessions', 'whole-grain dietary intervention'). Do not capture the comparator — that belongs in Comparator_Defined. Do not capture the mechanism — that belongs in Intervention_Rationale. Extract each distinct intervention as a separate value."
+
+  Comparator_Defined:
+    description: "The control condition, placebo, usual care, alternative treatment, or no-treatment arm against which the intervention is compared (e.g., 'placebo', 'usual care', 'standard pharmacotherapy', 'sham acupuncture', 'no intervention'). If multiple comparators are described, extract each as a separate value. Do not extract the intervention itself — that belongs in Intervention_Defined."
+
+  Timing_Intervention:
+    description: "The timing, duration, frequency, or treatment period of the intervention itself (e.g., 'daily for 12 weeks', 'single dose at week 0', 'continuous use for ≥6 months'). This is timing of the intervention, distinct from Outcome_Timeframe (when outcomes were measured). Extract each timing descriptor as a separate value."
+
+  Purpose_Aim:
+    description: "The explicit aim, objective, or research question of the review — what the review sought to determine, paraphrased or quoted from the review (e.g., 'To assess the effects of statins on cardiovascular mortality in adults', 'To evaluate the safety and efficacy of GLP-1 agonists for weight loss in obese adults without diabetes'). Typically a single value per review; extract each distinct stated aim if multiple."

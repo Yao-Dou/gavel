@@ -28,7 +28,9 @@ from azure.core.credentials import AzureKeyCredential
 import copy
 
 from dotenv import load_dotenv
-dotenv_path = os.path.expanduser('/srv/nlprx-lab/share6/douy/common.env')
+# Load API credentials from a .env file (see src/.env.example). Set DOTENV_PATH
+# to use a custom location; missing files are silently skipped.
+dotenv_path = os.path.expanduser(os.environ.get("DOTENV_PATH", ".env"))
 load_dotenv(dotenv_path)
 os.environ['CURL_CA_BUNDLE'] = ''
 

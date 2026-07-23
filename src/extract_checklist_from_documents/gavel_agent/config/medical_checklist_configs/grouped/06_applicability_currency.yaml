@@ -1,0 +1,21 @@
+# Checklist configuration - Applicability & Currency group
+# Focuses on who the findings apply to and how up-to-date the review is.
+
+# User instruction - what the user wants the agent to do
+user_instruction: |
+  Extract all 2 checklist items from the medical review documents as completely as possible.
+
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of each checklist item that directly matches the item's definition."
+  - "When multiple values exist for a checklist item, create separate extracted entries for each value."
+  - "Be thorough with items that commonly have multiple values: outcomes, study designs, certainty levels, quantitative findings, etc."
+  - "Each extracted value should be self-contained and easy to read, so you can include important context if needed."
+
+# Checklist items to extract - Applicability & Currency group
+checklist_items:
+  Applicability:
+    description: "Statements about whom the findings apply to, where they generalize, or explicit limits on generalizability (e.g., 'Findings apply primarily to adults aged 18–65 in high-income settings; generalizability to children or low-resource settings is unclear'). Extract each applicability statement as a separate value."
+
+  Evidence_Currency:
+    description: "How up-to-date the review is — search date, publication date, or any explicit currency statement (e.g., 'Search current to March 2024', 'Last updated in 2023'). Extract each currency-related statement as a separate value."

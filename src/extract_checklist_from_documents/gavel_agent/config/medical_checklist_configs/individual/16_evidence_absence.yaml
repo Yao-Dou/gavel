@@ -1,0 +1,15 @@
+# Checklist configuration - Evidence Absence only
+# Focuses exclusively on extracting explicit statements about absence of data.
+
+# User instruction
+user_instruction: |
+  Extract explicit statements of evidence absence from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Evidence_Absence:
+    description: "Explicit statements that no data, no studies, or insufficient evidence was found for an outcome or comparison (e.g., 'No studies reported on long-term mortality', 'We found no eligible trials for this comparison'). Do not infer absence; require explicit statements. Closely related to Evidence_Gaps but narrower: Evidence_Absence is for direct no-data statements, while Evidence_Gaps covers broader limitations. Extract each absence statement as a separate value, formatted as: '[outcome/topic]: no data found' or quote the relevant phrasing."

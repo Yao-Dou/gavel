@@ -9,7 +9,7 @@ import os
 from pathlib import Path
 
 # Base paths
-BASE_DIR = Path(__file__).parent.parent.parent  # /Users/douy/gavel
+BASE_DIR = Path(__file__).parent.parent.parent  # repo root
 DATA_DIR = BASE_DIR / "data"
 OUTPUT_DIR = BASE_DIR / "docs" / "data"
 

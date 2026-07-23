@@ -1,0 +1,15 @@
+# Checklist configuration - Benefit Direction only
+# Focuses exclusively on extracting the direction of effect for benefit outcomes.
+
+# User instruction
+user_instruction: |
+  Extract the direction of benefit effects from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Benefit_Direction:
+    description: "The stated direction of effect for benefit outcomes (e.g., 'increase', 'decrease', 'no difference', 'improvement', 'reduction', 'little to no difference'). Extract directional findings per outcome. Do not include effects on harms (use Harm_Direction). Format as: '[outcome]: [direction]'."

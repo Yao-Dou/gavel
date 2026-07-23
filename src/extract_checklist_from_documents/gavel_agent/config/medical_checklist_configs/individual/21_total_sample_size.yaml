@@ -1,0 +1,15 @@
+# Checklist configuration - Total Sample Size only
+# Focuses exclusively on extracting the total participant count.
+
+# User instruction
+user_instruction: |
+  Extract the total sample size from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Total_Sample_Size:
+    description: "The total number of participants across all included studies (e.g., 'N = 4,532 participants', '2,108 patients across 12 trials'). If reported per comparison or per arm, extract each with context."

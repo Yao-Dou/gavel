@@ -59,10 +59,7 @@ class ListDocumentsTool(BaseTool):
                         "type": "object",
                         "properties": {
                             "name": {"type": "string"},
-                            "type": {"type": "string", "enum": [
-                                "complaint", "docket", "motion", "order", 
-                                "exhibit", "judgment", "other"
-                            ]},
+                            "type": {"type": "string"},
                             "token_count": {"type": "integer"},
                             "visited": {"type": "boolean"},
                             "coverage": {

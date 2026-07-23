@@ -1,0 +1,15 @@
+# Checklist configuration - Number of Studies only
+# Focuses exclusively on extracting the number of included studies.
+
+# User instruction
+user_instruction: |
+  Extract the number of included studies from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Number_Studies:
+    description: "The total number of studies included in the review (e.g., '12 studies', '34 RCTs included'). If multiple counts exist (e.g., per comparison or per subgroup), extract each with context, formatted as: '[count]: [scope/comparison]'."

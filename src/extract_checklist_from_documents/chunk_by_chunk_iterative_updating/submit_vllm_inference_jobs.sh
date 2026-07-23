@@ -1,45 +1,86 @@
 #!/usr/bin/env bash
 set -euo pipefail
 
-# Define the settings you want to sweep over
+# Domain to run: "legal" or "medical". Selects the prompt template and
+# checklist definitions. Data-file naming: legal files are unprefixed
+# (data/{file}.json); other domains are prefixed (data/{domain}_{file}.json).
+DOMAIN="legal"
+
+# Define the data files to process, WITHOUT the domain prefix
+# (legal "20_human_eval_cases" loads data/20_human_eval_cases.json;
+#  medical "10_human_eval_cases" loads data/medical_10_human_eval_cases.json)
 declare -a FILES=(
   # "2025_example_cases"
-  "20_human_eval_cases"
+  # "20_human_eval_cases"
   # "20_human_eval_cases_2"
+  # "50_cases_for_benchmarking"
+  # "50_cases_for_benchmarking_2"
+  # -- medical files (set DOMAIN="medical") --
+  # "10_human_eval_cases"
   # Add more file names here as needed
 )
 
 # Define which checklist items to process
 # Empty string means process all items
-# You can also specify individual items like "Cause_of_Action", "Court_Rulings", etc.
 declare -a CHECKLIST_ITEMS=(
   ""  # Process all items
+  # -- legal items --
+  # "All_Reported_Opinions_Cited_with_Shortened_Bluebook_Citation"
+  # "Appeal"
   # "Cause_of_Action"
+  # "Class_Action_or_Individual_Plaintiffs"
+  # "Consolidated_Cases_Noted"
   # "Court_Rulings"
-  # "Who_are_the_Parties"
+  # "Date_of_Settlement"
+  # "Dates_of_All_Decrees"
+  # "Disputes_Over_Settlement_Enforcement"
   # "Factual_Basis_of_Case"
-  # "Remedy_Sought"
   # "Filing_Date"
   # "First_and_Last_name_of_Judge"
-  # "Class_Action_or_Individual_Plaintiffs_"
-  # "Statutory_or_Constitutional_Basis_for_the_Case"
-  # "Note_Important_Filings"
-  # "Appeal"
-  # "Trials"
-  # "Date_of_Settlement"
-  # "Significant_Terms_of_Settlement"
-  # "How_Long_Settlement_will_Last"
-  # "Whether_the_Settlement_is_Court-enforced_or_Not"
-  # "Disputes_Over_Settlement_Enforcement"
-  # "Dates_of_All_Decrees"
-  # "Significant_Terms_of_Decrees"
   # "How_Long_Decrees_will_Last"
-  # "Name_of_the_Monitor."
+  # "How_Long_Settlement_will_Last"
   # "Monitor_Reports"
-  # "Type_of_Counsel"
-  # "Consolidated_Cases_Noted"
+  # "Name_of_the_Monitor"
+  # "Note_Important_Filings"
   # "Related_Cases_Listed_by_Their_Case_Code_Number"
-  # "All_Reported_Opinions_Cited_with_Shortened_Bluebook_Citation"
+  # "Remedy_Sought"
+  # "Significant_Terms_of_Decrees"
+  # "Significant_Terms_of_Settlement"
+  # "Statutory_or_Constitutional_Basis_for_the_Case"
+  # "Trials"
+  # "Type_of_Counsel"
+  # "Whether_the_Settlement_is_Court-enforced_or_Not"
+  # "Who_are_the_Parties"
+  # -- medical items --
+  # "Condition_Defined"
+  # "Population_Defined"
+  # "Intervention_Defined"
+  # "Comparator_Defined"
+  # "Timing_Intervention"
+  # "Purpose_Aim"
+  # "Primary_Benefit_Outcome"
+  # "Secondary_Benefit_Outcome"
+  # "Harm_Safety_Outcome"
+  # "Outcome_Timeframe"
+  # "Outcome_Definition"
+  # "Benefit_Direction"
+  # "Harm_Direction"
+  # "Magnitude_Descriptor"
+  # "Quantitative_Data"
+  # "Evidence_Absence"
+  # "Certainty_Level"
+  # "Reason_Downgrading"
+  # "Study_Design"
+  # "Number_Studies"
+  # "Total_Sample_Size"
+  # "Search_Strategy"
+  # "Inclusion_Criteria"
+  # "Evidence_Gaps"
+  # "Condition_Background"
+  # "Intervention_Rationale"
+  # "Definition_Technical_Terms"
+  # "Applicability"
+  # "Evidence_Currency"
 )
 
 declare -a MODELS=(
@@ -61,6 +102,10 @@ declare -a MODELS=(
 # Set this to "true" or "false" as needed
 DEFAULT_ENABLE_THINKING="true"
 
+# SLURM writes job logs into vllm_inference_logs/ (see the sbatch --output);
+# the directory must exist at submission time.
+mkdir -p vllm_inference_logs
+
 # Submit jobs for each combination
 for file in "${FILES[@]}"; do
   for model in "${MODELS[@]}"; do
@@ -75,22 +120,23 @@ for file in "${FILES[@]}"; do
       # For non-2507 models, use the default setting
       ENABLE_THINKING="$DEFAULT_ENABLE_THINKING"
     fi
-    
+
     for item in "${CHECKLIST_ITEMS[@]}"; do
       # Build job name suffix based on whether we're processing a specific item
       if [[ -n "$item" ]]; then
         job_suffix="_${item}"
-        echo "Submitting job for file=$file, model=$model, item=$item, thinking=$ENABLE_THINKING"
+        echo "Submitting job for domain=$DOMAIN, file=$file, model=$model, item=$item, thinking=$ENABLE_THINKING"
       else
         job_suffix="_all"
-        echo "Submitting job for file=$file, model=$model, all items, thinking=$ENABLE_THINKING"
+        echo "Submitting job for domain=$DOMAIN, file=$file, model=$model, all items, thinking=$ENABLE_THINKING"
       fi
-      
-      sbatch --export=ALL,FILE_NAME="$file",\
+
+      sbatch --export=ALL,DOMAIN="$DOMAIN",\
+FILE_NAME="$file",\
 CHECKLIST_ITEM="$item",\
 ENABLE_THINKING="$ENABLE_THINKING",\
 MODEL_NAME="$model" \
-             --job-name="chunk_vllm${job_suffix}" \
+             --job-name="chunk_vllm_${DOMAIN}${job_suffix}" \
              vllm_inference.sbatch
     done
   done

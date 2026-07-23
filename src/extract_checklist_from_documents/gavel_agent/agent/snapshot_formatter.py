@@ -63,7 +63,7 @@ class SnapshotFormatter:
     @staticmethod
     def _format_header(snapshot: Snapshot) -> str:
         """Format the header section."""
-        header = f"""# Legal Checklist Extraction
+        header = f"""# Checklist Extraction
 **Step {snapshot.run_header.step}**
 
 ## Your Task

@@ -1,0 +1,61 @@
+You are assisting a medical researcher in consolidating key information extracted from medical systematic review documents. Two candidate checklists were independently extracted from different, non-overlapping parts of the same systematic review. Both checklists are for the same checklist item: "{item_name}". The extraction task for this checklist item is to {item_description}
+
+Your task is to merge the two checklists into a single checklist: deduplicate entries that refer to the same underlying fact, keep all distinct relevant information with its supporting evidence, and remove extracted values that do not belong to this checklist item.
+
+# Note:
+- Remove any entry whose value clearly does not belong to the checklist item "{item_name}" as defined above; explain each removal in your reasoning. If you are unsure whether an entry belongs, keep it. If removing such entries would leave the merged checklist empty, keep the entries instead—the final verification step will handle them.
+- Never drop relevant information merely because it appears in only one of the two checklists.
+- Copy evidence objects byte-for-byte: never edit, rewrite, shorten, or renumber the "text", "source_document", or "location" fields.
+- Do not introduce any new facts that are not present in the input checklists.
+- Order the merged entries naturally (entries from Checklist A's region generally before Checklist B's, unless merging dictates otherwise).
+
+# Deduplication Rules
+Deduplicate entries that clearly refer to the same underlying fact, event, claim, issue, finding, or outcome.
+
+Two entries should be merged if:
+1. They describe the same fact using different wording.
+2. One is a paraphrase of the other.
+3. One is a more complete version of the other and does not introduce a distinct additional fact.
+4. They have compatible values and supporting evidence.
+
+When merging duplicate entries into one entry, choose the clearest, most complete value, and combine their evidence lists (drop only exactly-identical duplicate evidence objects).
+
+Keep entries separate when they describe distinct facts, even if they look similar—the two checklists come from different parts of the review documents, so similar-looking entries may be genuinely different facts (for example, two different outcomes or two different studies). When unsure whether two entries refer to the same fact, keep both—the later verification step can remove duplicates, but it can never recover information you drop.
+
+# Checklist A
+{checklist_a_provenance}
+{checklist_a}
+
+# Checklist B
+{checklist_b_provenance}
+{checklist_b}
+
+# Output Format
+Your output should be in the following JSON format—no extra keys, no prose outside of the JSON:
+
+```
+{{
+  "reasoning": "<brief description of which entries you merged together, which you removed as not belonging to the checklist item, and which you kept separate, and why>",
+  "extracted": [
+    {{
+      "evidence": [
+        {{
+          "text": "<verbatim evidence text copied unchanged from an input checklist>",
+          "source_document": "<source_document copied unchanged>",
+          "location": "<location copied unchanged>"
+        }}
+        // ...
+      ],
+      "value": "<the merged or carried-over value>"
+    }}
+    // ...
+  ]
+}}
+```
+
+## Rules for the JSON schema
+1. **extracted** and **evidence** are always lists, even if they hold a single object.
+2. Every evidence object in your output must be copied unchanged from one of the two input checklists.
+3. Every entry from both input checklists must either be represented in the output (as its own entry or merged into a combined entry) or be removed as not belonging to the checklist item, with the removal explained in **reasoning**.
+4. The output **extracted** list must never be empty: if removals would leave it empty, keep the remaining entries instead (the final verification step will handle them).
+5. Each distinct piece of information should be a separate item in the **extracted** list.

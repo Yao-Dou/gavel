@@ -1,0 +1,15 @@
+# Checklist configuration - Timing of Intervention only
+# Focuses exclusively on extracting the timing and duration of the intervention.
+
+# User instruction
+user_instruction: |
+  Extract the timing and duration of the intervention from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Timing_Intervention:
+    description: "The timing, duration, frequency, or treatment period of the intervention itself (e.g., 'daily for 12 weeks', 'single dose at week 0', 'continuous use for ≥6 months'). This is timing of the intervention, distinct from Outcome_Timeframe (when outcomes were measured). Extract each timing descriptor as a separate value."

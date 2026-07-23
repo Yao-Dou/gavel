@@ -1,0 +1,15 @@
+# Checklist configuration - Population Defined only
+# Focuses exclusively on extracting the study population.
+
+# User instruction
+user_instruction: |
+  Extract the study population from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Population_Defined:
+    description: "The group(s) of people the evidence applies to, defined by age, sex, demographic, clinical status, setting, or comorbidities (e.g., 'adults aged 65+ with mild cognitive impairment', 'pregnant women at <20 weeks gestation', 'children under 5 in low-resource settings'). This is the population-level scope of the review, distinct from Inclusion_Criteria (which describes criteria for studies eligible for inclusion). Extract each distinct population as a separate value, formatted as: '[population descriptor]'."

@@ -1,0 +1,15 @@
+# Checklist configuration - Harm / Safety Outcome only
+# Focuses exclusively on extracting harm or safety outcomes.
+
+# User instruction
+user_instruction: |
+  Extract the harm or safety outcomes from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Harm_Safety_Outcome:
+    description: "Unwanted effects, adverse events, harms, side effects, or safety outcomes assessed by the review (e.g., 'serious adverse events', 'gastrointestinal bleeding', 'all-cause mortality'). Include both common and serious harms when both are reported. Do not include benefit outcomes (use Primary_Benefit_Outcome or Secondary_Benefit_Outcome). Extract each harm or safety outcome as a separate value."

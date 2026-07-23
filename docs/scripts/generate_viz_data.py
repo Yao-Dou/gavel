@@ -10,7 +10,7 @@ import os
 from pathlib import Path
 
 # Base paths
-BASE_DIR = Path(__file__).parent.parent.parent  # /Users/douy/gavel
+BASE_DIR = Path(__file__).parent.parent.parent  # repo root
 DATA_DIR = BASE_DIR / "data"
 OUTPUT_DIR = BASE_DIR / "docs" / "data"
 
@@ -201,6 +201,10 @@ def compute_relation(model_values, ref_values, evaluation):
                 return {"text": "Different", "class": "relation-different", "matched_model": [], "matched_ref": []}
 
         elif isinstance(evaluation, dict):
+            # Unmapped A/B result (model/reference orientation unknown) — don't
+            # guess a relation from it.
+            if "only_in_A" in evaluation or "only_in_B" in evaluation:
+                return {"text": "Unknown", "class": "relation-na", "matched_model": [], "matched_ref": []}
             # List-wise evaluation
             common = evaluation.get("common", [])
             only_in_model = evaluation.get("only_in_model", [])

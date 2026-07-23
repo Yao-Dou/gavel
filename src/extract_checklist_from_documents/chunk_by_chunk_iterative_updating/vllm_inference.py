@@ -1,12 +1,21 @@
 #!/usr/bin/env python3
-"""Chunk-by-chunk iterative extraction utility for legal documents.
+"""Chunk-by-chunk iterative extraction utility for long documents.
 
-This script processes legal documents chunk by chunk, iteratively building up
+This script processes long documents (legal cases or medical systematic
+reviews, selected via --domain) chunk by chunk, iteratively building up
 extracted information for each checklist item. It uses vLLM for inference on
 open-source models with YaRN scaling for long contexts.
 
+The domain selects the prompt template and checklist definitions (see
+DOMAIN_CONFIGS) and the data-file naming: legal keeps the historical
+unprefixed names (--domain legal --file_name X loads data/X.json), while
+other domains are prefixed (--domain medical --file_name X loads
+data/medical_X.json); results/checkpoints/logs carry the same name.
+
 Command-line flags:
-    --file_name          (str)  name of the JSON data file (without extension)
+    --domain             (str)  required; one of DOMAIN_CONFIGS (legal, medical)
+    --file_name          (str)  name of the JSON data file, without extension
+                                and without the domain prefix
     --enable_thinking    (flag) switch on thinking mode (Qwen3 or GPT-OSS)
     --model_name         (str)  HF model name (default: "Qwen/Qwen3-14B")
     --checklist_item     (str)  specific checklist item to extract (optional)
@@ -34,12 +43,43 @@ import gc
 # Note: ray is imported by vLLM internally but we don't need to manage it directly
 
 # ---------------------------------------------------------------------------
+# Domain configuration
+# ---------------------------------------------------------------------------
+# Each domain supplies its prompt template and checklist definitions (all
+# paths resolved from this script's location, so runs are CWD-independent).
+# Data files live in ./data/ next to this script; legal files keep their
+# historical unprefixed names (e.g. 20_human_eval_cases.json), other domains
+# use a {domain}_ prefix (e.g. medical_10_human_eval_cases.json). Adding a
+# new domain only requires a new entry here plus the template/checklist files.
+
+SCRIPT_DIR = Path(__file__).resolve().parent
+PROMPTS_DIR = SCRIPT_DIR.parents[2] / "prompts" / "extract_checklist_item_from_docs"
+
+DOMAIN_CONFIGS: Dict[str, Dict[str, Path]] = {
+    "legal": {
+        "template_path": PROMPTS_DIR / "chunk_by_chunk_template.txt",
+        "checklist_path": PROMPTS_DIR / "item_specific_info.json",
+    },
+    "medical": {
+        "template_path": PROMPTS_DIR / "medical" / "chunk_by_chunk_template.txt",
+        "checklist_path": PROMPTS_DIR / "medical" / "item_specific_info.json",
+    },
+}
+
+
+# ---------------------------------------------------------------------------
 # Argument parsing
 # ---------------------------------------------------------------------------
 
 def parse_args() -> argparse.Namespace:
-    parser = argparse.ArgumentParser(description="Chunk-by-chunk iterative extraction for legal documents.")
-    parser.add_argument("--file_name", required=True, help="Base name of the JSON data file (without .json)")
+    parser = argparse.ArgumentParser(description="Chunk-by-chunk iterative extraction for long documents (domain-configurable).")
+    parser.add_argument(
+        "--domain",
+        required=True,
+        choices=sorted(DOMAIN_CONFIGS.keys()),
+        help="Domain to run: selects the prompt template, checklist definitions, and the data-file prefix",
+    )
+    parser.add_argument("--file_name", required=True, help="Base name of the JSON data file (without .json and without the domain prefix)")
     parser.add_argument(
         "--enable_thinking",
         action="store_true",
@@ -688,8 +728,15 @@ def save_checkpoint(case_states: Dict, chunk_idx: int, item_name: str, model_nam
         "item_case_stats": item_case_stats or {}  # Save item-specific case stats
     }
     
-    with open(checkpoint_path, "w", encoding="utf-8") as f:
+    # Write atomically: dump to a temp file, fsync, then rename over the real
+    # checkpoint. A kill/preemption mid-write can therefore never leave a
+    # truncated or corrupted checkpoint behind.
+    tmp_path = checkpoint_path.parent / (checkpoint_path.name + ".tmp")
+    with open(tmp_path, "w", encoding="utf-8") as f:
         json.dump(checkpoint_data, f, indent=2)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp_path, checkpoint_path)
     print(f"    Checkpoint saved for {item_name} after chunk {chunk_idx + 1} at {readable_timestamp}")
 
 
@@ -698,9 +745,17 @@ def load_checkpoint(item_name: str, model_name: str, file_name: str, enable_thin
     checkpoint_path = get_checkpoint_path(model_name, file_name, enable_thinking, item_name)
     
     if checkpoint_path.exists():
-        with open(checkpoint_path, "r", encoding="utf-8") as f:
-            checkpoint_data = json.load(f)
-        
+        try:
+            with open(checkpoint_path, "r", encoding="utf-8") as f:
+                checkpoint_data = json.load(f)
+        except (ValueError, OSError) as e:
+            # A corrupted/unreadable checkpoint must not crash the resume.
+            # Treat the item as not started; the min() restart logic below
+            # guarantees it will still cover every chunk.
+            print(f"  WARNING: Checkpoint for {item_name} is unreadable ({e}).")
+            print(f"  Treating {item_name} as not started; the run will restart from the earliest needed chunk.")
+            return {}, -1, {}
+
         last_chunk = checkpoint_data.get("last_completed_chunk", -1)
         case_states = checkpoint_data.get("case_states", {})
         item_case_stats = checkpoint_data.get("item_case_stats", {})
@@ -731,16 +786,16 @@ def process_chunks_iteratively(
     enable_thinking: bool,
     tokenizer: AutoTokenizer,
     selected_item: str = None,
-    file_name: str = None
+    file_name: str = None,
+    template_path: Path = None
 ) -> Tuple[Dict[str, Any], Dict[str, Dict[str, Dict]]]:
     """Process all chunks iteratively for all checklist items in parallel.
-    
+
     Returns:
         Tuple of (results, item_case_token_stats)
     """
-    
-    # Load prompt template
-    template_path = Path("../../../../prompts/extract_checklist_item_from_docs/chunk_by_chunk_template.txt")
+
+    # Load the domain-specific prompt template
     with open(template_path, "r") as f:
         prompt_template = f.read()
     
@@ -824,25 +879,29 @@ def process_chunks_iteratively(
                     "chunks_processed": 0  # Track chunks processed per case
                 }
     
-    # Check if all items have the same checkpoint
-    if checkpoint_chunks and len(set(checkpoint_chunks)) == 1:
-        last_completed_chunk = checkpoint_chunks[0]
+    # Determine the shared restart position as the minimum over ALL items,
+    # where an item with no checkpoint counts as -1 (not started). This
+    # guarantees no item can ever silently skip a chunk: if any item lacks a
+    # checkpoint (e.g. the job was killed partway through the very first
+    # checkpoint-save loop, or a checkpoint was corrupted), everything
+    # restarts early enough to cover it. Items that were ahead simply
+    # reprocess chunks (safe - their states are replaced, and stats updates
+    # are skipped for already-counted chunks).
+    if checkpoint_chunks:
+        last_completed_chunk = min(checkpoint_chunks)
+        if len(set(checkpoint_chunks)) > 1:
+            print(f"\n{'='*60}")
+            print(f"WARNING: Items have different checkpoint positions:")
+            for item_name, chunk_pos in zip(items_to_process.keys(), checkpoint_chunks):
+                if chunk_pos >= 0:
+                    print(f"  {item_name}: completed up to chunk {chunk_pos + 1}")
+                else:
+                    print(f"  {item_name}: no checkpoint (not started)")
+            print(f"Restarting from chunk {last_completed_chunk + 2} (1-based) so every item covers all chunks")
+            print(f"Items that were ahead will reprocess chunks (safe - states are replaced)")
+            print(f"{'='*60}\n")
     else:
-        # If items have different checkpoints, we need to start from the earliest
-        valid_chunks = [c for c in checkpoint_chunks if c >= 0]
-        if valid_chunks:
-            last_completed_chunk = min(valid_chunks)
-            if len(set(valid_chunks)) > 1:
-                print(f"\n{'='*60}")
-                print(f"WARNING: Items have different checkpoint positions:")
-                for item_name, chunk_pos in zip(items_to_process.keys(), checkpoint_chunks):
-                    if chunk_pos >= 0:
-                        print(f"  {item_name}: completed up to chunk {chunk_pos + 1}")
-                print(f"Starting from earliest position: chunk {last_completed_chunk + 1}")
-                print(f"Some items will reprocess chunks (safe - states are replaced)")
-                print(f"{'='*60}\n")
-        else:
-            last_completed_chunk = -1
+        last_completed_chunk = -1
     
     # Initialize states for any missing case-item combinations
     for case_id in case_data:
@@ -976,6 +1035,11 @@ def process_chunks_iteratively(
         
         # Process each response with its actual token stats
         for idx, (response, (case_id, item_name, _, _, _)) in enumerate(zip(responses, batch_keys)):
+            # When reprocessing a chunk after a resume, this item-case already
+            # counted this chunk in a previous run - skip the stats update to
+            # avoid double-counting (the extraction state is still updated below).
+            if item_case_token_stats[item_name][case_id].get("chunks_processed", 0) > global_chunk_idx:
+                continue
             # Get actual token stats for this specific prompt
             if idx < len(per_prompt_stats):
                 prompt_stats = per_prompt_stats[idx]
@@ -992,8 +1056,11 @@ def process_chunks_iteratively(
             item_case_token_stats[item_name][case_id]["total_prompts"] += 1
         
         # Update chunks_processed count for each case that processed a chunk
+        # (skip item-cases that already counted this chunk in a previous run)
         cases_in_batch = set((case_id, item_name) for _, (case_id, item_name, _, _, _) in zip(responses, batch_keys))
         for case_id, item_name in cases_in_batch:
+            if item_case_token_stats[item_name][case_id].get("chunks_processed", 0) > global_chunk_idx:
+                continue
             item_case_token_stats[item_name][case_id]["chunks_processed"] += 1
         
         # Calculate total cumulative stats from item_case_token_stats
@@ -1036,17 +1103,17 @@ def process_chunks_iteratively(
             save_checkpoint(item_states, global_chunk_idx, item_name, model_name, file_name, enable_thinking, 
                           item_case_token_stats[item_name])  # Pass item-specific case stats
     
-    # After all chunks processed, clean up checkpoints and prepare results
+    # After all chunks processed, free the LLM and prepare results.
+    # NOTE: checkpoints are deliberately NOT deleted here - main() removes them
+    # only after the final results file has been safely written, so a crash
+    # between this point and the final save cannot lose any progress.
     print(f"\n{'='*60}")
-    print("All chunks processed. Cleaning up checkpoints and LLM cache...")
+    print("All chunks processed. Cleaning up LLM cache...")
     print(f"{'='*60}")
-    
+
     # Clear the LLM cache to free GPU memory
     clear_llm_cache()
-    
-    for item_name in items_to_process:
-        cleanup_checkpoint(item_name, model_name, file_name, enable_thinking)
-    
+
     # Store final states in results
     for case_id in case_data:
         results[case_id] = {}
@@ -1138,6 +1205,15 @@ def main() -> None:
     enable_thinking: bool = args.enable_thinking
     model_name: str = args.model_name
     selected_item: str = args.checklist_item
+    domain: str = args.domain
+    domain_cfg = DOMAIN_CONFIGS[domain]
+
+    # Legal keeps the historical unprefixed file naming; other domains are
+    # prefixed so data/checkpoints/results are domain-tagged. The guard
+    # tolerates an already-prefixed --file_name.
+    if domain != "legal" and not file_name.startswith(f"{domain}_"):
+        file_name = f"{domain}_{file_name}"
+    print(f"Domain: {domain} | data/results name: {file_name}")
 
     # Only Qwen3 and GPT-OSS models support thinking mode
     if "Qwen3" not in model_name and "gpt-oss" not in model_name.lower():
@@ -1151,7 +1227,7 @@ def main() -> None:
     # Load data
     # -------------------------------------------------------------------
     print(f"Loading chunk data from {file_name}.json...")
-    chunk_data_path = Path("data") / f"{file_name}.json"
+    chunk_data_path = SCRIPT_DIR / "data" / f"{file_name}.json"
     with open(chunk_data_path, "r", encoding="utf-8") as f:
         chunk_data = json.load(f)
     
@@ -1161,8 +1237,8 @@ def main() -> None:
     
     print(f"Loaded {len(keys)} documents with chunks")
     
-    # Load checklist items
-    checklist_path = Path("../../../../prompts/extract_checklist_item_from_docs/item_specific_info.json")
+    # Load the domain-specific checklist items
+    checklist_path = domain_cfg["checklist_path"]
     with open(checklist_path, "r", encoding="utf-8") as f:
         checklist_items = json.load(f)
     
@@ -1194,7 +1270,8 @@ def main() -> None:
         enable_thinking=enable_thinking,
         tokenizer=tokenizer,
         selected_item=selected_item,
-        file_name=file_name
+        file_name=file_name,
+        template_path=domain_cfg["template_path"]
     )
     
     # -------------------------------------------------------------------
@@ -1283,9 +1360,22 @@ def main() -> None:
     }
     
     saving_path.parent.mkdir(parents=True, exist_ok=True)
-    with open(saving_path, "w", encoding="utf-8") as f:
+    # Write atomically so a kill mid-dump can never truncate or corrupt an
+    # existing results file.
+    tmp_saving_path = saving_path.parent / (saving_path.name + ".tmp")
+    with open(tmp_saving_path, "w", encoding="utf-8") as f:
         json.dump(final_output, f, indent=4)
+        f.flush()
+        os.fsync(f.fileno())
+    os.replace(tmp_saving_path, saving_path)
     print(f"\nSaved results → {saving_path}")
+
+    # Delete checkpoints only now that the results file is safely on disk; if
+    # the job dies any earlier, the next run still resumes from the checkpoints.
+    # (Mirrors the items_to_process filtering in process_chunks_iteratively.)
+    cleanup_items = [selected_item] if selected_item and selected_item in checklist_items else list(checklist_items.keys())
+    for item_name in cleanup_items:
+        cleanup_checkpoint(item_name, model_name, file_name, enable_thinking)
     
     # Print token usage summary
     print(f"\n{'='*60}")

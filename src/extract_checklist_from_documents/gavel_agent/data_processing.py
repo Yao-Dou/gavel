@@ -1,7 +1,14 @@
 #!/usr/bin/env python3
 """
-Data processing script for converting legal case documents to agent-compatible format.
-Processes cases from the multi_lexsum format into individual case directories.
+Data processing script for converting case documents to agent-compatible format.
+
+Supports two input schemas:
+  - legal:   multi_lexsum format (has case_documents_doc_type and case_documents_date)
+  - medical: Cochrane plain-language review format (no case_documents_doc_type;
+             case_documents_title carries section names like "Background", "Methods",
+             which are used as doc_type)
+
+Select the schema with --domain.
 """
 
 import json
@@ -20,33 +27,69 @@ sys.path.insert(0, str(Path(__file__).parent))
 from agent.tokenizer import TokenizerWrapper
 
 
+SUPPORTED_DOMAINS = ("legal", "medical")
+
+# Top-level case fields propagated into output metadata.json, by domain.
+# (Fields whose values are document-level lists are handled separately.)
+_DOMAIN_METADATA_FIELDS = {
+    "legal": ("filing_date", "case_url", "case_type"),
+    "medical": (
+        "publication_date",
+        "case_url",
+        "doi",
+        "pmid",
+        "journal",
+        "authors",
+        "year",
+        "title",
+        "subjects",
+    ),
+}
+
+
 class LegalDataProcessor:
     """
-    Processes legal case data from multi_lexsum format to agent-compatible format.
+    Processes case data into the agent-compatible per-case directory format.
+
+    Supports two input schemas, selected via the `domain` argument:
+      - "legal":   multi_lexsum format
+      - "medical": Cochrane plain-language review format
     """
-    
+
     def __init__(
         self,
         input_file: str,
         output_dir: str = "data",
         model_name: str = "Qwen/Qwen3-8B",
-        verbose: bool = True
+        verbose: bool = True,
+        domain: str = "legal",
     ):
         """
         Initialize the data processor.
-        
+
         Args:
             input_file: Path to input JSON file containing cases
             output_dir: Base output directory for processed data
             model_name: Model name for tokenizer (default: Qwen/Qwen3-8B)
             verbose: Whether to print progress
+            domain: Source schema; one of SUPPORTED_DOMAINS. Controls doc_type
+                fallback and which top-level case fields are propagated to
+                metadata.json.
         """
+        if domain not in SUPPORTED_DOMAINS:
+            raise ValueError(
+                f"Unsupported domain {domain!r}; expected one of {SUPPORTED_DOMAINS}"
+            )
+
         self.input_file = Path(input_file)
         self.output_dir = Path(output_dir)
         self.verbose = verbose
-        
-        # Extract dataset name from input file
-        self.dataset_name = self.input_file.stem
+        self.domain = domain
+
+        # Extract dataset name from input file; prefix with domain (except legal,
+        # which keeps the historical naming for backward compatibility).
+        stem = self.input_file.stem
+        self.dataset_name = stem if domain == "legal" else f"{domain}_{stem}"
         
         # Initialize tokenizer
         self.tokenizer = TokenizerWrapper(model_name)
@@ -159,7 +202,14 @@ class LegalDataProcessor:
             doc_types = case.get("case_documents_doc_type", [])
             dates = case.get("case_documents_date", [])
             doc_ids = case.get("case_documents_id", [])
-            
+
+            # Some input schemas (e.g., the medical Cochrane format) don't carry
+            # case_documents_doc_type. In those cases, use the section title as
+            # the document type — for medical reviews titles are a small fixed
+            # set like "Background", "Methods", "Results", etc.
+            if not doc_types:
+                doc_types = list(titles)
+
             # Validate data consistency
             num_docs = len(texts)
             if not all(len(lst) == num_docs for lst in [titles, doc_types]):
@@ -252,13 +302,10 @@ class LegalDataProcessor:
                 "documents": documents_metadata
             }
             
-            # Add optional fields if present
-            if "filing_date" in case:
-                case_metadata["filing_date"] = case["filing_date"]
-            if "case_url" in case:
-                case_metadata["case_url"] = case["case_url"]
-            if "case_type" in case:
-                case_metadata["case_type"] = case["case_type"]
+            # Propagate domain-specific top-level case fields if present.
+            for field in _DOMAIN_METADATA_FIELDS.get(self.domain, ()):
+                if field in case:
+                    case_metadata[field] = case[field]
             
             # Save metadata
             metadata_path = case_dir / "metadata.json"
@@ -413,58 +460,71 @@ class LegalDataProcessor:
 def main():
     """Main entry point."""
     parser = argparse.ArgumentParser(
-        description="Process legal case documents for agent scaffold"
+        description="Process case documents (legal multi_lexsum or medical Cochrane) for the agent scaffold"
     )
-    
+
     parser.add_argument(
         "input_file",
         help="Path to input JSON file containing cases"
     )
-    
+
     parser.add_argument(
         "--output-dir",
         default="data",
         help="Base output directory (default: data)"
     )
-    
+
     parser.add_argument(
         "--model",
         default="Qwen/Qwen3-8B",
         help="Model for tokenizer (default: Qwen/Qwen3-8B)"
     )
-    
+
     parser.add_argument(
         "--case-ids",
         nargs="+",
         help="Specific case IDs to process"
     )
-    
+
     parser.add_argument(
         "--dry-run",
         action="store_true",
         help="Perform dry run without writing files"
     )
-    
+
     parser.add_argument(
         "--validate",
         action="store_true",
         help="Validate output after processing"
     )
-    
+
     parser.add_argument(
         "--quiet",
         action="store_true",
         help="Suppress verbose output"
     )
-    
+
+    parser.add_argument(
+        "--domain",
+        choices=SUPPORTED_DOMAINS,
+        default="legal",
+        help=(
+            "Input schema. 'legal' = multi_lexsum format (default). "
+            "'medical' = Cochrane review format (no case_documents_doc_type; "
+            "case_documents_title is used as doc_type). Medical output is "
+            "prefixed: data/medical_<stem>/."
+        ),
+    )
+
     args = parser.parse_args()
-    
+
     # Create processor
     processor = LegalDataProcessor(
         input_file=args.input_file,
         output_dir=args.output_dir,
         model_name=args.model,
-        verbose=not args.quiet
+        verbose=not args.quiet,
+        domain=args.domain,
     )
     
     # Process cases

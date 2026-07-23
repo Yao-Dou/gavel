@@ -40,19 +40,22 @@ python run_agent.py data/case_123 --checklist-config config/checklist_configs/gr
 python run_agent.py data/case_123 --checklist-config config/checklist_configs/individual/08_judge_name.yaml
 ```
 
-### Batch submission with SLURM
+### Batch runs
 
-#### Submit jobs for specific configs
-Edit `submit_agent_jobs.sh` and uncomment the desired configs in the `CHECKLIST_CONFIGS` array, then run:
+Use the consolidated runner (from the `gavel_agent/` folder) to sweep
+cases × configs × models — locally by default, or one SLURM job per
+combination with `--use-slurm`:
 ```bash
-./submit_agent_jobs.sh
-```
+# All 26 items for every prepared case
+./run_agent_jobs.sh
 
-#### Submit all grouped configs
-Use the specialized script for all 9 grouped configs:
-```bash
-./submit_grouped_jobs.sh
+# All 9 grouped configs
+./run_agent_jobs.sh --category grouped
+
+# One run per individual item
+./run_agent_jobs.sh --category individual
 ```
+See `./run_agent_jobs.sh --help` for every option.
 
 ## Group Breakdown
 

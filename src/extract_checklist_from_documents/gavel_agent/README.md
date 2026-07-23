@@ -1,14 +1,18 @@
-# Gavel Agent - Legal Document Checklist Extraction
+# Gavel Agent - Document Checklist Extraction
 
-An LLM-powered agent for extracting 26 structured checklist items from legal case documents with evidence-based citations.
+An LLM-powered agent for extracting structured checklist items from case documents with evidence-based citations. Two domains are supported:
+
+- **Legal** (default): 26 checklist items extracted from U.S. civil-rights case documents
+- **Medical**: 29 checklist items extracted from Cochrane systematic reviews (sections such as Background/Methods/Results act as the "documents")
 
 ## Features
 
 - **Evidence-based extraction**: Every extracted value includes source citations with document name, location, and exact quotes
 - **Multi-model support**: Works with Qwen3 (native tool calling) and GPT-OSS (Harmony format)
-- **Configurable extraction**: Extract all 26 items, thematic groups (9 configs), or individual items (26 configs)
+- **Configurable extraction**: Extract all items at once, thematic groups, or individual items (legal: 26 items / 9 groups; medical: 29 items / 6 groups)
+- **Domain-general runtime**: The agent core is domain-agnostic — a domain is just a checklist-config folder (see `config/medical_checklist_configs/README.md`)
+- **Batch processing**: `run_agent_jobs.sh` sweeps cases × configs × models, locally or via SLURM
 - **Two-stage stopping**: Agent reviews its work before finalizing extraction
-- **Batch processing**: Process multiple cases in parallel with SLURM integration
 - **Resume capability**: Continue interrupted runs from saved state
 
 ## Quick Start
@@ -29,19 +33,27 @@ pip install pydantic pyyaml pytz tiktoken
 
 ```bash
 # First, prepare documents (see DATA_PROCESSING.md)
-python data_processing.py path/to/input.json
+# Legal:
+python data_processing.py ../../../data/full_case_data/20_human_eval_cases.json
+# Medical:
+python data_processing.py ../../../data/full_case_data/medical/10_human_eval_cases.json --domain medical
 
-# Run agent on a single case
-python run_agent.py data/case_folder --model Qwen/Qwen3-8B
+# Run agent on a single legal case
+python run_agent.py data/20_human_eval_cases/46210 --model Qwen/Qwen3-8B
+
+# Run agent on a single medical case (pass the medical checklist config)
+python run_agent.py data/medical_10_human_eval_cases/PMC11706636 \
+    --checklist-config config/medical_checklist_configs/all/all_29_items.yaml
 
 # Run with debug output
 python run_agent.py data/case_folder --model Qwen/Qwen3-8B --debug
 
-# Batch processing multiple cases
-python run_agent.py data/cases --batch --model Qwen/Qwen3-8B --output-dir results
+# Sweep every prepared case (× configs × models) with the batch runner
+./run_agent_jobs.sh                    # legal, all 26 items
+./run_agent_jobs.sh --domain medical   # medical, all 29 items
 ```
 
-For data preparation details, see [DATA_PROCESSING.md](DATA_PROCESSING.md).
+For data preparation details, see [DATA_PROCESSING.md](DATA_PROCESSING.md). For all batch-runner options, see `./run_agent_jobs.sh --help`.
 
 ## Architecture
 
@@ -49,8 +61,10 @@ For data preparation details, see [DATA_PROCESSING.md](DATA_PROCESSING.md).
 
 ```
 gavel_agent/
-├── run_agent.py               # CLI entry point
-├── data_processing.py         # Data preparation script
+├── run_agent.py               # CLI entry point (single run)
+├── run_agent_jobs.sh          # Batch runner: cases × configs × models (local or SLURM)
+├── run_agent.sbatch           # Generic SLURM job template (used by run_agent_jobs.sh --use-slurm)
+├── data_processing.py         # Data preparation script (legal + medical schemas)
 ├── agent/
 │   ├── driver.py              # Main execution loop
 │   ├── orchestrator.py        # LLM decision engine
@@ -77,9 +91,13 @@ gavel_agent/
 │   ├── model_config.yaml      # Model-specific sampling parameters
 │   ├── prompts_qwen.yaml      # Qwen3 system prompt + tool definitions
 │   ├── prompts_gpt_oss.yaml   # GPT-OSS Harmony format prompts
-│   └── checklist_configs/     # Modular checklist definitions
+│   ├── checklist_configs/     # Legal checklist definitions (26 items)
+│   │   ├── all/
+│   │   ├── grouped/           # 9 thematic groups
+│   │   └── individual/
+│   └── medical_checklist_configs/  # Medical checklist definitions (29 items)
 │       ├── all/
-│       ├── grouped/
+│       ├── grouped/           # 6 thematic groups
 │       └── individual/
 ├── README.md                  # This file
 └── DATA_PROCESSING.md         # Data preparation guide
@@ -369,6 +387,26 @@ Three levels of granularity:
 **Individual (26 configs):** `config/checklist_configs/individual/`
 - One config per checklist item for targeted extraction
 
+### Medical Checklist Configurations
+
+The medical domain mirrors the same three levels under `config/medical_checklist_configs/`:
+
+**All Items:** `config/medical_checklist_configs/all/all_29_items.yaml`
+
+**Grouped (6 configs):** `config/medical_checklist_configs/grouped/`
+| Config | Items |
+|--------|-------|
+| `01_clinical_question_structure.yaml` | Condition, Population, Intervention, Comparator, Timing, Purpose (6) |
+| `02_outcomes_specification.yaml` | Primary/Secondary benefit, Harm/Safety, Timeframe, Definition (5) |
+| `03_results_reporting.yaml` | Benefit/Harm direction, Magnitude, Quantitative data, Evidence absence (5) |
+| `04_certainty_evidence_quality.yaml` | Certainty, Downgrading, Study design, N studies, Sample size, Search, Inclusion, Gaps (8) |
+| `05_contextual_background.yaml` | Condition background, Intervention rationale, Technical terms (3) |
+| `06_applicability_currency.yaml` | Applicability, Evidence currency (2) |
+
+**Individual (29 configs):** `config/medical_checklist_configs/individual/`
+
+Note: `run_agent.py`'s default checklist config is the legal one, so medical runs must pass `--checklist-config` explicitly (or use `run_agent_jobs.sh --domain medical`, which does it for you).
+
 ### Using Custom Configurations
 
 ```bash
@@ -377,9 +415,36 @@ python run_agent.py data/case --checklist-config config/checklist_configs/groupe
 
 # Use individual config
 python run_agent.py data/case --checklist-config config/checklist_configs/individual/08_judge_name.yaml
+
+# Medical equivalent
+python run_agent.py data/medical_case --checklist-config config/medical_checklist_configs/grouped/01_clinical_question_structure.yaml
 ```
 
-See [checklist_configs/README.md](config/checklist_configs/README.md) for full details.
+See [checklist_configs/README.md](config/checklist_configs/README.md) and [medical_checklist_configs/README.md](config/medical_checklist_configs/README.md) for full details.
+
+## Batch Runs
+
+`run_agent_jobs.sh` runs the agent over every combination of case × checklist config × model — sequentially on the local machine by default, or as one SLURM job per combination with `--use-slurm` (adjust the generic headers in `run_agent.sbatch` for your cluster). Every flag is documented in the script header and via `--help`; `--dry-run` previews all commands without running them.
+
+```bash
+# Legal, all 26 items, every prepared case, default model
+./run_agent_jobs.sh
+
+# Medical, both paper models
+./run_agent_jobs.sh --domain medical \
+    --models "Qwen/Qwen3-30B-A3B-Thinking-2507 unsloth/gpt-oss-20b-BF16"
+
+# Medical, one run per item, two specific cases
+./run_agent_jobs.sh --domain medical --category individual --case-ids "PMC11706636 PMC11770842"
+
+# Legal grouped extraction via SLURM, 200 steps (paper setting)
+./run_agent_jobs.sh --category grouped --max-steps 200 --use-slurm
+
+# Preview without running
+./run_agent_jobs.sh --domain medical --category grouped --dry-run
+```
+
+Results land in `output/<model>/<case_id>/<all|grouped|individual>/<config_name>/` with `checklist.json`, `ledger.jsonl`, `raw_responses.jsonl`, and `stats.json`.
 
 ## Model Support
 
@@ -499,7 +564,8 @@ For large documents (>100K tokens), the agent reads in chunks. Coverage tracking
 
 ## Related Documentation
 
-- [DATA_PROCESSING.md](DATA_PROCESSING.md) - Document preparation and corpus setup
-- [config/checklist_configs/README.md](config/checklist_configs/README.md) - Checklist configuration details
+- [DATA_PROCESSING.md](DATA_PROCESSING.md) - Document preparation and corpus setup (legal + medical)
+- [config/checklist_configs/README.md](config/checklist_configs/README.md) - Legal checklist configuration details
+- [config/medical_checklist_configs/README.md](config/medical_checklist_configs/README.md) - Medical checklist configuration details
 - [config/prompts_qwen.yaml](config/prompts_qwen.yaml) - Qwen3 prompt configuration
 - [config/prompts_gpt_oss.yaml](config/prompts_gpt_oss.yaml) - GPT-OSS Harmony format prompts

@@ -1,0 +1,15 @@
+# Checklist configuration - Intervention Rationale only
+# Focuses exclusively on extracting the rationale or mechanism for the intervention.
+
+# User instruction
+user_instruction: |
+  Extract the intervention rationale (mechanism of action) from the medical review documents.
+# Task-specific constraints
+constraints:
+  - "Extract EVERY distinct value of this checklist item found in any document."
+  - "Create separate entries for each unique value with its supporting evidence."
+  - "Each extracted value should be self-contained with relevant context included."
+# Single checklist item
+checklist_items:
+  Intervention_Rationale:
+    description: "The biological, behavioral, or theoretical reason the intervention is expected to work — its mechanism of action or hypothesized pathway (e.g., 'SSRIs increase synaptic serotonin levels, hypothesized to alleviate depressive symptoms'). Distinct from Intervention_Defined (which is what the intervention is). Extract each rationale as a separate value."
