@@ -19,7 +19,8 @@ A research framework for evaluating large language models on long-context legal 
 - **GAVEL-Ref Evaluation**: Reference-free evaluation framework with three complementary metrics—Checklist, Residual Facts, and Writing Style
 - **Multi-Value Extraction**: Each checklist item yields a list of (value, supporting_text) pairs, enabling partial credit for overlapping information
 - **Multi-Model Support**: Evaluate GPT-5, Claude Opus 4.1, Gemini 2.5 Pro, Qwen3, and more
-- **Document-Level Extraction**: Three approaches (end-to-end, chunk-by-chunk, agentic) to extract checklists directly from case documents
+- **Document-Level Extraction**: Four approaches (end-to-end, chunk-by-chunk iterative updating, chunk-by-chunk hierarchical merging, agentic) to extract checklists directly from case documents
+- **Multi-Domain**: Legal core plus a medical extension—document-level checklist extraction from Cochrane systematic reviews with a 29-item medical checklist
 - **Flexible Infrastructure**: Cloud batch APIs (50% cost savings) or local vLLM inference with YaRN context extension
 
 ---
@@ -30,6 +31,8 @@ A research framework for evaluating large language models on long-context legal 
 gavel/
 ├── README.md                           # This file
 ├── data/                               # Datasets and evaluation results
+│   ├── full_case_data/                 # Full case documents + metadata
+│   │   └── medical/                    # Cochrane reviews (medical domain)
 │   ├── summaries/                      # Human and model-generated summaries
 │   │   ├── 50_cases_for_benchmarking.json
 │   │   ├── 50_cases_for_benchmarking_2.json
@@ -44,7 +47,8 @@ gavel/
 │   └── evaluation_documents_checklist/ # Document checklist evaluation
 ├── prompts/                            # Prompt templates
 │   ├── extract_checklist_item/         # Extract from summaries
-│   ├── extract_checklist_item_from_docs/ # Extract from documents
+│   ├── extract_checklist_item_from_docs/ # Extract from documents (legal)
+│   │   └── medical/                    # Medical variants (29-item checklist)
 │   ├── evaluate_checklist/             # Evaluation prompts
 │   ├── generate_summary.txt            # Summary generation
 │   └── evaluate_writing_style.txt      # Style comparison
@@ -54,7 +58,8 @@ gavel/
 │   ├── vllm_inference.py               # Local GPU inference engine
 │   ├── submit_vllm_inference_jobs.sh   # SLURM job submission
 │   └── extract_checklist_from_documents/
-│       ├── chunk_by_chunk_iterative_updating/  # Iterative extraction
+│       ├── chunk_by_chunk_iterative_updating/  # Chunk-by-chunk, iterative state updates
+│       ├── chunk_by_chunk_hierarchical_merging/ # Chunk-by-chunk, binary-tree merging
 │       └── gavel_agent/                        # Agentic extraction
 └── annotation_interface/               # Human annotation interfaces
     ├── checklist_comparison/           # Compare checklist values
@@ -205,22 +210,30 @@ See [data/README.md](data/README.md) for complete item definitions.
 
 ## Document-Level Checklist Extraction
 
-Three approaches for extracting 26 checklist items directly from case documents (bypassing the summary stage):
+Four approaches for extracting checklist items directly from case documents (bypassing the summary stage):
 
 | Approach | Description | Location |
 |----------|-------------|----------|
 | **End-to-End** | Concat all documents, extract each item one by one | `prompts/extract_checklist_item_from_docs/end_to_end_template.txt` |
-| **Chunk-by-Chunk** | Process 16K-token chunks iteratively | [chunk_by_chunk/README.md](src/extract_checklist_from_documents/chunk_by_chunk_iterative_updating/README.md) |
+| **Chunk-by-Chunk (Iterative Updating)** | Process 16K-token chunks, iteratively updating one state | [chunk_by_chunk_iterative_updating/README.md](src/extract_checklist_from_documents/chunk_by_chunk_iterative_updating/README.md) |
+| **Chunk-by-Chunk (Hierarchical Merging)** | High-recall per-chunk extraction, then binary-tree merge + prune | [chunk_by_chunk_hierarchical_merging/README.md](src/extract_checklist_from_documents/chunk_by_chunk_hierarchical_merging/README.md) |
 | **GAVEL-Agent** | Multi-tool agentic orchestration | [gavel_agent/README.md](src/extract_checklist_from_documents/gavel_agent/README.md) |
 
 ### End-to-End Extraction
-Concatenate all case documents and feed to a long-context LLM. Each of the 26 items is extracted one by one using prompts. **No dedicated folder**—users run prompts through the general inference infrastructure.
+Concatenate all case documents and feed to a long-context LLM. Each item is extracted one by one using prompts. **No dedicated folder**—users run prompts through the general inference infrastructure.
 
 ### Chunk-by-Chunk Iterative Updating
 Process documents in 16K-token chunks, iteratively building up extraction state. The vLLM pipeline processes all cases and items in parallel across chunks.
 
+### Chunk-by-Chunk Hierarchical Merging
+An alternative to iterative updating: every chunk is extracted independently at high recall (one model), then the per-chunk checklists are merged pairwise in a binary tree and pruned by a second model. Shares the same prepared chunk data as the iterative pipeline.
+
 ### GAVEL-Agent (Agentic Approach)
-Multi-tool orchestration where an LLM agent autonomously decides which documents to read, what to search for, and when to update the checklist. Features a two-stage stopping mechanism and supports configurable item subsets (all 26, 9 grouped, or individual items).
+Multi-tool orchestration where an LLM agent autonomously decides which documents to read, what to search for, and when to update the checklist. Features a two-stage stopping mechanism and supports configurable item subsets (all items, thematic groups, or individual items). Batch runs via a single `run_agent_jobs.sh` script (local or SLURM).
+
+### Medical Domain
+
+All document-level extraction methods also support a **medical domain**: Cochrane systematic reviews (`data/full_case_data/medical/`, 10 reviews keyed by PMC id, with plain-language summaries as references) evaluated against a **29-item medical checklist** in 6 thematic groups (clinical question structure, outcomes, results, certainty/evidence quality, context, applicability). Select it with `--domain medical` (chunk-by-chunk pipelines and `run_agent_jobs.sh`) or the medical checklist configs (`gavel_agent/config/medical_checklist_configs/`). Medical prompt variants live in `prompts/extract_checklist_item_from_docs/medical/`. The release includes the code and data for medical extraction; no medical result files are shipped.
 
 ---
 
@@ -232,7 +245,7 @@ The `prompts/` folder contains templates for all pipeline stages:
 |----------|---------|
 | `generate_summary.txt` | Generate summaries with 26-item checklist guidance |
 | `extract_checklist_item/` | Extract checklist items from summaries |
-| `extract_checklist_item_from_docs/` | Extract checklist items from documents (end-to-end + chunk-by-chunk) |
+| `extract_checklist_item_from_docs/` | Extract checklist items from documents (end-to-end, chunk-by-chunk, hierarchical merging); `medical/` subfolder mirrors all templates for the medical domain |
 | `evaluate_checklist/` | Compare extracted checklists (string-wise + list-wise) |
 | `extract_facts_from_residual_spans.txt` | Extract atomic facts from non-checklist text |
 | `evaluate_writing_style.txt` | Compare writing style across 5 dimensions |
@@ -249,6 +262,8 @@ See [prompts/README.md](prompts/README.md) for detailed template documentation.
 | Prompt Templates | [prompts/README.md](prompts/README.md) |
 | Source Code | [src/README.md](src/README.md) |
 | GAVEL-Agent | [gavel_agent/README.md](src/extract_checklist_from_documents/gavel_agent/README.md) |
+| Chunk-by-Chunk (Iterative Updating) | [chunk_by_chunk_iterative_updating/README.md](src/extract_checklist_from_documents/chunk_by_chunk_iterative_updating/README.md) |
+| Chunk-by-Chunk (Hierarchical Merging) | [chunk_by_chunk_hierarchical_merging/README.md](src/extract_checklist_from_documents/chunk_by_chunk_hierarchical_merging/README.md) |
 | Annotation Interfaces | [annotation_interface/README.md](annotation_interface/README.md) |
 
 ---
